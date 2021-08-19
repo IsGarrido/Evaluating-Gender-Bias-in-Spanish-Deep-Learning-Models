@@ -1,0 +1,4 @@
+venv
+/*.xlsx
+/*.txt
+src/__pycache__/*
