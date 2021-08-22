@@ -1,6 +1,0 @@
-No se ha podido ejecutar wilcoxon
-[MANN] Statistics=3872.000, p=0.499
-[MANN ✔] Same distribution (fail to reject H0)
-
-
-

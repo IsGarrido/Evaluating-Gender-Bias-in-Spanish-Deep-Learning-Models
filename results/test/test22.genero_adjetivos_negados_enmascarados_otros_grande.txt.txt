@@ -1,7 +1,0 @@
-[WCX] Statistics=159713.000, p=0.941
-[WCX ✔] Same distribution (fail to reject H0)
-[MANN] Statistics=301799.000, p=0.024
-[MANN] Different distribution (reject H0)
-
-
-
