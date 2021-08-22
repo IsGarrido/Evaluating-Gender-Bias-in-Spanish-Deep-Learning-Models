@@ -5,8 +5,13 @@ from scipy.stats import mannwhitneyu
 from scipy.stats import shapiro
 from scipy.stats import ttest_rel
 
+import datetime
+
 from src.LogHelper import LogHelper
+
 l = LogHelper()
+
+
 # Si p > 0.05 -> Reject null hypothesis in support of the alternative
 
 '''
@@ -103,6 +108,7 @@ def t_test_label(before, after, alpha):
 def run_tests_labeled(before, after):
 
     l.log_print("Test results for " + str(len(before)) + ", " + str(len(before)) + " elementos " )
+
     try:
         wilcoxon_paired_label(before, after)
     except:
@@ -118,5 +124,7 @@ def run_tests_labeled(before, after):
     except:
         l.log_print("No se ha podido ejecutar ttest")
 
+    l.log_print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
     l.log_print("\n\n")
+
     return l.get_log()
