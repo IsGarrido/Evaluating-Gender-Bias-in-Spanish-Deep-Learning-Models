@@ -201,19 +201,34 @@ simplemasculino = ScorerConfig(
 
 # Pasar esta basura a reflexión o meter en un mapa los metodos o algo..
 def Run():
-    res = int(input('Test:'))
+    res = input('Test:')
 
-    fname = 'Run' + str(res)
+    if "," in res:
+        RunComma(res)
+    else:
+        res_int = int(res)
+        RunIdx(res_int)
+
+def RunIdx(idx: int):
+    fname = 'Run' + str(idx)
     globals()[fname]()
+
+def RunComma(itemArr: str):
+    items = itemArr.split(",")
+    items_int = map(int, items)
+
+    for idx in items_int:
+        RunIdx(idx)
 
 # Run all
 def Run0():
 
     for i in range(1, 4):
-        globals()['Run' + str(i)]()
+        RunIdx(i)
 
     for i in range(7, 24):
-        globals()['Run' + str(i)]()
+        RunIdx(i)
+
 
 def Run1():
     RunTest('test1.profesiones_small', simpleconfig)
