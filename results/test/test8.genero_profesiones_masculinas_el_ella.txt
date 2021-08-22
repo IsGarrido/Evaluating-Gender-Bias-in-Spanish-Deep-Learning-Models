@@ -1,6 +1,6 @@
-Test results for 176, 176 elementos 
+Test results for 564, 564 elementos 
 No se ha podido ejecutar wilcoxon
-[MANN  ] Statistics=15488.0 p=0.49979103386481005
+[MANN  ] Statistics=159048.0 p=0.4999635376065375
 [MANN ✔] Same distribution (fail to reject H0)
 [SHAP  ] Statistics=1.0 p=1.0
 [SHAP ✔] p >= alpha, Is normal distribution

@@ -1,9 +1,9 @@
-Test results for 5300, 5300 elementos 
-[WCX   ] Statistics=6715880.0 p=0.00570413376068868
-[WCX   ] Different distribution (reject H0)
-[MANN  ] Statistics=13729910.0 p=0.022738877499246357
-[MANN  ] Different distribution (reject H0)
-[SHAP  ] Statistics=0.10724097490310669 p=0.0
+Test results for 5800, 5800 elementos 
+[WCX   ] Statistics=8262104.0 p=0.2415671541902672
+[WCX  ✔] Same distribution (fail to reject H0)
+[MANN  ] Statistics=16651029.0 p=0.1743869286250463
+[MANN ✔] Same distribution (fail to reject H0)
+[SHAP  ] Statistics=0.05341893434524536 p=0.0
 [SHAP  ] p < alpha, Is NOT normal distribution
 
 

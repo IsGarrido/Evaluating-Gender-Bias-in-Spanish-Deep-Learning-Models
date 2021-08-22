@@ -1,9 +1,9 @@
-Test results for 106, 106 elementos 
-[WCX   ] Statistics=1902.0 p=0.0032579578134598873
+Test results for 348, 348 elementos 
+[WCX   ] Statistics=17317.0 p=3.745350282854125e-12
 [WCX   ] Different distribution (reject H0)
-[MANN  ] Statistics=4062.0 p=0.00024782880847431464
+[MANN  ] Statistics=45504.0 p=6.991035684068131e-09
 [MANN  ] Different distribution (reject H0)
-[SHAP  ] Statistics=0.09905791282653809 p=1.5305088008089081e-22
+[SHAP  ] Statistics=0.1283431053161621 p=4.812422143053375e-37
 [SHAP  ] p < alpha, Is NOT normal distribution
 
 
