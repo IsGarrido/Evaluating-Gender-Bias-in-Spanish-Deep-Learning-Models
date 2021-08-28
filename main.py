@@ -1,7 +1,7 @@
 import numpy as np
 import csv
 
-from src import ModelScorer
+from src import ModelScorer, FileHelper
 from src.FileHelper import save_array_as_excel
 from src.ScorerConfig import ScorerConfig
 from src.StatisticalAnalysis import *
@@ -199,110 +199,34 @@ simplemasculino = ScorerConfig(
     5  # ella
 )
 
-# Pasar esta basura a reflexión o meter en un mapa los metodos o algo..
-def Run():
-    res = input('Test:')
-
-    if "," in res:
-        RunComma(res)
-    else:
-        res_int = int(res)
-        RunIdx(res_int)
-
-def RunIdx(idx: int):
-    fname = 'Run' + str(idx)
-    globals()[fname]()
-
-def RunComma(itemArr: str):
-    items = itemArr.split(",")
-    items_int = map(int, items)
-
-    for idx in items_int:
-        RunIdx(idx)
-
-# Run all
-def Run0():
-
-    for i in range(1, 4):
-        RunIdx(i)
-
-    for i in range(7, 24):
-        RunIdx(i)
+folder_types = ['adjetivo', 'genero', 'genero_profesion', 'nombre_determinante_profesion', 'profesion']
+folder_base = "/mnt/disco2tb/Datos/OneDrive/P/TextTools/FormarFrases/tests/"
 
 
-def Run1():
-    RunTest('test1.profesiones_small', simpleconfig)
-
-def Run2():
-    RunTest('test2.profesiones_big', simpleconfig)
-
-def Run3():
-    RunTest('test3.profesiones_small_alt', simpleconfig)
-
-def Run4():
-    RunTest('test4.profesiones_big_alt', simpleconfig)
-
-def Run7():
-    RunTest('test7.profesiones_masculinas_el_ella', simplemasculino)
-
-def Run8():
-    RunTest('test8.genero_profesiones_masculinas_el_ella', simplemasculino)
-
-def Run9():
-    RunTest('test9.adjetivos_enmascarados_positivos', simpleconfig)
-
-def Run10():
-    RunTest('test10.adjetivos_enmascarados_otros', simpleconfig)
-
-def Run11():
-    RunTest('test11.adjetivos_enmascarados_negativos', simpleconfig)
-
-def Run12():
-    RunTest('test12.genero_adjetivos_enmascarados_positivos', simpleconfig)
-
-def Run13():
-    RunTest('test13.genero_adjetivos_enmascarados_otros', simpleconfig)
-
-def Run14():
-    RunTest('test14.genero_adjetivos_enmascarados_negativos', simpleconfig)
-
-def Run15():
-    RunTest('test15.genero_adjetivos_enmascarados_positivos_grande', simpleconfig)
-
-def Run16():
-    RunTest('test16.genero_adjetivos_enmascarados_otros_grande', simpleconfig)
-
-def Run17():
-    RunTest('test17.genero_adjetivos_enmascarados_negativos_grande', simpleconfig)
-
-def Run18():
-    RunTest('test18.adjetivos_con_profesiones_enmascaradas_positivos', simpleconfig)
-
-def Run19():
-    RunTest('test19.adjetivos_con_profesiones_enmascaradas_otros', simpleconfig)
-
-def Run20():
-    RunTest('test20.adjetivos_con_profesiones_enmascaradas_negativos', simpleconfig)
-
-def Run21():
-    RunTest('test21.genero_adjetivos_negados_enmascarados_positivos_grande', simpleconfig)
-
-def Run22():
-    RunTest('test22.genero_adjetivos_negados_enmascarados_otros_grande', simpleconfig)
-
-def Run23():
-    RunTest('test23.genero_adjetivos_negados_enmascarados_negativos_grande', simpleconfig)
+def RunAll():
+    [RunTestType(folder) for folder in folder_types]
 
 
+def RunTestType(folder):
+
+    path = folder_base + folder
+    files = FileHelper.get_file_list(path)
+
+    [ RunTest(folder, name , simpleconfig, False) for name in files ]
 
 
-def RunTest(fname: str, config: ScorerConfig, verbose: bool = False):
+def RunTest(folder, name, config: ScorerConfig, verbose: bool = False):
+
+    file_clean_name = name.split('.')[0]
+    path = folder_base + folder
+    file_path = path + '/' + name
+
     results = []
     i = 0
+    errores = 0
     scorer = ModelScorer.ModelScorer(config)
 
-    file = "/mnt/disco2tb/Datos/OneDrive/P/TextTools/FormarFrases/tests/" + fname + ".test.tsv"
-    with open(file, newline='\n', encoding='utf-8') as f:
+    with open(file_path, newline='\n', encoding='utf-8') as f:
         reader = csv.reader(f, delimiter='\t')
 
         for row in reader:
@@ -314,12 +238,13 @@ def RunTest(fname: str, config: ScorerConfig, verbose: bool = False):
                     print("Error en:")
                     print(row)
                     print("\n")
+                errores = errores + 1
 
             i += 1
             if i % 1000 == 0:
                 print(str(i))
 
-        print( 'Finalizado test ' + fname + " -> " + str(i))
+        print( 'Finalizado test ' + name + " -> " + str(i) + " con " + str(errores) + " errores ")
 
         l1 = []
         l2 = []
@@ -328,9 +253,11 @@ def RunTest(fname: str, config: ScorerConfig, verbose: bool = False):
             l2.append(result.get("score_f"))
 
         text_log = run_tests_labeled(l1, l2)
+        text_log = text_log + "\n\nErrores:" + str(errores)
 
-        write_log(text_log, fname+'.txt')
-        save_array_as_excel(results, fname)
+        # Save
+        write_log(text_log, folder, file_clean_name +'.txt')
+        save_array_as_excel(results, folder, file_clean_name)
 
 
-Run()
+RunAll()
