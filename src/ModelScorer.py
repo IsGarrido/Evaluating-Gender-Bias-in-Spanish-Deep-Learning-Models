@@ -91,7 +91,7 @@ class ModelScorer:
 
         sought_after_token_ids = self.tokenizer.encode(word, add_special_tokens=False)
         if len(sought_after_token_ids) > 1:
-            raise "Multi-token"
+            raise ValueError("Multi-token " + word)
 
         # for token_id in sought_after_token_ids:
         #    assert token_id != 3

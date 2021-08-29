@@ -5,10 +5,8 @@ Test results for 198, 198 elementos
 [MANN  ] Different distribution (reject H0)
 [SHAP  ] Statistics=0.19463807344436646 p=2.077728372226435e-28
 [SHAP  ] p < alpha, Is NOT normal distribution
-2021-08-28 11:56
+2021-08-28 21:53
 
 
 
-
-
-Errores:102
+Errores:102/300

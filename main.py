@@ -253,11 +253,12 @@ def RunTest(folder, name, config: ScorerConfig, verbose: bool = False):
             l2.append(result.get("score_f"))
 
         text_log = run_tests_labeled(l1, l2)
-        text_log = text_log + "\n\nErrores:" + str(errores)
+        text_log = text_log + "Errores:" + str(errores) + "/" + str(i)
 
         # Save
         write_log(text_log, folder, file_clean_name +'.txt')
         save_array_as_excel(results, folder, file_clean_name)
 
 
-RunAll()
+#RunAll()
+RunTestType('adjetivo')
