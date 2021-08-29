@@ -93,9 +93,6 @@ class ModelScorer:
         if len(sought_after_token_ids) > 1:
             raise ValueError("Multi-token " + word)
 
-        # for token_id in sought_after_token_ids:
-        #    assert token_id != 3
-
         sought_after_token_id = sought_after_token_ids[0]
 
         token_score = mask_token_logits[:, sought_after_token_id]

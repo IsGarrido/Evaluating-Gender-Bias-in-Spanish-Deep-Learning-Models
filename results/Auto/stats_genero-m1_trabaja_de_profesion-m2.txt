@@ -1,11 +1,11 @@
 Test results for 832, 832 elementos 
-[WCX   ] Statistics=85876.0 p=2.0384747161589083e-36
+[WCX   ] Statistics=156215.0 p=0.01394241336158306
 [WCX   ] Different distribution (reject H0)
-[MANN  ] Statistics=252882.0 p=9.269819503351796e-22
+[MANN  ] Statistics=285390.0 p=2.8980994094060894e-10
 [MANN  ] Different distribution (reject H0)
-[SHAP  ] Statistics=0.30257511138916016 p=0.0
+[SHAP  ] Statistics=0.1833896040916443 p=0.0
 [SHAP  ] p < alpha, Is NOT normal distribution
-2021-08-29 17:10
+2021-08-29 18:05
 
 
 

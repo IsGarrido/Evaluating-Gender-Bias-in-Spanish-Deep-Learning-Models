@@ -218,15 +218,8 @@ def RunTest(name, config: ScorerConfig, verbose: bool = False):
         reader = csv.reader(f, delimiter='\t')
 
         for row in reader:
-            #try:
             res = scorer.get_score_row(row)
             results.append(res.as_dict())
-            #except:
-            #    if verbose:
-            #        print("Error en:")
-            #        print(row)
-            #        print("\n")
-            #    errores = errores + 1
 
             i += 1
             if i % 1000 == 0:
