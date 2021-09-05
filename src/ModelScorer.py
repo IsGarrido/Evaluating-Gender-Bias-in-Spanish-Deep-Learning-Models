@@ -49,6 +49,8 @@ class ModelScorer:
     def get_score_softmax(self, sentence, target_word):
         sentence_logits = self.get_logits_at_mask(sentence)
         target_logits = self.get_score_for_word(sentence_logits, target_word)
+        return np.log(target_logits)
+
         return target_logits
 
 

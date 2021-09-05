@@ -36,6 +36,8 @@ def write_log(text, folder, fname):
 
 
 def write_txt(text, path):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+
     f = open(path, "w")
     f.write(text)
     f.close()

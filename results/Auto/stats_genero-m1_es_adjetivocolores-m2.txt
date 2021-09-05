@@ -1,12 +1,13 @@
-Test results for 400, 400 elementos 
-[WCX   ] Statistics=35238.0 p=0.0356086486537426
+Test results for 100, 100 elementos 
+[WCX   ] Statistics=34.0 p=1.0818860714475819e-17
 [WCX   ] Different distribution (reject H0)
-[MANN  ] Statistics=72994.0 p=0.016030535255487696
+[MANN  ] Statistics=1381.0 p=4.725654560164114e-19
 [MANN  ] Different distribution (reject H0)
-[SHAP  ] Statistics=0.4176112413406372 p=6.6491309900159784e-34
-[SHAP  ] p < alpha, Is NOT normal distribution
-2021-08-29 18:09
+[SHAP  ] Statistics=0.9790697693824768 p=0.11247322708368301
+[SHAP ✔] p >= alpha, Is normal distribution
+[TSTU  ] Different distribution (reject H0)
+2021-08-30 15:31
 
 
 
-Errores:0/400
+Errores:0/100
