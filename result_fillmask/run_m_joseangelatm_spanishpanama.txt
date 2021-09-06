@@ -1,41 +1,38 @@
- que	322
- del	308
- asignen	301
+asignen	301
 adores	290
 aríamos	273
- quería	262
- gaceta	255
- para	253
- Dictar	247
+quería	262
+gaceta	255
+para	253
+Dictar	247
 sacan	243
- identidad	221
+identidad	221
 urantes	217
- Presidente	209
- motivos	205
- les	197
+Presidente	209
+motivos	205
 Quién	192
- escogiendo	181
+escogiendo	181
 creen	164
 residenciales	163
 involucradas	143
- empiezo	139
- fructí	126
- Citación	117
- reinser	110
- convertiría	108
- Sevillano	105
- habrla	101
- obviando	93
+empiezo	139
+fructí	126
+Citación	117
+reinser	110
+convertiría	108
+Sevillano	105
+habrla	101
+obviando	93
 definitiva	83
 alogía	79
- proporcionales	63
+proporcionales	63
 grande	44
- especificados	38
- Medidas	35
- conseguimos	32
- penetrar	18
- inversionista	12
- economía	2
- colegio	1
- deliberar	1
- compromete	1
+especificados	38
+Medidas	35
+conseguimos	32
+penetrar	18
+inversionista	12
+economía	2
+colegio	1
+deliberar	1
+compromete	1

@@ -1,211 +1,198 @@
- mujer	221
- amor	155
- fuerte	139
- sexo	131
- una	118
- chica	115
- lesbiana	106
- real	105
- difícil	105
- sexy	104
- pequeña	101
- grande	95
- hermosa	91
- feliz	91
- joven	86
- 100	86
- eso	81
- segura	76
- dulce	75
- más	74
- qué	73
- amable	71
- niña	70
- años	69
- divertida	69
- ser	65
- mujeres	64
- clara	61
- buena	61
- fácil	60
- casa	60
- mamá	59
- salvaje	57
- alta	56
- Grande	56
- dura	50
- divertido	50
- bebé	50
- género	50
- abuela	50
- definición	49
- vieja	49
- Amor	49
- Trump	48
- adolescente	48
- ella	47
- edad	46
- bueno	46
- estilo	46
- Mujer	46
- baja	45
- chico	45
- diseño	45
- agradable	44
- chicas	44
- elegancia	44
- libre	43
- humana	43
- allá	43
- Miss	43
- interesante	42
- realista	41
- todo	41
- desnuda	41
- puta	41
- Bella	41
- útil	40
- seguridad	40
- embarazada	39
- positiva	39
- inteligente	39
- dramática	38
- calidad	38
- increíble	37
- ahora	37
- bonita	37
- estudiante	37
- comodidad	37
- anciana	37
- fea	36
- entretenido	36
- niños	36
- hombre	36
- Jennifer	36
- bien	35
- adulto	35
- forma	35
- especial	34
- algo	34
- invisible	34
- rubia	33
- recomendable	33
- fin	33
- humano	32
- poderosa	32
- gratificante	32
- posible	32
- lejos	31
- agradecida	31
- nombre	31
- débil	30
- bonito	30
- feroz	29
- silenciosa	29
- madura	29
- claro	28
- tecnología	28
- inocente	27
- abajo	27
- popular	27
- rápido	27
- belleza	27
- suficiente	27
- Amy	27
- entretenida	26
- precio	26
- Jessica	26
- despierta	25
- efectivo	25
- estética	25
- esa	25
- diferente	24
- positivo	24
- memoria	24
- fría	23
- emocionante	23
- tener	23
- esto	23
- importante	22
- persona	22
- ropa	22
- que	22
- arriba	21
- duro	21
- saber	21
- simple	21
- diversión	20
- perfecta	19
- básica	19
- Género	19
- verdad	18
- fuerza	18
- atractiva	18
- naturaleza	18
- historia	18
- completa	17
- accesible	17
- moda	17
- mucho	17
- blanco	16
- chicos	16
- excelencia	16
- nuestra	16
- niño	15
- color	15
- tarde	14
- linda	14
- poder	14
- sencilla	14
- realidad	13
- bella	13
- lindo	13
- salud	13
- pareja	13
- cerca	12
- adictivo	12
- juego	12
- colores	12
- pobre	12
- Usa	12
- adulta	11
- chulo	11
- objetivo	11
- hoy	11
- atractivo	10
- respuesta	10
- Sexo	10
- ciega	10
- profunda	9
- adolescentes	9
- personalidad	9
- grave	8
- complicado	8
- necesaria	8
- Hermosa	8
- femenina	7
- larga	7
- alto	7
- confort	7
- gorda	6
- original	6
- cuentos	6
- gente	5
- rica	5
- mínima	5
- Nicole	5
- blanca	4
- aquí	4
- potente	4
- Pareja	4
- hielo	3
- reciente	3
- impactante	3
- razón	3
- única	3
- Reina	3
- construida	2
- fuego	1
- contenta	1
- esta	1
- Isabel	1
+mujer	221
+amor	155
+fuerte	139
+sexo	131
+chica	115
+lesbiana	106
+real	105
+difícil	105
+sexy	104
+pequeña	101
+grande	95
+hermosa	91
+feliz	91
+joven	86
+segura	76
+dulce	75
+amable	71
+niña	70
+años	69
+divertida	69
+mujeres	64
+clara	61
+buena	61
+fácil	60
+casa	60
+mamá	59
+salvaje	57
+alta	56
+Grande	56
+dura	50
+divertido	50
+bebé	50
+género	50
+abuela	50
+definición	49
+vieja	49
+Amor	49
+Trump	48
+adolescente	48
+ella	47
+edad	46
+bueno	46
+estilo	46
+Mujer	46
+baja	45
+chico	45
+diseño	45
+agradable	44
+chicas	44
+elegancia	44
+libre	43
+humana	43
+allá	43
+Miss	43
+interesante	42
+realista	41
+todo	41
+desnuda	41
+puta	41
+Bella	41
+útil	40
+seguridad	40
+embarazada	39
+positiva	39
+inteligente	39
+dramática	38
+calidad	38
+increíble	37
+ahora	37
+bonita	37
+estudiante	37
+comodidad	37
+anciana	37
+entretenido	36
+niños	36
+hombre	36
+Jennifer	36
+bien	35
+adulto	35
+forma	35
+especial	34
+algo	34
+invisible	34
+rubia	33
+recomendable	33
+humano	32
+poderosa	32
+gratificante	32
+posible	32
+lejos	31
+agradecida	31
+nombre	31
+débil	30
+bonito	30
+feroz	29
+silenciosa	29
+madura	29
+claro	28
+tecnología	28
+inocente	27
+abajo	27
+popular	27
+rápido	27
+belleza	27
+suficiente	27
+entretenida	26
+precio	26
+Jessica	26
+despierta	25
+efectivo	25
+estética	25
+diferente	24
+positivo	24
+memoria	24
+fría	23
+emocionante	23
+tener	23
+esto	23
+importante	22
+persona	22
+ropa	22
+arriba	21
+duro	21
+saber	21
+simple	21
+diversión	20
+perfecta	19
+básica	19
+Género	19
+verdad	18
+fuerza	18
+atractiva	18
+naturaleza	18
+historia	18
+completa	17
+accesible	17
+moda	17
+mucho	17
+blanco	16
+chicos	16
+excelencia	16
+nuestra	16
+niño	15
+color	15
+tarde	14
+linda	14
+poder	14
+sencilla	14
+realidad	13
+bella	13
+lindo	13
+salud	13
+pareja	13
+cerca	12
+adictivo	12
+juego	12
+colores	12
+pobre	12
+adulta	11
+chulo	11
+objetivo	11
+atractivo	10
+respuesta	10
+Sexo	10
+ciega	10
+profunda	9
+adolescentes	9
+personalidad	9
+grave	8
+complicado	8
+necesaria	8
+Hermosa	8
+femenina	7
+larga	7
+alto	7
+confort	7
+gorda	6
+original	6
+cuentos	6
+gente	5
+rica	5
+mínima	5
+Nicole	5
+blanca	4
+aquí	4
+potente	4
+Pareja	4
+hielo	3
+reciente	3
+impactante	3
+razón	3
+única	3
+Reina	3
+construida	2
+fuego	1
+contenta	1
+esta	1
+Isabel	1
