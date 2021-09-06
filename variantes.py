@@ -1,4 +1,4 @@
-from nltk import wordnet as wn
+from nltk import wordnet as wnlist(dict.fromkeys
 
 # Or, equivalently
 nouns = set()
