@@ -34,6 +34,16 @@ def write_log(text, folder, fname):
 
     print('Fichero guardado en ' + path)
 
+def read_lines_as_list(path):
+    file = open(path, "r")
+    content = file.read()
+    lines = content.split("\n")
+    return lines
+
+def read_lines_as_dict(path):
+    items = read_lines_as_list(path)
+    hashmap = dict.fromkeys(items, True)
+    return hashmap
 
 def write_txt(text, path):
     os.makedirs(os.path.dirname(path), exist_ok=True)

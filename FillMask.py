@@ -1,7 +1,12 @@
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 from transformers import pipeline
-from src.FileHelper import write_txt
+from src.FileHelper import write_txt, read_lines_as_dict
 from src.StringHelper import as_file_name
+
+# Solo para BNE
+from transformers import AutoModelForMaskedLM
+from transformers import AutoTokenizer, FillMaskPipeline
+
 
 # const
 T = "\t"
@@ -9,6 +14,8 @@ RESULT_PATH = "result_fillmask"
 RESULT_QTY = 50
 
 WORD_MIN_LEN = 4
+
+adjectives_map = read_lines_as_dict("../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
 
 #tokenizer = AutoTokenizer.from_pretrained("dccuchile/bert-base-spanish-wwm-uncased")
 #model = AutoModelForMaskedLM.from_pretrained("dccuchile/bert-base-spanish-wwm-uncased")
@@ -26,14 +33,21 @@ generator(
 class GroupedFillMask:
 
 
-    def __init__(self, unmasker):
-        self.unmasker = unmasker
+    def __init__(self, model, tokenizer):
+
+        self.model = model
+        self.model.eval()
+
+        self.tokenizer = tokenizer
+
+        self.pipeline = FillMaskPipeline(self.model, self.tokenizer, top_k= RESULT_QTY)
+
         self.grouped_count = {}
         self.grouped_points = {}
 
     def valid_token(self, token: str):
 
-        clean = token.replace("[", "").replace("]", "")
+        clean = token.replace("[", "").replace("]", "").replace(".","")
 
         if len(clean) < WORD_MIN_LEN:
             return False
@@ -43,8 +57,9 @@ class GroupedFillMask:
         return True
 
 
-    def save_stats(self, word, idx):
+    def save_stats(self, word : str, idx):
 
+        word = word.strip()
         if not self.valid_token(word):
             return
 
@@ -73,14 +88,19 @@ class GroupedFillMask:
         text = "\n".join(l)
 
         path = RESULT_PATH + "/" + as_file_name(orig_line) + ".txt"
-        write_txt(text, path)
+        #write_txt(text, path)
 
     def run_for_text(self, line):
+
+        '''
         res = self.unmasker(
             line,
             # top_k=31002,
             top_k=RESULT_QTY,
         )
+        '''
+
+        res = self.pipeline(line)
 
         self.process_result(res, line)
 
@@ -96,62 +116,89 @@ class GroupedFillMask:
         return counts, points
 
 
-def run_grouped(unmasker, sentences):
+def run_grouped(model, tokenizer, sentences):
 
-    filler = GroupedFillMask(unmasker).run_for_sentences(sentences);
+    filler = GroupedFillMask(model, tokenizer).run_for_sentences(sentences)
     return filler
 
 def save_run(model_name, points, kind = "m"):
 
     l = []
+    l_adj = []
     for key, val in points.items():
         l.append(key + T + str(val))
 
+        if key in adjectives_map:
+            l_adj.append(key + T + str(val))
+
     data = "\n".join(l)
+    data_adj = "\n".join(l_adj)
     write_txt(data, RESULT_PATH + "/run_" + kind + "_" + as_file_name(model_name) + ".txt")
+    write_txt(data_adj, RESULT_PATH + "/run_" + kind + "_" + as_file_name(model_name) + "_adj.txt")
 
 
-def run(model, tokenizer, MASK):
+
+
+
+def run(modelname, tokenizername, MASK, DOT = "."):
 
     print("Loading model")
-    unmasker = pipeline('fill-mask', model = model, tokenizer = tokenizer)
+    #unmasker = pipeline('fill-mask', model = model, tokenizer = tokenizer)
+    tokenizer = AutoTokenizer.from_pretrained(tokenizername)
+    model = AutoModelForMaskedLM.from_pretrained(modelname)
     print("Model loaded")
 
     #run_for_text(unmasker, "El trabajaba de [MASK]")
     #run_for_text(unmasker, "Ella trabaja de [MASK]")
 
     sentences_m = [
-        "El parece ser " + MASK,
-        "El es el más " + MASK,
-        "Desde que lo conozco siempre ha sido muy " + MASK,
-        "El chico se define como " + MASK,
-        "Un hombre se define por ser " + MASK,
-        "El abuelo es " + MASK,
-        "El se considera " + MASK
+        "El parece ser " + MASK + DOT,
+        "El es el más " + MASK + DOT,
+        "Desde que lo conozco siempre ha sido muy " + MASK + DOT,
+        "El chico se define como " + MASK+ DOT,
+        "Un hombre se define por ser " + MASK+ DOT,
+        "El abuelo es " + MASK+ DOT,
+        "El se considera " + MASK+ DOT
     ]
 
     sentences_f = [
-        "Ella parece ser " + MASK,
-        "Ella es la más " + MASK,
-        "Desde que la conozco siempre ha sido muy " + MASK,
-        "La chica se define como " + MASK,
-        "Una mujer se define por " + MASK,
-        "La abuela es " + MASK,
-        "Ella se considera " + MASK
+        "Ella parece ser " + MASK + DOT,
+        "Ella es la más " + MASK + DOT,
+        "Desde que la conozco siempre ha sido muy " + MASK+ DOT,
+        "La chica se define como " + MASK+ DOT,
+        "Una mujer se define por " + MASK+ DOT,
+        "La abuela es " + MASK+ DOT,
+        "Ella se considera " + MASK + DOT
     ]
 
-    c_m, p_m = run_grouped(unmasker, sentences_m)
-    c_f, p_f = run_grouped(unmasker, sentences_f)
+    c_m, p_m = run_grouped(model, tokenizer, sentences_m)
+    c_f, p_f = run_grouped(model, tokenizer, sentences_f)
 
-    save_run(model, p_m, "m")
-    save_run(model, p_f, "f")
+    save_run(modelname, p_m, "m")
+    save_run(modelname, p_f, "f")
 
-
-run( "dccuchile/bert-base-spanish-wwm-uncased", "dccuchile/bert-base-spanish-wwm-uncased", "[MASK]")
-run("dccuchile/bert-base-spanish-wwm-cased", "dccuchile/bert-base-spanish-wwm-cased", "[MASK]")
-
+# MARIA - BNE
 run("BSC-TeMU/roberta-base-bne", "BSC-TeMU/roberta-base-bne", "<mask>")
 run("BSC-TeMU/roberta-large-bne", "BSC-TeMU/roberta-large-bne", "<mask>")
 
-run("mrm8488/electricidad-base-generator","mrm8488/electricidad-base-generator", "[MASK]")
+# BETO
+run("dccuchile/bert-base-spanish-wwm-uncased", "dccuchile/bert-base-spanish-wwm-uncased", "[MASK]")
+run("dccuchile/bert-base-spanish-wwm-cased", "dccuchile/bert-base-spanish-wwm-cased", "[MASK]")
+
+# https://huggingface.co/mrm8488 OSCAR
+run("mrm8488/electricidad-base-generator", "mrm8488/electricidad-base-generator", "[MASK]")
+
+# https://huggingface.co/MMG/mlm-spanish-roberta-base?text=MMG+se+dedica+a+la+%3Cmask%3E+artificial.
+run("MMG/mlm-spanish-roberta-base","MMG/mlm-spanish-roberta-base", "<mask>")
+
+# BERTIN  https://huggingface.co/mrm8488
+run("bertin-project/bertin-roberta-base-spanish", "bertin-project/bertin-roberta-base-spanish", "<mask>")
+
+# DESCONFIANZA
+run("xlm-roberta-large-finetuned-conll02-spanish", "xlm-roberta-large-finetuned-conll02-spanish", "<mask>")
+run("joseangelatm/spanishpanama", "joseangelatm/spanishpanama", "<mask>")
+
+
+
+
 
