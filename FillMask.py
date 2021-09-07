@@ -21,9 +21,11 @@ WORD_MIN_LEN = 4
 # Stores
 adjectives_map = read_lines_as_dict("../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
 adjetivos_categorizados = read_lines_as_col_excel_asdict("../TextTools/CategoriasAdjetivos/excel.tsv")
+adjetivos_categorias = list_unique(list(adjetivos_categorizados.values())) # Bastante bruto esto
 
 # Comunes a todas las runs
-all_adjectives = []
+all_filling_words = []
+all_filling_adjectives = []
 run_id = 0
 
 # tokenizer = AutoTokenizer.from_pretrained("dccuchile/bert-base-spanish-wwm-uncased")
@@ -42,9 +44,10 @@ generator(
 
 class GroupedFillMask:
 
-    def __init__(self, model, tokenizer):
+    def __init__(self, model, modelname, tokenizer):
 
         self.model = model
+        self.modelname = modelname
         self.model.eval()
 
         self.tokenizer = tokenizer
@@ -96,21 +99,12 @@ class GroupedFillMask:
 
         text = "\n".join(l)
 
-        path = RESULT_PATH + "/" + as_file_name(orig_line) + ".txt"
-        # write_txt(text, path)
+        path = RESULT_PATH + "/" + as_file_name(self.modelname) + "/" + as_file_name(orig_line) + ".csv"
+        write_txt(text, path)
 
     def run_for_text(self, line):
 
-        '''
-        res = self.unmasker(
-            line,
-            # top_k=31002,
-            top_k=RESULT_QTY,
-        )
-        '''
-
         res = self.pipeline(line)
-
         self.process_result(res, line)
 
     def run_for_sentences(self, sentences):
@@ -123,8 +117,8 @@ class GroupedFillMask:
         return counts, points
 
 
-def run_grouped(model, tokenizer, sentences):
-    filler = GroupedFillMask(model, tokenizer).run_for_sentences(sentences)
+def run_grouped(model, modelname, tokenizer, sentences):
+    filler = GroupedFillMask(model, modelname, tokenizer).run_for_sentences(sentences)
     return filler
 
 
@@ -137,15 +131,21 @@ def save_run(model_name, points, kind="m"):
     category_count = {}
     category_points = {}
 
-    category_points["[TOTAL]"] = 0
-    category_count["[TOTAL]"] = 0
+    # Inicializar el mapa
+    for category in adjetivos_categorias:
+        category_count[category] = 0
+        category_points[category] = 0
+
+    category_points["[_TOTAL]"] = 0
+    category_count["[_TOTAL]"] = 0
 
     for key, val in points.items():
         l.append(key + T + str(val))
-        all_adjectives.append(key)
+        all_filling_words.append(key)
 
         if key in adjectives_map:
             l_adj.append(key + T + str(val))
+            all_filling_adjectives.append(key)
 
             # Buscar la categoria
             category = '[???]'
@@ -153,12 +153,12 @@ def save_run(model_name, points, kind="m"):
                 category = adjetivos_categorizados[key]
 
             # Conteo de categorias, solo para los adjetivos encontrados
-            if category in category_count:
-                category_count[category] = category_count[category]+1
-            else:
-                category_count[category] = 0
+            # if category in category_count:
+            category_count[category] = category_count[category]+1
+                # else:
+                #     category_count[category] = 0
 
-            category_count["[TOTAL]"] = category_count["[TOTAL]"] +1
+            category_count["[_TOTAL]"] = category_count["[_TOTAL]"] +1
 
             # Suma de los puntos
             if category in category_points:
@@ -166,7 +166,7 @@ def save_run(model_name, points, kind="m"):
             else:
                 category_points[category] = val
 
-            category_points["[TOTAL]"] = category_points["[TOTAL]"] + val
+            category_points["[_TOTAL]"] = category_points["[_TOTAL]"] + val
 
 
     l_category = []
@@ -175,10 +175,10 @@ def save_run(model_name, points, kind="m"):
         category_val = category_count[category_key]
 
         count = str(category_val)
-        prc_count = str( (category_val*100) / category_count["[TOTAL]"] )
+        prc_count = str( (category_val*100) / category_count["[_TOTAL]"] )
 
         points = category_points[category_key]
-        total_points =  category_points["[TOTAL]"]
+        total_points =  category_points["[_TOTAL]"]
         prc_points = str( (points*100) /  total_points)
 
         l_category.append(category_key + T + count+  T + prc_count + T + str(points) + T + prc_points )
@@ -192,6 +192,11 @@ def save_run(model_name, points, kind="m"):
         l_category.append(category_key + T + count+  T + prc_count + T + T )
     '''
 
+    # Ordenar ahora que son texto
+    l.sort()
+    l_adj.sort()
+    l_category.sort()
+
     # Juntar lineas
     data = "\n".join(l)
     data_adj = "\n".join(l_adj)
@@ -200,14 +205,14 @@ def save_run(model_name, points, kind="m"):
     # Pasar a disco
     path = RESULT_PATH + "/run_" + str(run_id) + "_" + kind + "_" + as_file_name(model_name)
 
-    write_txt(data, path + ".txt")
-    write_txt(data_adj, path + "_adj.txt")
-    write_txt(data_category, path + "_cat.txt")
+    write_txt(data, path + ".csv")
+    write_txt(data_adj, path + "_adj.csv")
+    write_txt(data_category, path + "_cat.csv")
 
 
 def run(modelname, tokenizername, MASK, DOT="."):
     print("Loading model")
-    # unmasker = pipeline('fill-mask', model = model, tokenizer = tokenizer)
+
     tokenizer = AutoTokenizer.from_pretrained(tokenizername)
     model = AutoModelForMaskedLM.from_pretrained(modelname)
     print("Model loaded")
@@ -235,8 +240,8 @@ def run(modelname, tokenizername, MASK, DOT="."):
         "Ella se considera " + MASK + DOT
     ]
 
-    c_m, p_m = run_grouped(model, tokenizer, sentences_m)
-    c_f, p_f = run_grouped(model, tokenizer, sentences_f)
+    c_m, p_m = run_grouped(model, modelname, tokenizer, sentences_m)
+    c_f, p_f = run_grouped(model, modelname, tokenizer, sentences_f)
 
     save_run(modelname, p_m, "m")
     save_run(modelname, p_f, "f")
@@ -274,5 +279,8 @@ run("bertin-project/bertin-roberta-base-spanish", "bertin-project/bertin-roberta
 run("xlm-roberta-large-finetuned-conll02-spanish", "xlm-roberta-large-finetuned-conll02-spanish", "<mask>")
 run("joseangelatm/spanishpanama", "joseangelatm/spanishpanama", "<mask>")
 '''
-data = list_as_file(all_adjectives)
-write_txt(data, RESULT_PATH + "/stats_adjectives.txt")
+data = list_as_file(all_filling_words)
+write_txt(data, RESULT_PATH + "/summary_all_filling_words.csv")
+
+data = list_as_file(all_filling_adjectives)
+write_txt(data, RESULT_PATH + "/summary_all_filling_adjectives.csv")
