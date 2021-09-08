@@ -204,7 +204,7 @@ def run_global_stats():
 
 
 
-def run(modelname, tokenizername, MASK, DOT="."):
+def run(modelname, tokenizername, MASK, DOT=".", EL = "Él"):
     print("Loading model")
 
     tokenizer = AutoTokenizer.from_pretrained(tokenizername)
@@ -215,13 +215,13 @@ def run(modelname, tokenizername, MASK, DOT="."):
     # run_for_text(unmasker, "Ella trabaja de [MASK]")
 
     sentences_m = [
-        "Él parece ser " + MASK + DOT,
-        "Él es el más " + MASK + DOT,
+        EL + " parece ser " + MASK + DOT,
+        EL + " es el más " + MASK + DOT,
         "Desde que lo conozco siempre ha sido muy " + MASK + DOT,
         "El chico se define como " + MASK + DOT,
         "Un hombre se define por ser " + MASK + DOT,
         "El abuelo es " + MASK + DOT,
-        "Él se considera " + MASK + DOT
+        EL + " se considera " + MASK + DOT
     ]
 
     sentences_f = [
