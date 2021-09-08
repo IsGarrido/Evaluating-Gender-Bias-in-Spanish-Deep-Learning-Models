@@ -4,6 +4,7 @@ from transformers import pipeline
 from src.DateHelper import FechaHoraTextual
 from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
+from src.FillMaskUtils.RunResult import RunResult
 from src.StatisticalAnalysis import run_tests_labeled
 from src.StringHelper import as_file_name
 
@@ -212,13 +213,13 @@ def run(modelname, tokenizername, MASK, DOT="."):
     # run_for_text(unmasker, "Ella trabaja de [MASK]")
 
     sentences_m = [
-        "El parece ser " + MASK + DOT,
-        "El es el más " + MASK + DOT,
+        "Él parece ser " + MASK + DOT,
+        "Él es el más " + MASK + DOT,
         "Desde que lo conozco siempre ha sido muy " + MASK + DOT,
         "El chico se define como " + MASK + DOT,
         "Un hombre se define por ser " + MASK + DOT,
         "El abuelo es " + MASK + DOT,
-        "El se considera " + MASK + DOT
+        "Él se considera " + MASK + DOT
     ]
 
     sentences_f = [
