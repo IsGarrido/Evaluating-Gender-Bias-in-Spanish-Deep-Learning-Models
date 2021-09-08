@@ -1,7 +1,10 @@
-10.0	<	27.272727272727273	BSC-TeMU/roberta-large-bne
+Tabla para la cat FISICO con el attr prc_count
+
+[MASC]	 	[FEM]	[model_name]
 11.11111111111111	<	17.142857142857142	BSC-TeMU/roberta-base-bne
+10.0	<	27.272727272727273	BSC-TeMU/roberta-large-bne
 11.290322580645162	>	9.25925925925926	dccuchile/bert-base-spanish-wwm-uncased
-4.705882352941177	<	16.949152542372882	MMG/mlm-spanish-roberta-base
-6.4935064935064934	<	14.705882352941176	mrm8488/electricidad-base-generator
-8.823529411764707	<	20.454545454545453	bertin-project/bertin-roberta-base-spanish
 9.30232558139535	<	15.714285714285714	dccuchile/bert-base-spanish-wwm-cased
+6.4935064935064934	<	14.705882352941176	mrm8488/electricidad-base-generator
+4.705882352941177	<	16.949152542372882	MMG/mlm-spanish-roberta-base
+8.823529411764707	<	20.454545454545453	bertin-project/bertin-roberta-base-spanish

@@ -195,11 +195,13 @@ def run_global_stats():
                 arrow = ">" if m_val > f_val else "<"
                 l_both.append( str(m_val) + T + arrow + T + str(f_val) + T + modelname)
 
-            data_both = list_as_file(list_as_str_list(l_both))
-            data_both.insert(0, "Tabla para la cat " + as_file_name(cat) + " con el attr " + str(attr))
-            data_both.inser(0, "")
-            data_both.inser(0, "")
-            data_both.insert(0, "MASC" + T + "FEM" + T + "model_name")
+            str_both_l = list_as_str_list(l_both)
+            str_both_l.insert(0, "[MASC]" + T + " " + T + "[FEM]" + T + "[model_name]")
+            str_both_l.insert(0, "")
+            str_both_l.insert(0, "")
+            str_both_l.insert(0, "Tabla para la cat " + as_file_name(cat) + " con el attr " + str(attr))
+
+            data_both = list_as_file(str_both_l, False)
 
             write_txt(data_both, RESULT_PATH + "/stats_source_" + posfix + "_both.csv")
 

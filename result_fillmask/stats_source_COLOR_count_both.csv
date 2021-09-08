@@ -1,7 +1,10 @@
+Tabla para la cat COLOR con el attr count
+
+[MASC]	 	[FEM]	[model_name]
 0	<	0	BSC-TeMU/roberta-base-bne
-0	<	0	MMG/mlm-spanish-roberta-base
 1	>	0	BSC-TeMU/roberta-large-bne
-1	>	0	dccuchile/bert-base-spanish-wwm-cased
 2	<	2	dccuchile/bert-base-spanish-wwm-uncased
-2	>	0	bertin-project/bertin-roberta-base-spanish
+1	>	0	dccuchile/bert-base-spanish-wwm-cased
 5	>	0	mrm8488/electricidad-base-generator
+0	<	0	MMG/mlm-spanish-roberta-base
+2	>	0	bertin-project/bertin-roberta-base-spanish

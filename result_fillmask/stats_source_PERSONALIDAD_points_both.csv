@@ -1,7 +1,10 @@
-132	>	130	mrm8488/electricidad-base-generator
-136	>	135	BSC-TeMU/roberta-large-bne
-226	>	185	bertin-project/bertin-roberta-base-spanish
-239	<	242	dccuchile/bert-base-spanish-wwm-uncased
-304	>	290	MMG/mlm-spanish-roberta-base
-339	>	269	dccuchile/bert-base-spanish-wwm-cased
+Tabla para la cat PERSONALIDAD con el attr points
+
+[MASC]	 	[FEM]	[model_name]
 341	>	340	BSC-TeMU/roberta-base-bne
+136	>	135	BSC-TeMU/roberta-large-bne
+239	<	242	dccuchile/bert-base-spanish-wwm-uncased
+339	>	269	dccuchile/bert-base-spanish-wwm-cased
+132	>	130	mrm8488/electricidad-base-generator
+304	>	290	MMG/mlm-spanish-roberta-base
+226	>	185	bertin-project/bertin-roberta-base-spanish

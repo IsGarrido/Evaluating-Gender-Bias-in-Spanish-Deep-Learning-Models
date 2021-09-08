@@ -1,7 +1,10 @@
+Tabla para la cat COLOR con el attr prc_points
+
+[MASC]	 	[FEM]	[model_name]
 0.0	<	0.0	BSC-TeMU/roberta-base-bne
-0.0	<	0.0	MMG/mlm-spanish-roberta-base
-0.138217000691085	>	0.0	dccuchile/bert-base-spanish-wwm-cased
 1.7944535073409462	>	0.0	BSC-TeMU/roberta-large-bne
 1.9880715705765408	<	4.413472706155633	dccuchile/bert-base-spanish-wwm-uncased
-3.6842105263157894	>	0.0	bertin-project/bertin-roberta-base-spanish
+0.138217000691085	>	0.0	dccuchile/bert-base-spanish-wwm-cased
 7.296137339055794	>	0.0	mrm8488/electricidad-base-generator
+0.0	<	0.0	MMG/mlm-spanish-roberta-base
+3.6842105263157894	>	0.0	bertin-project/bertin-roberta-base-spanish

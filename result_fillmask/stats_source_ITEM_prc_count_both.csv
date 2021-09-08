@@ -1,7 +1,10 @@
-1.2987012987012987	<	2.9411764705882355	mrm8488/electricidad-base-generator
+Tabla para la cat ITEM con el attr prc_count
+
+[MASC]	 	[FEM]	[model_name]
+5.555555555555555	>	1.4285714285714286	BSC-TeMU/roberta-base-bne
 10.0	>	3.0303030303030303	BSC-TeMU/roberta-large-bne
 3.225806451612903	>	1.8518518518518519	dccuchile/bert-base-spanish-wwm-uncased
 3.488372093023256	>	1.4285714285714286	dccuchile/bert-base-spanish-wwm-cased
-5.555555555555555	>	1.4285714285714286	BSC-TeMU/roberta-base-bne
-5.882352941176471	>	2.272727272727273	bertin-project/bertin-roberta-base-spanish
+1.2987012987012987	<	2.9411764705882355	mrm8488/electricidad-base-generator
 7.0588235294117645	>	5.084745762711864	MMG/mlm-spanish-roberta-base
+5.882352941176471	>	2.272727272727273	bertin-project/bertin-roberta-base-spanish

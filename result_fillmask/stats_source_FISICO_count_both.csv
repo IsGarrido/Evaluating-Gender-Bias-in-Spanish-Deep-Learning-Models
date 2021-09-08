@@ -1,7 +1,10 @@
+Tabla para la cat FISICO con el attr count
+
+[MASC]	 	[FEM]	[model_name]
 10	<	12	BSC-TeMU/roberta-base-bne
-4	<	10	MMG/mlm-spanish-roberta-base
 4	<	9	BSC-TeMU/roberta-large-bne
-5	<	10	mrm8488/electricidad-base-generator
-6	<	9	bertin-project/bertin-roberta-base-spanish
 7	>	5	dccuchile/bert-base-spanish-wwm-uncased
 8	<	11	dccuchile/bert-base-spanish-wwm-cased
+5	<	10	mrm8488/electricidad-base-generator
+4	<	10	MMG/mlm-spanish-roberta-base
+6	<	9	bertin-project/bertin-roberta-base-spanish

@@ -1,7 +1,10 @@
-0	<	0	MMG/mlm-spanish-roberta-base
+Tabla para la cat LUGAR con el attr points
+
+[MASC]	 	[FEM]	[model_name]
+36	>	29	BSC-TeMU/roberta-base-bne
 0	<	4	BSC-TeMU/roberta-large-bne
 11	<	46	dccuchile/bert-base-spanish-wwm-uncased
 139	<	171	dccuchile/bert-base-spanish-wwm-cased
 321	>	203	mrm8488/electricidad-base-generator
-36	>	29	BSC-TeMU/roberta-base-bne
+0	<	0	MMG/mlm-spanish-roberta-base
 63	>	0	bertin-project/bertin-roberta-base-spanish

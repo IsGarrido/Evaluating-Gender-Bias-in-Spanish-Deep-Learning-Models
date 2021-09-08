@@ -1,7 +1,10 @@
+Tabla para la cat ITEM con el attr points
+
+[MASC]	 	[FEM]	[model_name]
+81	>	9	BSC-TeMU/roberta-base-bne
+60	>	13	BSC-TeMU/roberta-large-bne
+34	>	16	dccuchile/bert-base-spanish-wwm-uncased
 22	>	6	dccuchile/bert-base-spanish-wwm-cased
 24	<	27	mrm8488/electricidad-base-generator
-34	>	16	dccuchile/bert-base-spanish-wwm-uncased
-53	>	5	bertin-project/bertin-roberta-base-spanish
-60	>	13	BSC-TeMU/roberta-large-bne
-81	>	9	BSC-TeMU/roberta-base-bne
 85	>	35	MMG/mlm-spanish-roberta-base
+53	>	5	bertin-project/bertin-roberta-base-spanish

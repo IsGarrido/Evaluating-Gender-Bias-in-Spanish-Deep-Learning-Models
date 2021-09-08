@@ -1,7 +1,10 @@
-16.992481203007518	<	23.299748110831235	bertin-project/bertin-roberta-base-spanish
-21.48409893992933	<	24.47257383966245	MMG/mlm-spanish-roberta-base
+Tabla para la cat PERSONALIDAD con el attr prc_points
+
+[MASC]	 	[FEM]	[model_name]
 21.48708254568368	<	25.487256371814095	BSC-TeMU/roberta-base-bne
 22.185970636215334	<	25.092936802973977	BSC-TeMU/roberta-large-bne
-23.42778161713891	>	20.93385214007782	dccuchile/bert-base-spanish-wwm-cased
 23.757455268389663	<	28.106852497096398	dccuchile/bert-base-spanish-wwm-uncased
+23.42778161713891	>	20.93385214007782	dccuchile/bert-base-spanish-wwm-cased
 9.44206008583691	<	10.093167701863354	mrm8488/electricidad-base-generator
+21.48409893992933	<	24.47257383966245	MMG/mlm-spanish-roberta-base
+16.992481203007518	<	23.299748110831235	bertin-project/bertin-roberta-base-spanish

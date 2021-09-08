@@ -1,7 +1,10 @@
-10	>	8	mrm8488/electricidad-base-generator
+Tabla para la cat PERSONALIDAD con el attr count
+
+[MASC]	 	[FEM]	[model_name]
+17	<	18	BSC-TeMU/roberta-base-bne
+7	<	8	BSC-TeMU/roberta-large-bne
 13	<	13	dccuchile/bert-base-spanish-wwm-uncased
+18	>	13	dccuchile/bert-base-spanish-wwm-cased
+10	>	8	mrm8488/electricidad-base-generator
 15	>	12	MMG/mlm-spanish-roberta-base
 15	>	12	bertin-project/bertin-roberta-base-spanish
-17	<	18	BSC-TeMU/roberta-base-bne
-18	>	13	dccuchile/bert-base-spanish-wwm-cased
-7	<	8	BSC-TeMU/roberta-large-bne

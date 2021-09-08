@@ -1,7 +1,10 @@
-0.0	<	0.0	MMG/mlm-spanish-roberta-base
+Tabla para la cat LUGAR con el attr prc_points
+
+[MASC]	 	[FEM]	[model_name]
+2.268431001890359	>	2.1739130434782608	BSC-TeMU/roberta-base-bne
 0.0	<	0.7434944237918215	BSC-TeMU/roberta-large-bne
 1.0934393638170974	<	5.342624854819976	dccuchile/bert-base-spanish-wwm-uncased
-2.268431001890359	>	2.1739130434782608	BSC-TeMU/roberta-base-bne
-22.96137339055794	>	15.76086956521739	mrm8488/electricidad-base-generator
-4.7368421052631575	>	0.0	bertin-project/bertin-roberta-base-spanish
 9.606081548030408	<	13.30739299610895	dccuchile/bert-base-spanish-wwm-cased
+22.96137339055794	>	15.76086956521739	mrm8488/electricidad-base-generator
+0.0	<	0.0	MMG/mlm-spanish-roberta-base
+4.7368421052631575	>	0.0	bertin-project/bertin-roberta-base-spanish

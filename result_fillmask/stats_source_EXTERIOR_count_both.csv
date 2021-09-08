@@ -1,7 +1,10 @@
+Tabla para la cat EXTERIOR con el attr count
+
+[MASC]	 	[FEM]	[model_name]
+38	>	25	BSC-TeMU/roberta-base-bne
 16	>	10	BSC-TeMU/roberta-large-bne
 23	>	12	dccuchile/bert-base-spanish-wwm-uncased
-23	>	15	bertin-project/bertin-roberta-base-spanish
 29	>	21	dccuchile/bert-base-spanish-wwm-cased
 29	>	27	mrm8488/electricidad-base-generator
-38	>	25	BSC-TeMU/roberta-base-bne
 44	>	24	MMG/mlm-spanish-roberta-base
+23	>	15	bertin-project/bertin-roberta-base-spanish

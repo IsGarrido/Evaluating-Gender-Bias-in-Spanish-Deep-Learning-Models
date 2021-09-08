@@ -1,7 +1,10 @@
+Tabla para la cat NSNC con el attr prc_points
+
+[MASC]	 	[FEM]	[model_name]
+9.829867674858223	>	3.2233883058470765	BSC-TeMU/roberta-base-bne
+9.624796084828711	>	2.973977695167286	BSC-TeMU/roberta-large-bne
 11.630218687872764	>	10.56910569105691	dccuchile/bert-base-spanish-wwm-uncased
-2.7896995708154506	<	4.580745341614906	mrm8488/electricidad-base-generator
 5.3904630269523155	>	0.8560311284046692	dccuchile/bert-base-spanish-wwm-cased
+2.7896995708154506	<	4.580745341614906	mrm8488/electricidad-base-generator
 7.279151943462898	>	3.7130801687763713	MMG/mlm-spanish-roberta-base
 7.518796992481203	>	1.63727959697733	bertin-project/bertin-roberta-base-spanish
-9.624796084828711	>	2.973977695167286	BSC-TeMU/roberta-large-bne
-9.829867674858223	>	3.2233883058470765	BSC-TeMU/roberta-base-bne
