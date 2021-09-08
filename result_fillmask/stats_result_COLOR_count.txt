@@ -5,7 +5,7 @@ Test results for 7, 7 elementos
 [MANN  ] Different distribution (reject H0)
 [SHAP  ] Statistics=0.7679644823074341 p=0.019472451880574226
 [SHAP  ] p < alpha, Is NOT normal distribution
-2021-09-08 09:43
+2021-09-08 09:54
 
 
 

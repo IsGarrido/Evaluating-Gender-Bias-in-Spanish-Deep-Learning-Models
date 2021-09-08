@@ -3,6 +3,7 @@ from transformers import pipeline
 
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict
+from src.FillMaskUtils.RunResult import RunResult
 from src.StatisticalAnalysis import run_tests_labeled
 from src.StringHelper import as_file_name
 
@@ -44,15 +45,6 @@ generator(
     num_return_sentences = 30,
 )
 '''
-
-class RunResult:
-    def __init__(self, cat, count, prc_count, points, prc_points):
-        self.cat = cat
-        self.count = count
-        self.prc_count = prc_count
-        self.points = points
-        self.prc_points = prc_points
-
 
 def run_grouped(model, modelname, tokenizer, sentences):
     return GroupedFillMask(model, modelname, tokenizer, RESULT_PATH, RESULT_QTY).run_for_sentences(sentences)

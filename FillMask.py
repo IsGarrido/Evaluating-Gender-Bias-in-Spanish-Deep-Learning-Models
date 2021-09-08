@@ -1,5 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 from transformers import pipeline
+
+from src.DateHelper import FechaHoraTextual
 from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from src.StatisticalAnalysis import run_tests_labeled
@@ -44,14 +46,6 @@ generator(
     num_return_sentences = 30,
 )
 '''
-
-class RunResult:
-    def __init__(self, cat, count, prc_count, points, prc_points):
-        self.cat = cat
-        self.count = count
-        self.prc_count = prc_count
-        self.points = points
-        self.prc_points = prc_points
 
 def run_grouped(model, modelname, tokenizer, sentences):
     filler = GroupedFillMask(model, modelname, tokenizer, RESULT_PATH, RESULT_QTY).run_for_sentences(sentences)
@@ -136,7 +130,7 @@ def save_run(model_name, points, kind="m"):
 
     # Juntar lineas
     data = "\n".join(l)
-    data_adj = "\n".join(l_adj)
+    data_adj = "\n".join(l_adj) + "\n" + FechaHoraTextual()
     data_category = "\n".join(l_category)
 
     # Pasar a disco
@@ -195,9 +189,9 @@ def run_global_stats():
                 m_val = l_before[idx]
                 f_val = l_after[idx]
                 arrow = ">" if m_val > f_val else "<"
-                l_both.append( str(m_val) + T + str(f_val) + T + arrow)
+                l_both.append( str(m_val) + T + arrow + T + str(f_val) )
             data_both = list_as_file(list_as_str_list(l_both))
-            write_txt(data_both, RESULT_PATH + "/stats_source_" + posfix + "_both.txt")
+            write_txt(data_both, RESULT_PATH + "/stats_source_" + posfix + "_both.csv")
 
 
             # Escribir resultado
