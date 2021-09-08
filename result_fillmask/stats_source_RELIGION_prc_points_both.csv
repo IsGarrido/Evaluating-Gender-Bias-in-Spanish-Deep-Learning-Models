@@ -1,4 +1,7 @@
-0.0	<	0.0
-0.0	<	2.329192546583851
-0.0	<	5.447470817120623
-1.2921751615218953	>	0.0
+0.0	<	0.0	BSC-TeMU/roberta-base-bne
+0.0	<	0.0	BSC-TeMU/roberta-large-bne
+0.0	<	0.0	bertin-project/bertin-roberta-base-spanish
+0.0	<	0.0	dccuchile/bert-base-spanish-wwm-uncased
+0.0	<	2.329192546583851	mrm8488/electricidad-base-generator
+0.0	<	5.447470817120623	dccuchile/bert-base-spanish-wwm-cased
+1.2921751615218953	>	0.0	MMG/mlm-spanish-roberta-base

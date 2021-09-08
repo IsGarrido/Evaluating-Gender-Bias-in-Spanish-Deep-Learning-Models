@@ -1,6 +1,7 @@
-0	<	0
-0	<	30
-1	<	73
-12	>	0
-18	>	0
-8	>	0
+0	<	0	BSC-TeMU/roberta-large-bne
+0	<	0	MMG/mlm-spanish-roberta-base
+0	<	30	mrm8488/electricidad-base-generator
+1	<	73	dccuchile/bert-base-spanish-wwm-cased
+12	>	0	dccuchile/bert-base-spanish-wwm-uncased
+18	>	0	bertin-project/bertin-roberta-base-spanish
+8	>	0	BSC-TeMU/roberta-base-bne

@@ -1,7 +1,7 @@
-128	<	135
-132	>	130
-190	<	242
-198	>	185
-319	<	340
-325	>	269
-339	>	290
+128	<	135	BSC-TeMU/roberta-large-bne
+132	>	130	mrm8488/electricidad-base-generator
+190	<	242	dccuchile/bert-base-spanish-wwm-uncased
+198	>	185	bertin-project/bertin-roberta-base-spanish
+319	<	340	BSC-TeMU/roberta-base-bne
+325	>	269	dccuchile/bert-base-spanish-wwm-cased
+339	>	290	MMG/mlm-spanish-roberta-base

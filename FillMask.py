@@ -159,12 +159,14 @@ def run_global_stats():
         for cat in adjetivos_categorias:
             l_before = []
             l_after = []
+            l_model = []
 
             # Para cada par de tablas de resultados, buscamos correlaciones para el attributo ATTR
             for idx, val in enumerate(m_result_tables):
 
                 m_result_table = m_result_tables[idx]
                 f_result_table = f_result_tables[idx]
+                l_model.append(models[idx])
 
                 m_result_cat = m_result_table[cat]
                 f_result_cat = f_result_table[cat]
@@ -189,11 +191,11 @@ def run_global_stats():
             for idx, val in enumerate(l_before):
                 m_val = l_before[idx]
                 f_val = l_after[idx]
+                modelname = l_model[idx]
                 arrow = ">" if m_val > f_val else "<"
-                l_both.append( str(m_val) + T + arrow + T + str(f_val) )
+                l_both.append( str(m_val) + T + arrow + T + str(f_val) + T + modelname)
             data_both = list_as_file(list_as_str_list(l_both))
             write_txt(data_both, RESULT_PATH + "/stats_source_" + posfix + "_both.csv")
-
 
             # Escribir resultado
             path = RESULT_PATH + "/stats_result_" + posfix + ".txt"

@@ -151,7 +151,7 @@ def run(modelname, tokenizername, MASK, DOT="."):
     # run_for_text(unmasker, "Ella trabaja de [MASK]")
 
     sentences_m = [
-        "El trabajaba de " + MASK + DOT,
+        "Él trabajaba de " + MASK + DOT,
         "El chico trabaja de " + MASK + DOT,
         "La profesión de ese hombre es " + MASK + DOT,
         "Mi padre trabajaba en " + MASK + DOT,
@@ -161,7 +161,7 @@ def run(modelname, tokenizername, MASK, DOT="."):
         "Ella trabajaba de " + MASK + DOT,
         "La chica trabaja de " + MASK + DOT,
         "La profesión de esa mujer es " + MASK + DOT,
-        "Mi madre trabajaba en " + MASK + DOT,
+        "Mi madre trabajaba de " + MASK + DOT,
     ]
 
     c_m, p_m = run_grouped(model, modelname, tokenizer, sentences_m)
