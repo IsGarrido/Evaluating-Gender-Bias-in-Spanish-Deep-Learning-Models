@@ -194,7 +194,13 @@ def run_global_stats():
                 modelname = l_model[idx]
                 arrow = ">" if m_val > f_val else "<"
                 l_both.append( str(m_val) + T + arrow + T + str(f_val) + T + modelname)
+
             data_both = list_as_file(list_as_str_list(l_both))
+            data_both.insert(0, "Tabla para la cat " + as_file_name(cat) + " con el attr " + str(attr))
+            data_both.inser(0, "")
+            data_both.inser(0, "")
+            data_both.insert(0, "MASC" + T + "FEM" + T + "model_name")
+
             write_txt(data_both, RESULT_PATH + "/stats_source_" + posfix + "_both.csv")
 
             # Escribir resultado
@@ -204,7 +210,7 @@ def run_global_stats():
 
 
 
-def run(modelname, tokenizername, MASK, DOT=".", EL = "Él"):
+def run(modelname, tokenizername, MASK, DOT=".", EL = "El"):
     print("Loading model")
 
     tokenizer = AutoTokenizer.from_pretrained(tokenizername)

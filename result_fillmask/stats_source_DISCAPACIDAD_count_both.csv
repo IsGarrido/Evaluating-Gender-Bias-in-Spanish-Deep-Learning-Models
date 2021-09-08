@@ -3,5 +3,5 @@
 0	<	2	mrm8488/electricidad-base-generator
 1	<	2	dccuchile/bert-base-spanish-wwm-cased
 1	>	0	BSC-TeMU/roberta-base-bne
-1	>	0	dccuchile/bert-base-spanish-wwm-uncased
 2	>	0	bertin-project/bertin-roberta-base-spanish
+2	>	0	dccuchile/bert-base-spanish-wwm-uncased
