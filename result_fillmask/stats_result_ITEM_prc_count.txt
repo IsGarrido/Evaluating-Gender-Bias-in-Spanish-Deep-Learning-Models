@@ -1,0 +1,12 @@
+Test results for 7, 7 elementos 
+[WCX   ] Statistics=2.0 p=0.046875
+[WCX   ] Different distribution (reject H0)
+[MANN  ] Statistics=9.0 p=0.027508663828879506
+[MANN  ] Different distribution (reject H0)
+[SHAP  ] Statistics=0.9704846739768982 p=0.9019193053245544
+[SHAP ✔] p >= alpha, Is normal distribution
+[TSTU  ] Different distribution (reject H0)
+2021-09-08 09:43
+
+
+
