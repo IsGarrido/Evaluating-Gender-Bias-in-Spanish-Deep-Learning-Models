@@ -1,7 +1,7 @@
 Visible_+,count
 
 [MASC]	 	[FEM]	[model_name]
-15	<	20	BSC-TeMU/roberta-base-bne
+15	<	21	BSC-TeMU/roberta-base-bne
 11	<	15	BSC-TeMU/roberta-large-bne
 15	<	16	dccuchile/bert-base-spanish-wwm-uncased
 15	<	18	dccuchile/bert-base-spanish-wwm-cased
@@ -12,6 +12,6 @@ Visible_+,count
 14	<	19	bertin-project/bertin-base-random
 16	<	19	bertin-project/bertin-base-stepwise
 13	<	17	bertin-project/bertin-base-gaussian
-13	<	18	bertin-project/bertin-base-random-exp-512seqlen
+14	<	18	bertin-project/bertin-base-random-exp-512seqlen
 14	<	17	bertin-project/bertin-base-stepwise-exp-512seqlen
 12	<	14	bertin-project/bertin-base-gaussian-exp-512seqlen

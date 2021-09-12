@@ -1,17 +1,17 @@
 Visible_-,prc_count
 
 [MASC]	 	[FEM]	[model_name]
-0.4854368932038835	<	1.075268817204301	BSC-TeMU/roberta-base-bne
+0.970873786407767	<	1.075268817204301	BSC-TeMU/roberta-base-bne
 0.0	<	0.0	BSC-TeMU/roberta-large-bne
 1.293103448275862	<	1.5463917525773196	dccuchile/bert-base-spanish-wwm-uncased
 1.25	>	1.0416666666666667	dccuchile/bert-base-spanish-wwm-cased
 2.247191011235955	<	2.9069767441860463	mrm8488/electricidad-base-generator
-0.0	<	0.7299270072992701	MMG/mlm-spanish-roberta-base
+0.625	<	0.7299270072992701	MMG/mlm-spanish-roberta-base
 2.3391812865497075	>	2.247191011235955	bertin-project/bertin-roberta-base-spanish
 3.1496062992125986	>	1.5037593984962405	bert-base-multilingual-cased
 3.4965034965034967	>	3.2679738562091503	bertin-project/bertin-base-random
-2.3529411764705883	>	1.1976047904191616	bertin-project/bertin-base-stepwise
+2.9411764705882355	>	1.1976047904191616	bertin-project/bertin-base-stepwise
 2.3391812865497075	>	2.247191011235955	bertin-project/bertin-base-gaussian
-2.9069767441860463	<	3.6842105263157894	bertin-project/bertin-base-random-exp-512seqlen
-2.0134228187919465	>	1.8072289156626506	bertin-project/bertin-base-stepwise-exp-512seqlen
+3.488372093023256	<	3.6842105263157894	bertin-project/bertin-base-random-exp-512seqlen
+2.684563758389262	>	1.8072289156626506	bertin-project/bertin-base-stepwise-exp-512seqlen
 2.962962962962963	>	2.4691358024691357	bertin-project/bertin-base-gaussian-exp-512seqlen

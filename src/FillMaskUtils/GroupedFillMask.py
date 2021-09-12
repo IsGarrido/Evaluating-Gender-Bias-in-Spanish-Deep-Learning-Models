@@ -8,7 +8,7 @@ T = "\t"
 
 class GroupedFillMask:
 
-    def __init__(self, model, modelname, tokenizer, result_path, result_qty):
+    def __init__(self, model, modelname, tokenizer, result_path, result_qty, write_files = False):
 
         self.model = model
         self.modelname = modelname
@@ -23,6 +23,7 @@ class GroupedFillMask:
 
         self.result_path = result_path
         self.result_qty = result_qty
+        self.write_files = write_files
 
     def valid_token(self, token: str):
 
@@ -64,10 +65,10 @@ class GroupedFillMask:
             line = str(idx) + T + word + T + str(item["token"])
             l.append(line)
 
-        text = "\n".join(l)
-
-        path = self.result_path + "/" + as_file_name(self.modelname) + "/" + as_file_name(orig_line) + ".csv"
-        write_txt(text, path)
+        if self.write_files:
+            text = "\n".join(l)
+            path = self.result_path + "/" + as_file_name(self.modelname) + "/" + as_file_name(orig_line) + ".csv"
+            write_txt(text, path)
 
     def run_for_text(self, line):
 

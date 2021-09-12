@@ -1,7 +1,7 @@
 Visible_+,prc_points
 
 [MASC]	 	[FEM]	[model_name]
-12.93950177935943	<	19.315242201369514	BSC-TeMU/roberta-base-bne
+12.93950177935943	<	19.36596500126807	BSC-TeMU/roberta-base-bne
 18.189621537261022	<	26.82622787334829	BSC-TeMU/roberta-large-bne
 11.407029064818193	<	21.921664626682986	dccuchile/bert-base-spanish-wwm-uncased
 9.554079696394687	<	22.905874303587137	dccuchile/bert-base-spanish-wwm-cased
@@ -12,6 +12,6 @@ Visible_+,prc_points
 22.94348069390039	<	29.56732261468744	bertin-project/bertin-base-random
 22.34362469927827	<	27.322071448352258	bertin-project/bertin-base-stepwise
 17.534868977176668	<	20.38625246172416	bertin-project/bertin-base-gaussian
-14.651212099795039	<	19.770962221929707	bertin-project/bertin-base-random-exp-512seqlen
+14.856173581171815	<	19.770962221929707	bertin-project/bertin-base-random-exp-512seqlen
 12.97661559728142	<	16.81989627534182	bertin-project/bertin-base-stepwise-exp-512seqlen
 8.899632302873485	<	12.38390092879257	bertin-project/bertin-base-gaussian-exp-512seqlen
