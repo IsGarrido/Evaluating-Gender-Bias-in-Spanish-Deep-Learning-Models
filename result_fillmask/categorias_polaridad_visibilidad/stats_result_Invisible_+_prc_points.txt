@@ -6,7 +6,7 @@ Test results for 14, 14 elementos
 [SHAP  ] Statistics=0.9218648672103882 p=0.2338852435350418
 [SHAP ✔] p >= alpha, Is normal distribution
 [TSTU ✔] Same distribution (fail to reject H0)
-2021-09-12 15:04
+2021-09-12 17:44
 
 
 

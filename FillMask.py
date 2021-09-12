@@ -6,7 +6,7 @@ from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_exce
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from src.FillMaskUtils.RunResult import RunResult
 from src.StatisticalAnalysis import run_tests_labeled
-from src.StringHelper import as_file_name
+from src.StringHelper import as_file_name, from_int
 from src.FillMaskUtils.CategorizacionConfig import CategorizacionConfig
 
 # Solo para BNE
@@ -80,12 +80,12 @@ def save_run(model_name, points, kind="m"):
     category_count[TOTAL_CAT] = 0
 
     for key, val in points.items():
-        l.append(key + T + str(val))
+        l.append(from_int(val, 4) + T + key)
         all_filling_words.append(key)
 
         # Solo los adjetivos
         if key in adjectives_map:
-            l_adj.append(key + T + str(val))
+            l_adj.append(from_int(val, 4) + T + key)
             all_filling_adjectives.append(key)
 
             # Buscar la categoria
@@ -131,9 +131,9 @@ def save_run(model_name, points, kind="m"):
 
 
     # Ordenar ahora que son texto
-    l.sort()
-    l_adj.sort()
-    l_category.sort()
+    l.sort(reverse=True)
+    l_adj.sort(reverse=True)
+    l_category.sort(reverse=True)
 
     # Añadir cabeceras
     l_category.insert(0, "[CAT]" + T + "Count" + T + "PRC_Count" + T + "Points" + T + "PRC_points")
@@ -225,9 +225,6 @@ def run(modelname, tokenizername, MASK, sentences):
     model = AutoModelForMaskedLM.from_pretrained(modelname)
     print("Model loaded")
 
-    # run_for_text(unmasker, "El trabajaba de [MASK]")
-    # run_for_text(unmasker, "Ella trabaja de [MASK]")
-
     sentences_m = [sentence[0].replace("[MASK]", MASK) for sentence in sentences]
     sentences_f = [sentence[1].replace("[MASK]", MASK) for sentence in sentences]
 
@@ -241,8 +238,7 @@ def run(modelname, tokenizername, MASK, sentences):
     print("OK => " + modelname)
 
 sentences = read_pared_tsv("./data/FillMask/sentences.tsv")
-uncased_sentences = [sentence.lower() for sentence in sentences]
-
+uncased_sentences = [ [p[0].lower().replace("[mask]", "[MASK]"), p[1].lower().replace("[mask]", "[MASK]")] for p in sentences]
 models = read_pared_tsv("./data/FillMask/models.tsv")
 
 for model in models:

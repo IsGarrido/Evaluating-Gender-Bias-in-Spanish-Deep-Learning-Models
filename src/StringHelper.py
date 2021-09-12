@@ -11,3 +11,10 @@ def as_file_name(text : str):
     # Quitar puntos
     t = t.replace(".", "")
     return t
+
+def from_int(val: int, leading_zeroes = 0):
+    s: str = str(val)
+    if leading_zeroes > 0:
+        return s.zfill(leading_zeroes)
+    else:
+        return s

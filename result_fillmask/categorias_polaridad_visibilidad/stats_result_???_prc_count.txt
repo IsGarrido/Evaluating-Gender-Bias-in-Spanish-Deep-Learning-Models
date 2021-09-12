@@ -5,7 +5,7 @@ Test results for 14, 14 elementos
 [MANN ✔] Same distribution (fail to reject H0)
 [SHAP  ] Statistics=0.808688223361969 p=0.006404622923582792
 [SHAP  ] p < alpha, Is NOT normal distribution
-2021-09-12 15:04
+2021-09-12 17:44
 
 
 
