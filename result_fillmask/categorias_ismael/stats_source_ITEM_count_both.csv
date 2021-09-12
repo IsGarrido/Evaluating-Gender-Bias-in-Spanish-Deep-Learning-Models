@@ -1,0 +1,10 @@
+Tabla para la cat ITEM con el attr count
+
+[MASC]	 	[FEM]	[model_name]
+1	<	1	BSC-TeMU/roberta-base-bne
+1	<	1	BSC-TeMU/roberta-large-bne
+2	>	1	dccuchile/bert-base-spanish-wwm-uncased
+5	>	1	dccuchile/bert-base-spanish-wwm-cased
+1	<	2	mrm8488/electricidad-base-generator
+2	<	3	MMG/mlm-spanish-roberta-base
+3	>	1	bertin-project/bertin-roberta-base-spanish

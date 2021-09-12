@@ -1,0 +1,10 @@
+Tabla para la cat RELIGION con el attr prc_count
+
+[MASC]	 	[FEM]	[model_name]
+0.0	<	0.0	BSC-TeMU/roberta-base-bne
+0.0	<	0.0	BSC-TeMU/roberta-large-bne
+0.0	<	0.0	dccuchile/bert-base-spanish-wwm-uncased
+0.0	<	2.857142857142857	dccuchile/bert-base-spanish-wwm-cased
+0.0	<	2.9411764705882355	mrm8488/electricidad-base-generator
+1.3157894736842106	>	0.0	MMG/mlm-spanish-roberta-base
+0.0	<	0.0	bertin-project/bertin-roberta-base-spanish

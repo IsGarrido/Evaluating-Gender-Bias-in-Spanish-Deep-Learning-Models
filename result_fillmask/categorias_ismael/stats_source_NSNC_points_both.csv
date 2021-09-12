@@ -1,0 +1,10 @@
+Tabla para la cat NSNC con el attr points
+
+[MASC]	 	[FEM]	[model_name]
+97	>	43	BSC-TeMU/roberta-base-bne
+26	>	16	BSC-TeMU/roberta-large-bne
+137	>	91	dccuchile/bert-base-spanish-wwm-uncased
+153	>	11	dccuchile/bert-base-spanish-wwm-cased
+40	<	59	mrm8488/electricidad-base-generator
+29	<	44	MMG/mlm-spanish-roberta-base
+74	>	13	bertin-project/bertin-roberta-base-spanish

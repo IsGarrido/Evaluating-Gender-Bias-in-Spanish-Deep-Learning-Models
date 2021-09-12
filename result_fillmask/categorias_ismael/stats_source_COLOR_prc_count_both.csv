@@ -1,0 +1,10 @@
+Tabla para la cat COLOR con el attr prc_count
+
+[MASC]	 	[FEM]	[model_name]
+0.0	<	0.0	BSC-TeMU/roberta-base-bne
+0.0	<	0.0	BSC-TeMU/roberta-large-bne
+3.076923076923077	<	3.7037037037037037	dccuchile/bert-base-spanish-wwm-uncased
+1.0869565217391304	>	0.0	dccuchile/bert-base-spanish-wwm-cased
+3.7974683544303796	>	0.0	mrm8488/electricidad-base-generator
+0.0	<	0.0	MMG/mlm-spanish-roberta-base
+1.6129032258064515	>	0.0	bertin-project/bertin-roberta-base-spanish

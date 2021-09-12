@@ -1,0 +1,10 @@
+Tabla para la cat EDAD con el attr prc_count
+
+[MASC]	 	[FEM]	[model_name]
+0.0	<	1.4285714285714286	BSC-TeMU/roberta-base-bne
+0.0	<	0.0	BSC-TeMU/roberta-large-bne
+3.076923076923077	<	3.7037037037037037	dccuchile/bert-base-spanish-wwm-uncased
+1.0869565217391304	<	1.4285714285714286	dccuchile/bert-base-spanish-wwm-cased
+3.7974683544303796	>	2.9411764705882355	mrm8488/electricidad-base-generator
+1.3157894736842106	>	0.0	MMG/mlm-spanish-roberta-base
+1.6129032258064515	<	2.272727272727273	bertin-project/bertin-roberta-base-spanish

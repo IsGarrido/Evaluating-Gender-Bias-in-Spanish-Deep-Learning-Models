@@ -1,0 +1,10 @@
+Tabla para la cat ITEM con el attr prc_points
+
+[MASC]	 	[FEM]	[model_name]
+1.403061224489796	>	0.6746626686656672	BSC-TeMU/roberta-base-bne
+5.972696245733788	>	2.41635687732342	BSC-TeMU/roberta-large-bne
+4.338842975206612	>	1.8583042973286876	dccuchile/bert-base-spanish-wwm-uncased
+3.771043771043771	>	0.4669260700389105	dccuchile/bert-base-spanish-wwm-cased
+1.0729613733905579	<	2.0962732919254656	mrm8488/electricidad-base-generator
+1.2702893436838392	<	2.9535864978902953	MMG/mlm-spanish-roberta-base
+3.5353535353535355	>	0.6297229219143576	bertin-project/bertin-roberta-base-spanish

@@ -1,0 +1,10 @@
+Tabla para la cat NSNC con el attr count
+
+[MASC]	 	[FEM]	[model_name]
+8	>	5	BSC-TeMU/roberta-base-bne
+3	>	2	BSC-TeMU/roberta-large-bne
+7	<	7	dccuchile/bert-base-spanish-wwm-uncased
+9	>	1	dccuchile/bert-base-spanish-wwm-cased
+8	>	5	mrm8488/electricidad-base-generator
+5	>	4	MMG/mlm-spanish-roberta-base
+7	>	3	bertin-project/bertin-roberta-base-spanish

@@ -1,0 +1,10 @@
+Tabla para la cat FISICO con el attr points
+
+[MASC]	 	[FEM]	[model_name]
+206	<	368	BSC-TeMU/roberta-base-bne
+89	<	182	BSC-TeMU/roberta-large-bne
+68	<	92	dccuchile/bert-base-spanish-wwm-uncased
+66	<	235	dccuchile/bert-base-spanish-wwm-cased
+103	<	300	mrm8488/electricidad-base-generator
+133	<	266	MMG/mlm-spanish-roberta-base
+196	<	242	bertin-project/bertin-roberta-base-spanish

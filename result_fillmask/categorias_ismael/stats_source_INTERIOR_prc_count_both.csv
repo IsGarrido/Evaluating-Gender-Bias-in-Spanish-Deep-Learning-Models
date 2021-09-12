@@ -1,0 +1,10 @@
+Tabla para la cat INTERIOR con el attr prc_count
+
+[MASC]	 	[FEM]	[model_name]
+8.641975308641975	>	8.571428571428571	BSC-TeMU/roberta-base-bne
+5.882352941176471	<	6.0606060606060606	BSC-TeMU/roberta-large-bne
+7.6923076923076925	<	11.11111111111111	dccuchile/bert-base-spanish-wwm-uncased
+7.608695652173913	<	10.0	dccuchile/bert-base-spanish-wwm-cased
+5.063291139240507	>	2.9411764705882355	mrm8488/electricidad-base-generator
+3.9473684210526314	<	10.169491525423728	MMG/mlm-spanish-roberta-base
+6.451612903225806	<	6.818181818181818	bertin-project/bertin-roberta-base-spanish

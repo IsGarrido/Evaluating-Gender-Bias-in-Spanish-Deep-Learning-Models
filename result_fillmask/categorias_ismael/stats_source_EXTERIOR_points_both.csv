@@ -1,0 +1,10 @@
+Tabla para la cat EXTERIOR con el attr points
+
+[MASC]	 	[FEM]	[model_name]
+565	>	365	BSC-TeMU/roberta-base-bne
+261	>	128	BSC-TeMU/roberta-large-bne
+279	>	237	dccuchile/bert-base-spanish-wwm-uncased
+541	>	307	dccuchile/bert-base-spanish-wwm-cased
+551	>	448	mrm8488/electricidad-base-generator
+746	>	392	MMG/mlm-spanish-roberta-base
+440	>	244	bertin-project/bertin-roberta-base-spanish

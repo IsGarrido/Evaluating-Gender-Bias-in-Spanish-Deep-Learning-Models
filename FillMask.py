@@ -7,6 +7,7 @@ from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from src.FillMaskUtils.RunResult import RunResult
 from src.StatisticalAnalysis import run_tests_labeled
 from src.StringHelper import as_file_name
+from src.FillMaskUtils.CategorizacionConfig import CategorizacionConfig
 
 # Solo para BNE
 from transformers import AutoModelForMaskedLM
@@ -14,9 +15,15 @@ from transformers import AutoTokenizer, FillMaskPipeline
 
 from src.ListHelper import *
 
+
+cat_config_ismael = CategorizacionConfig("result_fillmask/categorias_ismael", "../TextTools/CategoriasAdjetivos/excel_ismael.tsv")
+cat_config_polaridad_visibilidad = CategorizacionConfig("result_fillmask/categorias_polaridad_visibilidad", "") # "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv"
+
+cconfig = cat_config_ismael
+
 # constantes
 T = "\t"
-RESULT_PATH = "result_fillmask"
+#RESULT_PATH = "result_fillmask/categorias_ismael"
 RESULT_QTY = 25
 TOTAL_CAT = "[_TOTAL]"
 WORD_MIN_LEN = 4
@@ -25,7 +32,7 @@ WORD_MIN_LEN = 4
 
 # Stores
 adjectives_map = read_lines_as_dict("../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
-adjetivos_categorizados = read_lines_as_col_excel_asdict("../TextTools/CategoriasAdjetivos/excel.tsv")
+adjetivos_categorizados = read_lines_as_col_excel_asdict(cconfig.categories_source_file)
 adjetivos_categorias = list_unique(list(adjetivos_categorizados.values())) # Bastante bruto esto
 
 # Comunes a todas las runs
@@ -34,9 +41,6 @@ all_filling_adjectives = []
 run_id = 0
 
 run_results = []
-
-# tokenizer = AutoTokenizer.from_pretrained("dccuchile/bert-base-spanish-wwm-uncased")
-# model = AutoModelForMaskedLM.from_pretrained("dccuchile/bert-base-spanish-wwm-uncased")
 
 '''
 generator = pipeline("text-generation", model = "dccuchile/bert-base-spanish-wwm-uncased", tokenizer= "dccuchile/bert-base-spanish-wwm-uncased")
@@ -49,7 +53,7 @@ generator(
 '''
 
 def run_grouped(model, modelname, tokenizer, sentences):
-    filler = GroupedFillMask(model, modelname, tokenizer, RESULT_PATH, RESULT_QTY).run_for_sentences(sentences)
+    filler = GroupedFillMask(model, modelname, tokenizer, cconfig.RESULT_PATH, RESULT_QTY).run_for_sentences(sentences)
     return filler
 
 
@@ -135,7 +139,7 @@ def save_run(model_name, points, kind="m"):
     data_category = "\n".join(l_category)
 
     # Pasar a disco
-    path = RESULT_PATH + "/run_" + str(run_id) + "_" + kind + "_" + as_file_name(model_name)
+    path = cconfig.RESULT_PATH + "/run_" + str(run_id) + "_" + kind + "_" + as_file_name(model_name)
 
     write_txt(data, path + ".csv")
     write_txt(data_adj, path + "_adj.csv")
@@ -183,9 +187,9 @@ def run_global_stats():
 
             # Escribir listas para posterior revisión
             data_m = list_as_file(list_as_str_list(l_before))
-            write_txt(data_m, RESULT_PATH + "/stats_source_" + posfix + "_m.txt")
+            write_txt(data_m, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_m.txt")
             data_f = list_as_file(list_as_str_list(l_after))
-            write_txt(data_f, RESULT_PATH + "/stats_source_" + posfix + "_f.txt")
+            write_txt(data_f, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_f.txt")
 
             l_both = []
             for idx, val in enumerate(l_before):
@@ -203,10 +207,10 @@ def run_global_stats():
 
             data_both = list_as_file(str_both_l, False)
 
-            write_txt(data_both, RESULT_PATH + "/stats_source_" + posfix + "_both.csv")
+            write_txt(data_both, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_both.csv")
 
             # Escribir resultado
-            path = RESULT_PATH + "/stats_result_" + posfix + ".txt"
+            path = cconfig.RESULT_PATH + "/stats_result_" + posfix + ".txt"
             write_txt(result_text, path )
 
 
@@ -287,7 +291,7 @@ run("joseangelatm/spanishpanama", "joseangelatm/spanishpanama", "<mask>")
 run_global_stats()
 
 data = list_as_file(all_filling_words)
-write_txt(data, RESULT_PATH + "/summary_all_filling_words.csv")
+write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_words.csv")
 
 data = list_as_file(all_filling_adjectives)
-write_txt(data, RESULT_PATH + "/summary_all_filling_adjectives.csv")
+write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_adjectives.csv")

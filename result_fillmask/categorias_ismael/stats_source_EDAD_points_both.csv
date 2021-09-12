@@ -1,0 +1,10 @@
+Tabla para la cat EDAD con el attr points
+
+[MASC]	 	[FEM]	[model_name]
+0	<	1	BSC-TeMU/roberta-base-bne
+0	<	0	BSC-TeMU/roberta-large-bne
+44	>	28	dccuchile/bert-base-spanish-wwm-uncased
+10	>	9	dccuchile/bert-base-spanish-wwm-cased
+40	>	7	mrm8488/electricidad-base-generator
+11	>	0	MMG/mlm-spanish-roberta-base
+24	<	24	bertin-project/bertin-roberta-base-spanish
