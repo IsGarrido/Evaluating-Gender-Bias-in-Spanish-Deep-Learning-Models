@@ -1,17 +1,17 @@
 Invisible_+,prc_count
 
 [MASC]	 	[FEM]	[model_name]
-51.0	<	51.64835164835165	BSC-TeMU/roberta-base-bne
-56.81818181818182	>	56.41025641025641	BSC-TeMU/roberta-large-bne
-37.83783783783784	>	33.734939759036145	dccuchile/bert-base-spanish-wwm-uncased
-42.10526315789474	>	40.0	dccuchile/bert-base-spanish-wwm-cased
-30.208333333333332	>	27.47252747252747	mrm8488/electricidad-base-generator
-53.608247422680414	>	52.63157894736842	MMG/mlm-spanish-roberta-base
-34.04255319148936	<	41.25	bertin-project/bertin-roberta-base-spanish
-35.9375	<	40.32258064516129	bert-base-multilingual-cased
-43.83561643835616	>	34.78260869565217	bertin-project/bertin-base-random
-36.458333333333336	>	32.89473684210526	bertin-project/bertin-base-stepwise
-34.04255319148936	<	41.25	bertin-project/bertin-base-gaussian
-43.93939393939394	<	50.76923076923077	bertin-project/bertin-base-random-exp-512seqlen
-47.19101123595506	>	40.25974025974026	bertin-project/bertin-base-stepwise-exp-512seqlen
-29.23076923076923	<	35.38461538461539	bertin-project/bertin-base-gaussian-exp-512seqlen
+41.74757281553398	>	39.784946236559136	BSC-TeMU/roberta-base-bne
+51.58730158730159	>	51.48514851485149	BSC-TeMU/roberta-large-bne
+33.189655172413794	>	29.38144329896907	dccuchile/bert-base-spanish-wwm-uncased
+35.0	>	33.333333333333336	dccuchile/bert-base-spanish-wwm-cased
+33.146067415730336	<	33.72093023255814	mrm8488/electricidad-base-generator
+45.0	>	43.7956204379562	MMG/mlm-spanish-roberta-base
+34.50292397660819	>	33.70786516853933	bertin-project/bertin-roberta-base-spanish
+31.496062992125985	>	26.31578947368421	bert-base-multilingual-cased
+44.75524475524475	>	40.52287581699346	bertin-project/bertin-base-random
+34.11764705882353	>	29.34131736526946	bertin-project/bertin-base-stepwise
+34.50292397660819	>	33.70786516853933	bertin-project/bertin-base-gaussian
+38.372093023255815	>	36.31578947368421	bertin-project/bertin-base-random-exp-512seqlen
+40.26845637583892	>	37.95180722891566	bertin-project/bertin-base-stepwise-exp-512seqlen
+33.333333333333336	>	30.246913580246915	bertin-project/bertin-base-gaussian-exp-512seqlen

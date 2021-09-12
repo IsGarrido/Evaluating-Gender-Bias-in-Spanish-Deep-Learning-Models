@@ -1,17 +1,17 @@
 Visible_-,prc_points
 
 [MASC]	 	[FEM]	[model_name]
-0.0	<	0.0	BSC-TeMU/roberta-base-bne
+0.033214709371293	<	0.09637331980725336	BSC-TeMU/roberta-base-bne
 0.0	<	0.0	BSC-TeMU/roberta-large-bne
-2.6175687666370897	>	0.36917397323488693	dccuchile/bert-base-spanish-wwm-uncased
-0.0	<	0.34393809114359414	dccuchile/bert-base-spanish-wwm-cased
-2.7223926380368098	>	2.3118766999093383	mrm8488/electricidad-base-generator
-0.40337367070040336	<	0.4893238434163701	MMG/mlm-spanish-roberta-base
-1.8433179723502304	>	1.1621150493898895	bertin-project/bertin-roberta-base-spanish
-0.5102040816326531	<	0.6976744186046512	bert-base-multilingual-cased
-0.9947643979057592	<	4.883227176220807	bertin-project/bertin-base-random
-2.390998593530239	>	0.9012699713232282	bertin-project/bertin-base-stepwise
-1.8433179723502304	>	1.1621150493898895	bertin-project/bertin-base-gaussian
-0.0	<	1.5055008685581934	bertin-project/bertin-base-random-exp-512seqlen
-0.8285302593659942	<	0.8862629246676514	bertin-project/bertin-base-stepwise-exp-512seqlen
-2.2771317829457365	<	3.4807831762146484	bertin-project/bertin-base-gaussian-exp-512seqlen
+0.5350845190319835	>	0.2998776009791922	dccuchile/bert-base-spanish-wwm-uncased
+0.22296015180265655	<	0.5180334278174177	dccuchile/bert-base-spanish-wwm-cased
+0.7195767195767195	>	0.615951566201632	mrm8488/electricidad-base-generator
+0.0	<	0.3130053732589076	MMG/mlm-spanish-roberta-base
+1.4423076923076923	<	1.486563750714694	bertin-project/bertin-roberta-base-spanish
+1.0571240971766251	<	1.6352201257861636	bert-base-multilingual-cased
+1.5730895977118697	>	1.4898503941895835	bertin-project/bertin-base-random
+0.8119486768243785	>	0.033231791747438386	bertin-project/bertin-base-stepwise
+1.4423076923076923	<	1.486563750714694	bertin-project/bertin-base-gaussian
+1.3993921831931586	<	1.6519678820587074	bertin-project/bertin-base-random-exp-512seqlen
+2.0562147218062434	>	1.88000942951438	bertin-project/bertin-base-stepwise-exp-512seqlen
+2.0699986381587907	<	3.349282296650718	bertin-project/bertin-base-gaussian-exp-512seqlen

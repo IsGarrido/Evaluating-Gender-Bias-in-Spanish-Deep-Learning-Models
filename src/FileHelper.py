@@ -52,8 +52,10 @@ def read_lines_as_dict(path):
     return hashmap
 
 def read_pared_tsv(file):
-    data: list[str] = read_lines_as_list(file)
+    data = read_lines_as_list(file)
     data = filter(lambda line: not line.startswith("#"), data)
+    data = filter(lambda line: line.strip() != "", data)
+
     paired = [item.split("\t") for item in data]
     return paired
 

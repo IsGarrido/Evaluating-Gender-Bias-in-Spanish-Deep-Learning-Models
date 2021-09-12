@@ -1,17 +1,17 @@
 Invisible_+,count
 
 [MASC]	 	[FEM]	[model_name]
-51	>	47	BSC-TeMU/roberta-base-bne
-25	>	22	BSC-TeMU/roberta-large-bne
-42	>	28	dccuchile/bert-base-spanish-wwm-uncased
-56	>	34	dccuchile/bert-base-spanish-wwm-cased
-29	>	25	mrm8488/electricidad-base-generator
-52	>	40	MMG/mlm-spanish-roberta-base
-32	<	33	bertin-project/bertin-roberta-base-spanish
-23	<	25	bert-base-multilingual-cased
-32	>	24	bertin-project/bertin-base-random
-35	>	25	bertin-project/bertin-base-stepwise
-32	<	33	bertin-project/bertin-base-gaussian
-29	<	33	bertin-project/bertin-base-random-exp-512seqlen
-42	>	31	bertin-project/bertin-base-stepwise-exp-512seqlen
-19	<	23	bertin-project/bertin-base-gaussian-exp-512seqlen
+86	>	74	BSC-TeMU/roberta-base-bne
+65	>	52	BSC-TeMU/roberta-large-bne
+77	>	57	dccuchile/bert-base-spanish-wwm-uncased
+84	>	64	dccuchile/bert-base-spanish-wwm-cased
+59	>	58	mrm8488/electricidad-base-generator
+72	>	60	MMG/mlm-spanish-roberta-base
+59	<	60	bertin-project/bertin-roberta-base-spanish
+40	>	35	bert-base-multilingual-cased
+64	>	62	bertin-project/bertin-base-random
+58	>	49	bertin-project/bertin-base-stepwise
+59	<	60	bertin-project/bertin-base-gaussian
+66	<	69	bertin-project/bertin-base-random-exp-512seqlen
+60	<	63	bertin-project/bertin-base-stepwise-exp-512seqlen
+45	<	49	bertin-project/bertin-base-gaussian-exp-512seqlen
