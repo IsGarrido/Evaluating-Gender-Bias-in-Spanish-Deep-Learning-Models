@@ -1,0 +1,15 @@
+# id	model	tokenizer	mask
+# MarIA
+1	BSC-TeMU/roberta-base-bne	BSC-TeMU/roberta-base-bne	<mask>
+2	BSC-TeMU/roberta-large-bne	BSC-TeMU/roberta-large-bne	<mask>
+# BETO
+3	dccuchile/bert-base-spanish-wwm-uncased	dccuchile/bert-base-spanish-wwm-uncased	[MASK]
+4	dccuchile/bert-base-spanish-wwm-cased	dccuchile/bert-base-spanish-wwm-cased	[MASK]
+# https://huggingface.co/mrm8488	OSCAR
+5	mrm8488/electricidad-base-generator	mrm8488/electricidad-base-generator	[MASK]
+# https://huggingface.co/MMG/mlm-spanish-roberta-base?text=MMG+se+dedica+a+la+%3Cmask%3E+artificial.
+6	MMG/mlm-spanish-roberta-base	MMG/mlm-spanish-roberta-base	<mask>
+# BERTIN		https://huggingface.co/mrm8488
+7	bertin-project/bertin-roberta-base-spanish	bertin-project/bertin-roberta-base-spanish	<mask>
+# "xlm-roberta-large-finetuned-conll02-spanish", "xlm-roberta-large-finetuned-conll02-spanish"
+# "joseangelatm/spanishpanama", "joseangelatm/spanishpanama"

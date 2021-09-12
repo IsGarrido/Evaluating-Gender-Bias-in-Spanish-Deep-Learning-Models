@@ -38,10 +38,11 @@ def write_log(text, folder, fname):
     print('Fichero guardado en ' + path)
 
 
-def read_lines_as_list(path):
+def read_lines_as_list(path: str) -> list[str]:
+
     file = open(path, "r")
     content = file.read()
-    lines = content.split("\n")
+    lines: list[str] = content.split("\n")
     return lines
 
 
@@ -50,6 +51,11 @@ def read_lines_as_dict(path):
     hashmap = dict.fromkeys(items, True)
     return hashmap
 
+def read_pared_tsv(file):
+    data: list[str] = read_lines_as_list(file)
+    data = filter(lambda line: not line.startswith("#"), data)
+    paired = [item.split("\t") for item in data]
+    return paired
 
 def read_lines_as_col_excel(path: str) -> dict[str, list[str]]:
     data: dict[str, list[str]] = {}

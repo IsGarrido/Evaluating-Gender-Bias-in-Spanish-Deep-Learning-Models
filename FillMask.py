@@ -2,7 +2,7 @@ from transformers import AutoTokenizer, AutoModelForMaskedLM
 from transformers import pipeline
 
 from src.DateHelper import FechaHoraTextual
-from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict
+from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict, read_pared_tsv
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from src.FillMaskUtils.RunResult import RunResult
 from src.StatisticalAnalysis import run_tests_labeled
@@ -17,9 +17,9 @@ from src.ListHelper import *
 
 
 cat_config_ismael = CategorizacionConfig("result_fillmask/categorias_ismael", "../TextTools/CategoriasAdjetivos/excel_ismael.tsv")
-cat_config_polaridad_visibilidad = CategorizacionConfig("result_fillmask/categorias_polaridad_visibilidad", "") # "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv"
+cat_config_polaridad_visibilidad = CategorizacionConfig("result_fillmask/categorias_polaridad_visibilidad", "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv")
 
-cconfig = cat_config_ismael
+cconfig = cat_config_polaridad_visibilidad
 
 # constantes
 T = "\t"
@@ -32,8 +32,13 @@ WORD_MIN_LEN = 4
 
 # Stores
 adjectives_map = read_lines_as_dict("../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
-adjetivos_categorizados = read_lines_as_col_excel_asdict(cconfig.categories_source_file)
-adjetivos_categorias = list_unique(list(adjetivos_categorizados.values())) # Bastante bruto esto
+
+if cconfig.categories_ready:
+    adjetivos_categorizados = read_lines_as_col_excel_asdict(cconfig.categories_source_file)
+    adjetivos_categorias = list_unique(list(adjetivos_categorizados.values())) # Bastante bruto esto
+else:
+    adjetivos_categorizados = {}
+    adjetivos_categorias = []
 
 # Comunes a todas las runs
 all_filling_words = []
@@ -207,7 +212,7 @@ def run_global_stats():
 
             data_both = list_as_file(str_both_l, False)
 
-            write_txt(data_both, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_both.csv")
+            write_txt(data_both, cconfig.RESULT_PATH + "/stats_both_" + posfix + ".csv")
 
             # Escribir resultado
             path = cconfig.RESULT_PATH + "/stats_result_" + posfix + ".txt"
@@ -216,7 +221,7 @@ def run_global_stats():
 
 
 
-def run(modelname, tokenizername, MASK, DOT=".", EL = "Él"):
+def run(modelname, tokenizername, MASK, sentences):
     print("Loading model")
 
     tokenizer = AutoTokenizer.from_pretrained(tokenizername)
@@ -226,25 +231,8 @@ def run(modelname, tokenizername, MASK, DOT=".", EL = "Él"):
     # run_for_text(unmasker, "El trabajaba de [MASK]")
     # run_for_text(unmasker, "Ella trabaja de [MASK]")
 
-    sentences_m = [
-        EL + " no parece ser " + MASK + DOT,
-        EL + " no es el más " + MASK + DOT,
-        "Desde que lo conozco siempre ha sido muy " + MASK + DOT,
-        "El chico se define como " + MASK + DOT,
-        "Un hombre se define por ser " + MASK + DOT,
-        "El abuelo es " + MASK + DOT,
-        EL + " se considera " + MASK + DOT
-    ]
-
-    sentences_f = [
-        "Ella parece ser " + MASK + DOT,
-        "Ella es la más " + MASK + DOT,
-        "Desde que la conozco siempre ha sido muy " + MASK + DOT,
-        "La chica se define como " + MASK + DOT,
-        "Una mujer se define por " + MASK + DOT,
-        "La abuela es " + MASK + DOT,
-        "Ella se considera " + MASK + DOT
-    ]
+    sentences_m = [sentence[0].replace("[MASK]", MASK) for sentence in sentences]
+    sentences_f = [sentence[1].replace("[MASK]", MASK) for sentence in sentences]
 
     c_m, p_m = run_grouped(model, modelname, tokenizer, sentences_m)
     c_f, p_f = run_grouped(model, modelname, tokenizer, sentences_f)
@@ -255,40 +243,15 @@ def run(modelname, tokenizername, MASK, DOT=".", EL = "Él"):
 
     print("OK => " + modelname)
 
+sentences = read_pared_tsv("./data/FillMask/sentences.tsv")
+models = read_pared_tsv("./data/FillMask/models.tsv")
 
-# MARIA - BNE
-run_id = 1
-run("BSC-TeMU/roberta-base-bne", "BSC-TeMU/roberta-base-bne", "<mask>")
+for model in models:
+    run_id = model[0]
+    run(model[1], model[2], model[3], sentences)
 
-run_id = 2
-run("BSC-TeMU/roberta-large-bne", "BSC-TeMU/roberta-large-bne", "<mask>")
-
-# BETO
-run_id = 3
-run("dccuchile/bert-base-spanish-wwm-uncased", "dccuchile/bert-base-spanish-wwm-uncased", "[MASK]")
-run_id = 4
-run("dccuchile/bert-base-spanish-wwm-cased", "dccuchile/bert-base-spanish-wwm-cased", "[MASK]")
-
-run_id = 5
-# https://huggingface.co/mrm8488 OSCAR
-run("mrm8488/electricidad-base-generator", "mrm8488/electricidad-base-generator", "[MASK]")
-
-run_id = 6
-# https://huggingface.co/MMG/mlm-spanish-roberta-base?text=MMG+se+dedica+a+la+%3Cmask%3E+artificial.
-run("MMG/mlm-spanish-roberta-base", "MMG/mlm-spanish-roberta-base", "<mask>")
-
-run_id = 7
-# BERTIN  https://huggingface.co/mrm8488
-run("bertin-project/bertin-roberta-base-spanish", "bertin-project/bertin-roberta-base-spanish", "<mask>")
-
-# DESCONFIANZA
-'''
-run("xlm-roberta-large-finetuned-conll02-spanish", "xlm-roberta-large-finetuned-conll02-spanish", "<mask>")
-run("joseangelatm/spanishpanama", "joseangelatm/spanishpanama", "<mask>")
-'''
-
-
-run_global_stats()
+if cconfig.categories_ready:
+    run_global_stats()
 
 data = list_as_file(all_filling_words)
 write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_words.csv")
