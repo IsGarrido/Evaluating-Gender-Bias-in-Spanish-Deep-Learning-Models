@@ -1,10 +1,10 @@
 Tabla para la cat ITEM con el attr count
 
 [MASC]	 	[FEM]	[model_name]
-5	>	1	BSC-TeMU/roberta-base-bne
-4	>	1	BSC-TeMU/roberta-large-bne
-2	>	1	dccuchile/bert-base-spanish-wwm-uncased
-3	>	1	dccuchile/bert-base-spanish-wwm-cased
+1	<	1	BSC-TeMU/roberta-base-bne
+1	<	1	BSC-TeMU/roberta-large-bne
+3	>	1	dccuchile/bert-base-spanish-wwm-uncased
+6	>	1	dccuchile/bert-base-spanish-wwm-cased
 1	<	2	mrm8488/electricidad-base-generator
-6	>	3	MMG/mlm-spanish-roberta-base
+2	<	3	MMG/mlm-spanish-roberta-base
 4	>	1	bertin-project/bertin-roberta-base-spanish
