@@ -1,0 +1,17 @@
+???,points
+
+[MASC]	 	[FEM]	[model_name]
+613	>	470	BSC-TeMU/roberta-base-bne
+68	>	15	BSC-TeMU/roberta-large-bne
+499	>	445	dccuchile/bert-base-spanish-wwm-uncased
+926	>	925	dccuchile/bert-base-spanish-wwm-cased
+1270	>	901	mrm8488/electricidad-base-generator
+568	>	483	MMG/mlm-spanish-roberta-base
+645	>	280	bertin-project/bertin-roberta-base-spanish
+317	<	414	bert-base-multilingual-cased
+329	>	191	bertin-project/bertin-base-random
+677	>	554	bertin-project/bertin-base-stepwise
+645	>	280	bertin-project/bertin-base-gaussian
+459	>	439	bertin-project/bertin-base-random-exp-512seqlen
+737	>	455	bertin-project/bertin-base-stepwise-exp-512seqlen
+590	>	283	bertin-project/bertin-base-gaussian-exp-512seqlen

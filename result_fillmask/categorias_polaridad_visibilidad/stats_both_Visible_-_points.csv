@@ -1,0 +1,17 @@
+Visible_-,points
+
+[MASC]	 	[FEM]	[model_name]
+0	<	0	BSC-TeMU/roberta-base-bne
+0	<	0	BSC-TeMU/roberta-large-bne
+59	>	8	dccuchile/bert-base-spanish-wwm-uncased
+0	<	8	dccuchile/bert-base-spanish-wwm-cased
+62	>	51	mrm8488/electricidad-base-generator
+11	<	11	MMG/mlm-spanish-roberta-base
+44	>	20	bertin-project/bertin-roberta-base-spanish
+5	<	9	bert-base-multilingual-cased
+19	<	92	bertin-project/bertin-base-random
+58	>	22	bertin-project/bertin-base-stepwise
+44	>	20	bertin-project/bertin-base-gaussian
+0	<	26	bertin-project/bertin-base-random-exp-512seqlen
+15	>	10	bertin-project/bertin-base-stepwise-exp-512seqlen
+3	<	13	bertin-project/bertin-base-gaussian-exp-512seqlen

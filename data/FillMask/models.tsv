@@ -1,15 +1,23 @@
-# id	model	tokenizer	mask
+# id	model	tokenizer	mask	cased
 # MarIA
-1	BSC-TeMU/roberta-base-bne	BSC-TeMU/roberta-base-bne	<mask>
-2	BSC-TeMU/roberta-large-bne	BSC-TeMU/roberta-large-bne	<mask>
+1	BSC-TeMU/roberta-base-bne	BSC-TeMU/roberta-base-bne	<mask>	cased
+2	BSC-TeMU/roberta-large-bne	BSC-TeMU/roberta-large-bne	<mask>	cased
 # BETO
-3	dccuchile/bert-base-spanish-wwm-uncased	dccuchile/bert-base-spanish-wwm-uncased	[MASK]
-4	dccuchile/bert-base-spanish-wwm-cased	dccuchile/bert-base-spanish-wwm-cased	[MASK]
+3	dccuchile/bert-base-spanish-wwm-uncased	dccuchile/bert-base-spanish-wwm-uncased	[MASK]	uncased
+4	dccuchile/bert-base-spanish-wwm-cased	dccuchile/bert-base-spanish-wwm-cased	[MASK]	cased
 # https://huggingface.co/mrm8488	OSCAR
-5	mrm8488/electricidad-base-generator	mrm8488/electricidad-base-generator	[MASK]
+5	mrm8488/electricidad-base-generator	mrm8488/electricidad-base-generator	[MASK]	cased
 # https://huggingface.co/MMG/mlm-spanish-roberta-base?text=MMG+se+dedica+a+la+%3Cmask%3E+artificial.
-6	MMG/mlm-spanish-roberta-base	MMG/mlm-spanish-roberta-base	<mask>
+6	MMG/mlm-spanish-roberta-base	MMG/mlm-spanish-roberta-base	<mask>	cased
 # BERTIN		https://huggingface.co/mrm8488
-7	bertin-project/bertin-roberta-base-spanish	bertin-project/bertin-roberta-base-spanish	<mask>
-# "xlm-roberta-large-finetuned-conll02-spanish", "xlm-roberta-large-finetuned-conll02-spanish"
-# "joseangelatm/spanishpanama", "joseangelatm/spanishpanama"
+7	bertin-project/bertin-roberta-base-spanish	bertin-project/bertin-roberta-base-spanish	<mask>	cased
+# 8 "xlm-roberta-large-finetuned-conll02-spanish", "xlm-roberta-large-finetuned-conll02-spanish"
+# 9 "joseangelatm/spanishpanama", "joseangelatm/spanishpanama"
+# Nuevos
+10	bert-base-multilingual-cased	bert-base-multilingual-cased	[MASK]	cased
+11	bertin-project/bertin-base-random	bertin-project/bertin-base-random	<mask>	cased
+12	bertin-project/bertin-base-stepwise	bertin-project/bertin-base-stepwise	<mask>	cased
+13	bertin-project/bertin-base-gaussian	bertin-project/bertin-base-gaussian	<mask>	cased
+14	bertin-project/bertin-base-random-exp-512seqlen	bertin-project/bertin-base-random-exp-512seqlen	<mask>	cased
+15	bertin-project/bertin-base-stepwise-exp-512seqlen	bertin-project/bertin-base-stepwise-exp-512seqlen	<mask>	cased
+16	bertin-project/bertin-base-gaussian-exp-512seqlen	bertin-project/bertin-base-gaussian-exp-512seqlen	<mask>	cased

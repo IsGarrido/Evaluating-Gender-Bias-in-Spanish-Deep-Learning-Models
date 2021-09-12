@@ -208,7 +208,7 @@ def run_global_stats():
             str_both_l.insert(0, "[MASC]" + T + " " + T + "[FEM]" + T + "[model_name]")
             str_both_l.insert(0, "")
             str_both_l.insert(0, "")
-            str_both_l.insert(0, "Tabla para la cat " + as_file_name(cat) + " con el attr " + str(attr))
+            str_both_l.insert(0, as_file_name(cat) + "," + str(attr))
 
             data_both = list_as_file(str_both_l, False)
 
@@ -217,9 +217,6 @@ def run_global_stats():
             # Escribir resultado
             path = cconfig.RESULT_PATH + "/stats_result_" + posfix + ".txt"
             write_txt(result_text, path )
-
-
-
 
 def run(modelname, tokenizername, MASK, sentences):
     print("Loading model")
@@ -250,11 +247,17 @@ for model in models:
     run_id = model[0]
     run(model[1], model[2], model[3], sentences)
 
-if cconfig.categories_ready:
-    run_global_stats()
-
 data = list_as_file(all_filling_words)
 write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_words.csv")
 
 data = list_as_file(all_filling_adjectives)
 write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_adjectives.csv")
+
+if cconfig.categories_ready:
+    run_global_stats()
+    adjetivos_sin_categorizar = filter( lambda adjetivo: not adjetivo in adjetivos_categorizados, all_filling_adjectives)
+    data = list_as_file(adjetivos_sin_categorizar)
+    write_txt(data, cconfig.RESULT_PATH + "/summary_adj_missing_category.csv")
+
+
+
