@@ -241,11 +241,14 @@ def run(modelname, tokenizername, MASK, sentences):
     print("OK => " + modelname)
 
 sentences = read_pared_tsv("./data/FillMask/sentences.tsv")
+uncased_sentences = [sentence.lower() for sentence in sentences]
+
 models = read_pared_tsv("./data/FillMask/models.tsv")
 
 for model in models:
     run_id = model[0]
-    run(model[1], model[2], model[3], sentences)
+    sentence_list = sentences if model[4] == "cased" else uncased_sentences
+    run(model[1], model[2], model[3], sentence_list)
 
 data = list_as_file(all_filling_words)
 write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_words.csv")

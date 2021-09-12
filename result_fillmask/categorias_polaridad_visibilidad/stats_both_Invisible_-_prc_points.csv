@@ -1,17 +1,17 @@
 Invisible_-,prc_points
 
 [MASC]	 	[FEM]	[model_name]
-4.947145877378436	>	4.189255791030064	BSC-TeMU/roberta-base-bne
-7.07395498392283	>	1.6728624535315986	BSC-TeMU/roberta-large-bne
-11.014994232987313	<	12.438423645320198	dccuchile/bert-base-spanish-wwm-uncased
-7.115384615384615	>	2.303894679100384	dccuchile/bert-base-spanish-wwm-cased
-7.662463627546072	>	4.273504273504273	mrm8488/electricidad-base-generator
-4.918032786885246	>	2.916432978126753	MMG/mlm-spanish-roberta-base
-15.142276422764228	>	12.872841444270016	bertin-project/bertin-roberta-base-spanish
-6.86936936936937	<	6.879361914257228	bert-base-multilingual-cased
-8.187919463087248	>	6.577181208053691	bertin-project/bertin-base-random
-13.17467063323417	>	10.427679000480538	bertin-project/bertin-base-stepwise
-15.142276422764228	>	12.872841444270016	bertin-project/bertin-base-gaussian
-3.436123348017621	<	3.884180790960452	bertin-project/bertin-base-random-exp-512seqlen
-5.7251908396946565	<	10.8348134991119	bertin-project/bertin-base-stepwise-exp-512seqlen
-7.810413885180241	>	3.7790697674418605	bertin-project/bertin-base-gaussian-exp-512seqlen
+5.206583809203897	>	3.431570448122729	BSC-TeMU/roberta-base-bne
+6.4482029598308666	>	1.0676156583629892	BSC-TeMU/roberta-large-bne
+14.374445430346052	>	10.429164743885556	dccuchile/bert-base-spanish-wwm-uncased
+5.929304446978335	>	1.8056749785038693	dccuchile/bert-base-spanish-wwm-cased
+9.125766871165645	>	6.618313689936537	mrm8488/electricidad-base-generator
+5.537220388705538	>	2.713523131672598	MMG/mlm-spanish-roberta-base
+16.883116883116884	>	16.21150493898896	bertin-project/bertin-roberta-base-spanish
+9.523809523809524	>	5.9689922480620154	bert-base-multilingual-cased
+9.00523560209424	>	7.484076433121019	bertin-project/bertin-base-random
+13.185654008438819	>	11.388775092175338	bertin-project/bertin-base-stepwise
+16.883116883116884	>	16.21150493898896	bertin-project/bertin-base-gaussian
+4.158004158004158	<	4.863925883034163	bertin-project/bertin-base-random-exp-512seqlen
+6.087896253602305	<	9.798129000492368	bertin-project/bertin-base-stepwise-exp-512seqlen
+10.174418604651162	>	8.121827411167512	bertin-project/bertin-base-gaussian-exp-512seqlen

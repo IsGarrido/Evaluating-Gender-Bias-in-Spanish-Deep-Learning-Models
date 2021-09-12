@@ -1,17 +1,17 @@
 Visible_+,points
 
 [MASC]	 	[FEM]	[model_name]
-318	<	482	BSC-TeMU/roberta-base-bne
-157	<	213	BSC-TeMU/roberta-large-bne
-271	<	445	dccuchile/bert-base-spanish-wwm-uncased
-99	<	321	dccuchile/bert-base-spanish-wwm-cased
-194	<	340	mrm8488/electricidad-base-generator
-130	<	334	MMG/mlm-spanish-roberta-base
-398	>	355	bertin-project/bertin-roberta-base-spanish
-195	<	217	bert-base-multilingual-cased
-354	<	464	bertin-project/bertin-base-random
-525	<	613	bertin-project/bertin-base-stepwise
-398	>	355	bertin-project/bertin-base-gaussian
-137	<	376	bertin-project/bertin-base-random-exp-512seqlen
-176	<	273	bertin-project/bertin-base-stepwise-exp-512seqlen
-105	<	157	bertin-project/bertin-base-gaussian-exp-512seqlen
+373	<	561	BSC-TeMU/roberta-base-bne
+181	<	308	BSC-TeMU/roberta-large-bne
+325	<	559	dccuchile/bert-base-spanish-wwm-uncased
+154	<	446	dccuchile/bert-base-spanish-wwm-cased
+198	<	415	mrm8488/electricidad-base-generator
+164	<	385	MMG/mlm-spanish-roberta-base
+414	>	413	bertin-project/bertin-roberta-base-spanish
+247	<	311	bert-base-multilingual-cased
+450	<	550	bertin-project/bertin-base-random
+657	<	713	bertin-project/bertin-base-stepwise
+414	>	413	bertin-project/bertin-base-gaussian
+190	<	447	bertin-project/bertin-base-random-exp-512seqlen
+284	<	342	bertin-project/bertin-base-stepwise-exp-512seqlen
+140	<	178	bertin-project/bertin-base-gaussian-exp-512seqlen
