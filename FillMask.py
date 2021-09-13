@@ -2,7 +2,7 @@ from transformers import AutoTokenizer, AutoModelForMaskedLM
 from transformers import pipeline
 
 from src.DateHelper import FechaHoraTextual
-from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict, read_pared_tsv
+from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict, read_pared_tsv, write_json
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from src.FillMaskUtils.RunResult import RunResult
 from src.StatisticalAnalysis import run_tests_labeled
@@ -258,5 +258,6 @@ if cconfig.categories_ready:
     data = list_as_file(adjetivos_sin_categorizar)
     write_txt(data, cconfig.RESULT_PATH + "/summary_adj_missing_category.csv")
 
+    write_json(run_results, cconfig.RESULT_PATH + "/run_result.json");
 
 

@@ -1,3 +1,4 @@
+import jsonpickle
 from typing import List, Dict, Any
 
 import pandas as pd
@@ -102,6 +103,15 @@ def write_txt(text, path):
     f.close()
 
     print('Fichero guardado en ' + path)
+
+
+def write_json(obj, path):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+
+    data = jsonpickle.encode(obj)
+    f = open(path, "w")
+    f.write(data)
+    f.close()
 
 
 def get_file_list(path):
