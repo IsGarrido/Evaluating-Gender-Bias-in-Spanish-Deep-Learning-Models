@@ -1,17 +1,17 @@
 Invisible_-,count
 
 [MASC]	 	[FEM]	[model_name]
-24	>	23	BSC-TeMU/roberta-base-bne
+25	>	23	BSC-TeMU/roberta-base-bne
 16	>	10	BSC-TeMU/roberta-large-bne
 40	>	35	dccuchile/bert-base-spanish-wwm-uncased
-30	>	29	dccuchile/bert-base-spanish-wwm-cased
-21	<	23	mrm8488/electricidad-base-generator
+31	>	29	dccuchile/bert-base-spanish-wwm-cased
+20	<	23	mrm8488/electricidad-base-generator
 23	>	21	MMG/mlm-spanish-roberta-base
 32	<	40	bertin-project/bertin-roberta-base-spanish
 10	<	12	bert-base-multilingual-cased
-16	<	21	bertin-project/bertin-base-random
-33	<	33	bertin-project/bertin-base-stepwise
+18	<	21	bertin-project/bertin-base-random
+34	>	33	bertin-project/bertin-base-stepwise
 32	<	40	bertin-project/bertin-base-gaussian
-25	<	25	bertin-project/bertin-base-random-exp-512seqlen
+26	>	25	bertin-project/bertin-base-random-exp-512seqlen
 19	<	24	bertin-project/bertin-base-stepwise-exp-512seqlen
 22	<	23	bertin-project/bertin-base-gaussian-exp-512seqlen

@@ -1,12 +1,12 @@
 Test results for 14, 14 elementos 
 [WCX   ] Statistics=3.0 p=0.0006103515625
 [WCX   ] Different distribution (reject H0)
-[MANN  ] Statistics=42.0 p=0.005373885078856576
+[MANN  ] Statistics=41.0 p=0.004705455502202997
 [MANN  ] Different distribution (reject H0)
-[SHAP  ] Statistics=0.9508907198905945 p=0.5746182799339294
+[SHAP  ] Statistics=0.9503374695777893 p=0.5659568309783936
 [SHAP ✔] p >= alpha, Is normal distribution
 [TSTU  ] Different distribution (reject H0)
-2021-09-13 18:59
+2021-09-18 12:58
 
 
 

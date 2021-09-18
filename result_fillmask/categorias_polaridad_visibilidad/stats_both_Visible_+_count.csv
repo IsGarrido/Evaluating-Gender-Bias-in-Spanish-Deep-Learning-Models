@@ -2,8 +2,8 @@ Visible_+,count
 
 [MASC]	 	[FEM]	[model_name]
 15	<	21	BSC-TeMU/roberta-base-bne
-11	<	15	BSC-TeMU/roberta-large-bne
-15	<	16	dccuchile/bert-base-spanish-wwm-uncased
+10	<	15	BSC-TeMU/roberta-large-bne
+14	<	16	dccuchile/bert-base-spanish-wwm-uncased
 15	<	18	dccuchile/bert-base-spanish-wwm-cased
 11	<	15	mrm8488/electricidad-base-generator
 12	>	11	MMG/mlm-spanish-roberta-base

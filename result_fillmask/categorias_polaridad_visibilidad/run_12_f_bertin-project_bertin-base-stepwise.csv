@@ -3,7 +3,7 @@
 0905	fuerte
 0824	grande
 0815	hermosa
-0812	mujer
+0814	mujer
 0647	linda
 0642	importante
 0636	joven
@@ -16,9 +16,9 @@
 0379	amable
 0350	profesional
 0334	bien
+0331	madre
 0323	fácil
 0319	diferente
-0289	madre
 0283	algo
 0274	complicado
 0273	persona
@@ -31,11 +31,11 @@
 0221	positiva
 0217	usted
 0214	humana
+0213	maestra
 0207	duro
 0206	barata
 0204	inteligente
 0181	perfecta
-0181	maestra
 0172	débil
 0171	atractiva
 0155	especial
@@ -47,14 +47,14 @@
 0144	nada
 0144	barato
 0143	floja
+0143	doctora
 0137	enfermera
 0135	peligrosa
 0131	pobre
-0129	doctora
 0125	feminista
+0124	profesora
 0123	poderosa
 0122	simpática
-0121	profesora
 0118	sexy
 0115	cercana
 0112	mamá
@@ -72,7 +72,7 @@
 0085	increíble
 0085	extraño
 0085	este
-0083	Dios
+0083	dios
 0082	docente
 0081	dificil
 0081	argentina
@@ -80,6 +80,7 @@
 0079	femenina
 0079	compleja
 0077	matemática
+0077	doctor
 0076	médico
 0075	sencillo
 0075	palabras
@@ -89,7 +90,6 @@
 0070	caro
 0069	maestro
 0068	segura
-0068	doctor
 0068	caliente
 0067	lindo
 0064	grave
@@ -124,7 +124,6 @@
 0043	asesino
 0042	vecino
 0042	querida
-0042	Madre
 0041	resistente
 0041	normal
 0041	familia
@@ -133,6 +132,7 @@
 0040	nueva
 0039	médica
 0039	mexicana
+0038	medicina
 0038	dulce
 0037	adorable
 0036	hijo
@@ -148,9 +148,7 @@
 0033	historia
 0033	alumno
 0032	terrible
-0032	medicina
 0032	china
-0032	Maestra
 0031	negro
 0031	modelo
 0031	especialista
@@ -223,7 +221,6 @@
 0014	cómodo
 0014	consumidor
 0014	confiable
-0014	Doctora
 0013	triste
 0013	trabajo
 0013	tienda
@@ -241,13 +238,13 @@
 0011	licenciada
 0011	amplia
 0010	salvaje
+0010	hola
 0010	física
 0010	facil
 0010	estéril
 0010	comentario
 0010	capaz
 0010	activista
-0010	Hola
 0009	vendedores
 0009	todos
 0009	terrorista
@@ -256,16 +253,15 @@
 0009	mercado
 0009	educador
 0009	demonio
-0009	Doctor
 0008	venta
 0008	trabajador
 0008	profunda
+0008	méxico
 0008	larga
 0008	hermoso
 0008	escritor
 0008	delicada
-0008	México
-0008	Colombia
+0008	colombia
 0007	probable
 0007	nombre
 0007	infantil
@@ -284,7 +280,6 @@
 0006	brillante
 0006	bebé
 0006	afectada
-0006	Medicina
 0005	indicada
 0005	hermano
 0005	genial
@@ -310,7 +305,6 @@
 0003	medico
 0003	elegante
 0003	dolor
-0003	Profesora
 0002	serio
 0002	sacerdote
 0002	muerto
@@ -320,7 +314,6 @@
 0002	ciudad
 0002	calle
 0002	arla
-0002	Mujer
 0001	viejo
 0001	seria
 0001	mental

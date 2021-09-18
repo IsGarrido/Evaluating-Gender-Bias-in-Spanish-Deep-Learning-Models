@@ -16,9 +16,20 @@ from transformers import AutoTokenizer, FillMaskPipeline
 from src.ListHelper import *
 
 
-cat_config_ismael = CategorizacionConfig("result_fillmask/categorias_ismael", "../TextTools/CategoriasAdjetivos/excel_ismael.tsv")
-cat_config_polaridad_visibilidad = CategorizacionConfig("result_fillmask/categorias_polaridad_visibilidad", "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv")
+cat_config_ismael = CategorizacionConfig("result_fillmask/categorias_ismael", "../TextTools/CategoriasAdjetivos/excel_ismael.tsv","./data/FillMask/sentences.tsv")
 
+cat_config_polaridad_visibilidad = CategorizacionConfig(
+    "result_fillmask/categorias_polaridad_visibilidad",
+    "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv",
+    "./data/FillMask/sentences.tsv"
+)
+'''
+cat_config_polaridad_visibilidad_negadas = CategorizacionConfig(
+    "result_fillmask/categorias_polaridad_visibilidad_negadas",
+    "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv",
+    "./data/FillMask/sentences_neg.tsv"
+)
+'''
 cconfig = cat_config_polaridad_visibilidad
 
 # constantes
@@ -62,7 +73,7 @@ def run_grouped(model, modelname, tokenizer, sentences):
     return filler
 
 
-def save_run(model_name, points, kind="m"):
+def save_run(model_name, points, scores, kind="m"):
 
     # ReFormatear resultados
 
@@ -70,22 +81,27 @@ def save_run(model_name, points, kind="m"):
     l_adj = []
     category_count = {}
     category_points = {}
+    category_score = {}
 
     # Inicializar el mapa
     for category in adjetivos_categorias:
         category_count[category] = 0
         category_points[category] = 0
+        category_score[category] = 0
 
     category_points[TOTAL_CAT] = 0
     category_count[TOTAL_CAT] = 0
+    category_score[TOTAL_CAT] = 0
 
-    for key, val in points.items():
-        l.append(from_int(val, 4) + T + key)
+    for key, points_value in points.items():
+        score_value = scores[key]
+
+        l.append(from_int(points_value, 4) + T + key)
         all_filling_words.append(key)
 
-        # Solo los adjetivos
+        # Solo si es un adjetivo
         if key in adjectives_map:
-            l_adj.append(from_int(val, 4) + T + key)
+            l_adj.append(from_int(points_value, 4) + T + key)
             all_filling_adjectives.append(key)
 
             # Buscar la categoria
@@ -93,6 +109,16 @@ def save_run(model_name, points, kind="m"):
             if key in adjetivos_categorizados:
                 category = adjetivos_categorizados[key]
 
+            # Agregar valores
+            category_count[category] = category_count[category] + 1
+            category_points[category] = category_points[category] + points_value
+            category_score[category] = category_score[category] + score_value
+
+            # Agregar al total
+            category_count[TOTAL_CAT] = category_count[TOTAL_CAT] + 1
+            category_points[TOTAL_CAT] = category_points[TOTAL_CAT] + points_value
+            category_score[TOTAL_CAT] = category_score[TOTAL_CAT] + score_value
+            '''
             # Conteo de categorias, solo para los adjetivos encontrados
             if category in category_count:
                 category_count[category] = category_count[category]+1
@@ -103,32 +129,43 @@ def save_run(model_name, points, kind="m"):
 
             # Suma de los puntos
             if category in category_points:
-                category_points[category] = category_points[category] + val
+                category_points[category] = category_points[category] + points_value
             else:
-                category_points[category] = val
+                category_points[category] = points_value
 
-            category_points[TOTAL_CAT] = category_points[TOTAL_CAT] + val
+            category_points[TOTAL_CAT] = category_points[TOTAL_CAT] + points_value
 
+            # Suma las scores
+            if category in category_score:
+                category_score[category] = category_score[category] + score_value
+            else:
+                category_score[category] = score_value
+
+            category_score[TOTAL_CAT] = category_score[TOTAL_CAT] + score_value
+            '''
 
     l_category = []
     dict_results = {}
     for category_key in category_count.keys():
 
-        category_val = category_count[category_key]
+        # Count
+        count = category_count[category_key]
+        prc_count = (count*100) / category_count[TOTAL_CAT]
 
-        count = category_val
-        prc_count = (category_val*100) / category_count[TOTAL_CAT]
-
+        # Points
         points = category_points[category_key]
         total_points = category_points[TOTAL_CAT]
-        prc_points = (points*100)/total_points
+        prc_points = (points * 100) / total_points
 
-        rresult = RunResult(category_key, count, prc_count, points, prc_points)
+        # Scores
+        score = category_score[category_key]
+        total_score = category_score[TOTAL_CAT]
+        prc_score = (score * 100) / total_score
+
+        rresult = RunResult(category_key, count, prc_count, points, prc_points, score, prc_score)
         dict_results[category_key] = rresult
 
-        l_category.append(category_key + T + str(count) + T + str( prc_count ) + T + str(points) + T + str( prc_points ))
-
-
+        l_category.append(category_key + T + str(count) + T + str( prc_count ) + T + str(points) + T + str( prc_points ) + T + str(score) + T + str(prc_score))
 
     # Ordenar ahora que son texto
     l.sort(reverse=True)
@@ -136,7 +173,7 @@ def save_run(model_name, points, kind="m"):
     l_category.sort(reverse=True)
 
     # Añadir cabeceras
-    l_category.insert(0, "[CAT]" + T + "Count" + T + "PRC_Count" + T + "Points" + T + "PRC_points")
+    l_category.insert(0, "[CAT]" + T + "Count" + T + "PRC_Count" + T + "Points" + T + "PRC_points" + T + "Score" + T + "PRC_score")
 
     # Juntar lineas
     data = "\n".join(l)
@@ -228,16 +265,17 @@ def run(modelname, tokenizername, MASK, sentences):
     sentences_m = [sentence[0].replace("[MASK]", MASK) for sentence in sentences]
     sentences_f = [sentence[1].replace("[MASK]", MASK) for sentence in sentences]
 
-    c_m, p_m = run_grouped(model, modelname, tokenizer, sentences_m)
-    c_f, p_f = run_grouped(model, modelname, tokenizer, sentences_f)
+    c_m, points_m, score_m = run_grouped(model, modelname, tokenizer, sentences_m)
+    c_f, points_f, score_f = run_grouped(model, modelname, tokenizer, sentences_f)
 
-    result_table_m = save_run(modelname, p_m, "m")
-    result_table_f = save_run(modelname, p_f, "f")
+    result_table_m = save_run(modelname, points_m, score_m, "m")
+    result_table_f = save_run(modelname, points_f, score_f, "f")
     run_results.append((modelname, result_table_m, result_table_f))
 
     print("OK => " + modelname)
 
-sentences = read_pared_tsv("./data/FillMask/sentences.tsv")
+sentences = read_pared_tsv(cconfig.sentences_path)
+
 uncased_sentences = [ [p[0].lower().replace("[mask]", "[MASK]"), p[1].lower().replace("[mask]", "[MASK]")] for p in sentences]
 models = read_pared_tsv("./data/FillMask/models.tsv")
 

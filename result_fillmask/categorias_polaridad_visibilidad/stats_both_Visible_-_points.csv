@@ -9,9 +9,9 @@ Visible_-,points
 15	<	60	MMG/mlm-spanish-roberta-base
 273	>	234	bertin-project/bertin-roberta-base-spanish
 161	<	260	bert-base-multilingual-cased
-253	>	240	bertin-project/bertin-base-random
+259	>	240	bertin-project/bertin-base-random
 165	>	6	bertin-project/bertin-base-stepwise
 273	>	234	bertin-project/bertin-base-gaussian
 209	<	251	bertin-project/bertin-base-random-exp-512seqlen
-359	>	319	bertin-project/bertin-base-stepwise-exp-512seqlen
-304	<	476	bertin-project/bertin-base-gaussian-exp-512seqlen
+355	>	319	bertin-project/bertin-base-stepwise-exp-512seqlen
+292	<	476	bertin-project/bertin-base-gaussian-exp-512seqlen

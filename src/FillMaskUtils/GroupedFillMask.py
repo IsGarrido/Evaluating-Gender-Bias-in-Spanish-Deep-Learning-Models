@@ -20,6 +20,7 @@ class GroupedFillMask:
 
         self.grouped_count = {}
         self.grouped_points = {}
+        self.grouped_model_scores = {}
 
         self.result_path = result_path
         self.result_qty = result_qty
@@ -36,7 +37,7 @@ class GroupedFillMask:
 
         return True
 
-    def save_stats(self, word: str, idx):
+    def save_stats(self, word: str, score, idx):
 
         word = word.strip()
         if not self.valid_token(word):
@@ -55,12 +56,19 @@ class GroupedFillMask:
         else:
             self.grouped_points[word] = points
 
+        if word in self.grouped_model_scores:
+            self.grouped_model_scores[word].append(score)
+        else:
+            self.grouped_model_scores[word] = []
+            self.grouped_model_scores[word].append(score)
+
 
     def process_result(self, items, orig_line):
         l = []
         for idx, item in enumerate(items):
-            word = item["token_str"]
-            self.save_stats(word, idx)
+            word: str = item["token_str"].lower()
+            score = item["score"]
+            self.save_stats(word, score, idx)
 
             line = str(idx) + T + word + T + str(item["token"])
             l.append(line)
@@ -81,5 +89,6 @@ class GroupedFillMask:
 
         counts = dict(sorted(self.grouped_count.items(), key=lambda item: item[1], reverse=True))
         points = dict(sorted(self.grouped_points.items(), key=lambda item: item[1], reverse=True))
+        scores = { key: sum(value)/len(value) for key,value in self.grouped_model_scores.items()}
 
-        return counts, points
+        return counts, points, scores

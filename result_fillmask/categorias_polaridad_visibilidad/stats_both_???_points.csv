@@ -1,17 +1,17 @@
 ???,points
 
 [MASC]	 	[FEM]	[model_name]
-4110	>	3027	BSC-TeMU/roberta-base-bne
-1784	>	962	BSC-TeMU/roberta-large-bne
-3273	>	2631	dccuchile/bert-base-spanish-wwm-uncased
-5237	>	4338	dccuchile/bert-base-spanish-wwm-cased
-6738	>	6046	mrm8488/electricidad-base-generator
-3655	>	2847	MMG/mlm-spanish-roberta-base
-3601	>	2187	bertin-project/bertin-roberta-base-spanish
-4299	<	4530	bert-base-multilingual-cased
-2407	>	2001	bertin-project/bertin-base-random
-3660	>	3101	bertin-project/bertin-base-stepwise
-3601	>	2187	bertin-project/bertin-base-gaussian
-3376	>	3365	bertin-project/bertin-base-random-exp-512seqlen
-4492	>	3968	bertin-project/bertin-base-stepwise-exp-512seqlen
-3435	<	3527	bertin-project/bertin-base-gaussian-exp-512seqlen
+4145	>	3027	BSC-TeMU/roberta-base-bne
+1786	>	962	BSC-TeMU/roberta-large-bne
+3309	>	2631	dccuchile/bert-base-spanish-wwm-uncased
+5264	>	4338	dccuchile/bert-base-spanish-wwm-cased
+6761	>	6060	mrm8488/electricidad-base-generator
+3682	>	2847	MMG/mlm-spanish-roberta-base
+3680	>	2225	bertin-project/bertin-roberta-base-spanish
+4297	<	4530	bert-base-multilingual-cased
+2472	>	2009	bertin-project/bertin-base-random
+3672	>	3133	bertin-project/bertin-base-stepwise
+3680	>	2225	bertin-project/bertin-base-gaussian
+3475	>	3440	bertin-project/bertin-base-random-exp-512seqlen
+4504	>	4042	bertin-project/bertin-base-stepwise-exp-512seqlen
+3561	>	3544	bertin-project/bertin-base-gaussian-exp-512seqlen

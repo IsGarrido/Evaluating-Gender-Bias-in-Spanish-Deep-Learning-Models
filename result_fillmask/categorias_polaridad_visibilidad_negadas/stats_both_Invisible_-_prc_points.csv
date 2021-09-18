@@ -1,0 +1,17 @@
+Invisible_-,prc_points
+
+[MASC]	 	[FEM]	[model_name]
+18.46876420382809	<	22.452385627331633	BSC-TeMU/roberta-base-bne
+20.793506296464876	>	16.926175536447438	BSC-TeMU/roberta-large-bne
+21.489655172413794	>	18.5025394571569	dccuchile/bert-base-spanish-wwm-uncased
+17.130365659777425	>	14.779339821823987	dccuchile/bert-base-spanish-wwm-cased
+9.085536213195788	<	10.627519900754677	mrm8488/electricidad-base-generator
+11.527257594673324	>	8.741421125961091	MMG/mlm-spanish-roberta-base
+21.213169578504296	<	23.211577350859454	bertin-project/bertin-roberta-base-spanish
+7.802333079312973	>	4.927485584483662	bert-base-multilingual-cased
+18.504206918043003	<	18.53146853146853	bertin-project/bertin-base-random
+21.183419900193503	>	18.524771496768935	bertin-project/bertin-base-stepwise
+21.213169578504296	<	23.211577350859454	bertin-project/bertin-base-gaussian
+19.28749716360336	>	15.802577621558289	bertin-project/bertin-base-random-exp-512seqlen
+6.935401272953398	>	5.068943904732059	bertin-project/bertin-base-stepwise-exp-512seqlen
+19.630790665273423	<	20.832763571721593	bertin-project/bertin-base-gaussian-exp-512seqlen
