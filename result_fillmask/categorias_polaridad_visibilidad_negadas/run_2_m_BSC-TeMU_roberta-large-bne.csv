@@ -30,9 +30,9 @@
 0175	quién
 0174	tímido
 0165	atractivo
+0161	profesor
 0161	buen
 0157	dificil
-0145	profesor
 0144	padre
 0141	sexy
 0140	mayor
@@ -68,9 +68,9 @@
 0074	perfecto
 0073	anciano
 0072	usuario
+0072	maestro
 0071	romántico
 0071	competente
-0070	maestro
 0069	facil
 0067	fiable
 0066	valiente
@@ -79,9 +79,9 @@
 0065	exigente
 0065	capaz
 0064	merece
+0064	dios
 0064	dice
 0057	probable
-0057	Dios
 0056	chico
 0055	docente
 0050	precio
@@ -167,7 +167,6 @@
 0016	hábil
 0016	formado
 0016	discípulo
-0016	Profesor
 0015	valioso
 0015	triste
 0015	serio
@@ -183,9 +182,9 @@
 0014	barato
 0013	terrorista
 0013	particular
+0013	juan
 0013	fiel
 0013	enfermo
-0013	Juan
 0012	víctima
 0012	parado
 0012	matriculado
@@ -216,7 +215,6 @@
 0007	inmortal
 0007	funciona
 0007	dotado
-0007	dios
 0007	básico
 0006	pintado
 0006	menor
@@ -250,7 +248,6 @@
 0002	elegido
 0002	agente
 0002	adecuado
-0002	Maestro
 0001	retrasado
 0001	psiquiatra
 0001	pequeña

@@ -1,4 +1,4 @@
-1012	bueno
+1031	bueno
 0859	fuerte
 0836	nada
 0802	feliz
@@ -95,6 +95,7 @@
 0044	efectivo
 0044	amor
 0042	quien
+0042	maestro
 0042	grave
 0042	cuenta
 0041	agradecido
@@ -102,7 +103,6 @@
 0039	afortunado
 0038	tiempo
 0038	siempre
-0037	maestro
 0037	delgado
 0036	ningún
 0035	valiente
@@ -116,6 +116,7 @@
 0032	flexible
 0031	sabio
 0031	pobre
+0031	hola
 0031	cierto
 0030	todo
 0030	molesto
@@ -135,11 +136,10 @@
 0026	positivo
 0026	contento
 0026	bajo
-0025	Prof
+0025	prof
 0024	apropiado
 0023	normal
 0023	independiente
-0023	hola
 0023	exitoso
 0023	contenta
 0023	caliente
@@ -157,7 +157,6 @@
 0019	otra
 0019	embarazada
 0019	comentarios
-0019	Bueno
 0018	visto
 0018	productivo
 0018	niño
@@ -185,7 +184,7 @@
 0013	ficción
 0013	conocida
 0013	cliente
-0013	Alemania
+0013	alemania
 0012	otro
 0012	común
 0011	sencillo
@@ -203,7 +202,6 @@
 0008	cuando
 0008	como
 0008	antiguo
-0008	Hola
 0007	políticos
 0007	médico
 0007	diferente
@@ -226,7 +224,6 @@
 0005	delgada
 0005	afectada
 0005	aceptada
-0005	Maestro
 0004	positivamente
 0004	mujeres
 0004	cumpleaños

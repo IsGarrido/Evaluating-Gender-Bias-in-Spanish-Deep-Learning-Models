@@ -27,13 +27,12 @@ cat_config_polaridad_visibilidad = CategorizacionConfig(
     "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv",
     "./data/FillMask/sentences.tsv"
 )
-'''
+
 cat_config_polaridad_visibilidad_negadas = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_visibilidad_negadas",
     "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv",
     "./data/FillMask/sentences_neg.tsv"
 )
-'''
 
 cat_config_polaridad_foa_foa = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_foa_foa",
@@ -53,7 +52,7 @@ cat_config_yulia = CategorizacionConfig(
     "./data/FillMask/sentences.tsv"
 )
 
-cconfig = cat_config_yulia
+cconfig = cat_config_polaridad_visibilidad_negadas
 
 # constantes
 T = "\t"

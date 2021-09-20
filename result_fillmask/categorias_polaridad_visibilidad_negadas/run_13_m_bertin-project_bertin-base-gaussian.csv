@@ -60,11 +60,11 @@
 0106	interesante
 0105	médico
 0102	académico
+0100	maestro
 0097	fácilmente
 0096	obligatorio
 0094	mujer
 0092	real
-0091	maestro
 0090	inteligente
 0090	costoso
 0089	tarde
@@ -81,6 +81,7 @@
 0075	alumno
 0071	tales
 0071	alguien
+0070	doctor
 0070	apropiado
 0070	amor
 0069	exigente
@@ -104,7 +105,6 @@
 0051	alta
 0050	negro
 0050	estudiante
-0048	doctor
 0047	triste
 0047	esperado
 0046	otro
@@ -154,7 +154,6 @@
 0023	pequeño
 0023	comprador
 0022	lesbiana
-0022	Doctor
 0021	precio
 0021	frágil
 0021	desconocido
@@ -189,9 +188,9 @@
 0014	pocos
 0014	homosexual
 0014	esclavo
+0014	dios
 0014	chica
 0014	actor
-0014	Dios
 0013	vulnerable
 0013	ventas
 0013	producto
@@ -225,7 +224,6 @@
 0009	peligrosa
 0009	delgado
 0009	considerado
-0009	Maestro
 0008	video
 0008	valorado
 0008	usado
@@ -263,12 +261,12 @@
 0005	cerca
 0005	asesino
 0004	proveedor
+0004	prof
 0004	preocupante
 0004	medicamento
 0004	letal
 0004	experto
 0004	demasiado
-0004	Prof
 0003	visto
 0003	vende
 0003	valiente

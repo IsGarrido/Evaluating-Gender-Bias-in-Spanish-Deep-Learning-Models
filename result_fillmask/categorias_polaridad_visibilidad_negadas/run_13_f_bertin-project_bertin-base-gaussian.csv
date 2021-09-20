@@ -4,7 +4,7 @@
 0589	nada
 0575	grande
 0467	bien
-0454	bueno
+0462	bueno
 0441	mala
 0435	perfecta
 0405	importante
@@ -116,6 +116,7 @@
 0040	loca
 0039	querida
 0039	este
+0039	doctor
 0038	padre
 0038	irregular
 0037	capaz
@@ -157,7 +158,6 @@
 0021	digna
 0020	vida
 0020	pequeña
-0020	doctor
 0020	demandado
 0019	violento
 0019	soltera
@@ -166,7 +166,6 @@
 0019	española
 0019	confiable
 0019	comercial
-0019	Doctor
 0018	nunca
 0018	menos
 0018	liberada
@@ -199,8 +198,8 @@
 0014	realista
 0014	música
 0014	literatura
+0014	edward
 0014	barato
-0014	Edward
 0013	valiosa
 0013	problemático
 0013	negocio
@@ -244,15 +243,14 @@
 0008	enferma
 0008	alumna
 0008	adolescente
-0008	Bueno
+0007	will
 0007	maestro
 0007	educativa
-0007	Will
 0006	raro
 0006	médico
+0006	kevin
 0006	idiota
 0006	doloroso
-0006	Kevin
 0005	vegetariana
 0005	sexy
 0005	seria

@@ -54,6 +54,7 @@
 0167	tonto
 0165	francés
 0158	religioso
+0151	maestro
 0150	grande
 0144	generoso
 0144	adecuado
@@ -63,10 +64,9 @@
 0139	alemán
 0138	tímido
 0135	sabio
-0132	hermano
+0135	hermano
 0132	español
 0129	real
-0128	maestro
 0127	suyo
 0126	sacerdote
 0126	competente
@@ -182,7 +182,6 @@
 0023	válido
 0023	casado
 0023	antes
-0023	Maestro
 0022	latino
 0022	hombre
 0022	familia
@@ -310,7 +309,6 @@
 0003	culto
 0003	auténtico
 0003	autor
-0003	Hermano
 0002	teniente
 0002	suficiente
 0002	simple

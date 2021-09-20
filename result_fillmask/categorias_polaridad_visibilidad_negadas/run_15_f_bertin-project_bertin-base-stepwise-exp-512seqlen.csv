@@ -125,6 +125,7 @@
 0031	barrio
 0030	malo
 0030	casa
+0030	además
 0029	simplemente
 0029	independiente
 0029	idad
@@ -171,7 +172,6 @@
 0019	judío
 0019	amplio
 0019	algo
-0019	Además
 0018	suave
 0018	casualidad
 0017	ubicación
@@ -209,7 +209,6 @@
 0011	nueva
 0011	español
 0011	esclavo
-0011	además
 0010	ignorante
 0010	ciencia
 0010	cerca
@@ -257,11 +256,11 @@
 0004	secundaria
 0004	ningún
 0004	hebreo
+0004	dios
 0004	complaciente
 0004	atención
 0004	accesible
 0004	abuela
-0004	Dios
 0003	poesía
 0003	particular
 0003	lesbiana
