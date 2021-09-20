@@ -1,0 +1,24 @@
+???,prc_count
+
+[MASC]	 	[FEM]	[model_name]
+44.1747572815534	<	44.623655913978496	BSC-TeMU/roberta-base-bne
+32.8	<	35.64356435643565	BSC-TeMU/roberta-large-bne
+45.887445887445885	<	46.90721649484536	dccuchile/bert-base-spanish-wwm-uncased
+47.71784232365145	>	47.15025906735751	dccuchile/bert-base-spanish-wwm-cased
+52.80898876404494	>	50.0	mrm8488/electricidad-base-generator
+38.888888888888886	>	37.956204379562045	MMG/mlm-spanish-roberta-base
+45.348837209302324	>	41.01123595505618	bertin-project/bertin-roberta-base-spanish
+61.41732283464567	<	61.65413533834587	bert-base-multilingual-cased
+39.45578231292517	<	43.506493506493506	bertin-project/bertin-base-random
+44.76744186046512	<	48.50299401197605	bertin-project/bertin-base-stepwise
+45.348837209302324	>	41.01123595505618	bertin-project/bertin-base-gaussian
+41.61849710982659	<	43.97905759162304	bertin-project/bertin-base-random-exp-512seqlen
+43.333333333333336	<	45.18072289156626	bertin-project/bertin-base-stepwise-exp-512seqlen
+48.148148148148145	<	51.23456790123457	bertin-project/bertin-base-gaussian-exp-512seqlen
+64.02877697841727	>	62.32876712328767	amine/bert-base-5lang-cased
+62.589928057553955	>	62.32876712328767	Geotrend/bert-base-es-cased
+60.869565217391305	<	62.7906976744186	mrm8488/RuPERTa-base
+63.73626373626374	>	62.10526315789474	BSC-TeMU/RoBERTalex
+67.27272727272727	>	66.95652173913044	Recognai/distilbert-base-es-multilingual-cased
+51.041666666666664	>	50.526315789473685	flax-community/alberti-bert-base-multilingual-cased
+67.27272727272727	>	66.66666666666667	Geotrend/distilbert-base-es-cased

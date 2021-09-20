@@ -1,17 +1,24 @@
 ???,points
 
 [MASC]	 	[FEM]	[model_name]
-4145	>	3027	BSC-TeMU/roberta-base-bne
+4143	>	3027	BSC-TeMU/roberta-base-bne
 1786	>	962	BSC-TeMU/roberta-large-bne
-3309	>	2631	dccuchile/bert-base-spanish-wwm-uncased
-5264	>	4338	dccuchile/bert-base-spanish-wwm-cased
-6761	>	6060	mrm8488/electricidad-base-generator
-3682	>	2847	MMG/mlm-spanish-roberta-base
+3214	>	2631	dccuchile/bert-base-spanish-wwm-uncased
+5263	>	4338	dccuchile/bert-base-spanish-wwm-cased
+6721	>	6060	mrm8488/electricidad-base-generator
+3668	>	2847	MMG/mlm-spanish-roberta-base
 3680	>	2225	bertin-project/bertin-roberta-base-spanish
-4297	<	4530	bert-base-multilingual-cased
-2472	>	2009	bertin-project/bertin-base-random
-3672	>	3133	bertin-project/bertin-base-stepwise
+4237	<	4530	bert-base-multilingual-cased
+2451	>	2009	bertin-project/bertin-base-random
+3667	>	3133	bertin-project/bertin-base-stepwise
 3680	>	2225	bertin-project/bertin-base-gaussian
 3475	>	3440	bertin-project/bertin-base-random-exp-512seqlen
 4504	>	4042	bertin-project/bertin-base-stepwise-exp-512seqlen
 3561	>	3544	bertin-project/bertin-base-gaussian-exp-512seqlen
+5451	>	5364	amine/bert-base-5lang-cased
+5033	>	5015	Geotrend/bert-base-es-cased
+171	<	453	mrm8488/RuPERTa-base
+2417	>	1565	BSC-TeMU/RoBERTalex
+6776	>	5198	Recognai/distilbert-base-es-multilingual-cased
+4475	>	3110	flax-community/alberti-bert-base-multilingual-cased
+7006	>	5370	Geotrend/distilbert-base-es-cased

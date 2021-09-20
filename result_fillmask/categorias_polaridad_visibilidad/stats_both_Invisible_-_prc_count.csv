@@ -3,15 +3,22 @@ Invisible_-,prc_count
 [MASC]	 	[FEM]	[model_name]
 12.135922330097088	<	12.365591397849462	BSC-TeMU/roberta-base-bne
 12.8	>	9.900990099009901	BSC-TeMU/roberta-large-bne
-17.316017316017316	<	18.04123711340206	dccuchile/bert-base-spanish-wwm-uncased
-12.863070539419088	<	15.025906735751295	dccuchile/bert-base-spanish-wwm-cased
-11.235955056179776	<	13.218390804597702	mrm8488/electricidad-base-generator
+17.748917748917748	<	18.04123711340206	dccuchile/bert-base-spanish-wwm-uncased
+13.278008298755188	<	15.025906735751295	dccuchile/bert-base-spanish-wwm-cased
+11.797752808988765	<	13.218390804597702	mrm8488/electricidad-base-generator
 14.197530864197532	<	15.328467153284672	MMG/mlm-spanish-roberta-base
 18.6046511627907	<	22.471910112359552	bertin-project/bertin-roberta-base-spanish
 7.874015748031496	<	9.022556390977444	bert-base-multilingual-cased
-12.244897959183673	<	13.636363636363637	bertin-project/bertin-base-random
-19.767441860465116	>	19.760479041916167	bertin-project/bertin-base-stepwise
+12.92517006802721	<	13.636363636363637	bertin-project/bertin-base-random
+20.348837209302324	>	19.760479041916167	bertin-project/bertin-base-stepwise
 18.6046511627907	<	22.471910112359552	bertin-project/bertin-base-gaussian
 15.028901734104046	>	13.089005235602095	bertin-project/bertin-base-random-exp-512seqlen
 12.666666666666666	<	14.457831325301205	bertin-project/bertin-base-stepwise-exp-512seqlen
 16.296296296296298	>	14.197530864197532	bertin-project/bertin-base-gaussian-exp-512seqlen
+7.194244604316546	<	8.219178082191782	amine/bert-base-5lang-cased
+7.913669064748201	<	8.904109589041095	Geotrend/bert-base-es-cased
+13.043478260869565	<	23.25581395348837	mrm8488/RuPERTa-base
+7.6923076923076925	<	8.421052631578947	BSC-TeMU/RoBERTalex
+6.363636363636363	<	10.434782608695652	Recognai/distilbert-base-es-multilingual-cased
+20.833333333333332	>	18.94736842105263	flax-community/alberti-bert-base-multilingual-cased
+6.363636363636363	<	10.256410256410257	Geotrend/distilbert-base-es-cased

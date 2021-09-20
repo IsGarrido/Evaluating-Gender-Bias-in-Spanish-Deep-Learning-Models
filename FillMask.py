@@ -16,7 +16,11 @@ from transformers import AutoTokenizer, FillMaskPipeline
 from src.ListHelper import *
 
 
-cat_config_ismael = CategorizacionConfig("result_fillmask/categorias_ismael", "../TextTools/CategoriasAdjetivos/excel_ismael.tsv","./data/FillMask/sentences.tsv")
+cat_config_ismael = CategorizacionConfig(
+    "result_fillmask/categorias_ismael",
+    "../TextTools/CategoriasAdjetivos/excel_ismael.tsv",
+    "./data/FillMask/sentences.tsv"
+)
 
 cat_config_polaridad_visibilidad = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_visibilidad",
@@ -30,7 +34,26 @@ cat_config_polaridad_visibilidad_negadas = CategorizacionConfig(
     "./data/FillMask/sentences_neg.tsv"
 )
 '''
-cconfig = cat_config_polaridad_visibilidad
+
+cat_config_polaridad_foa_foa = CategorizacionConfig(
+    "result_fillmask/categorias_polaridad_foa_foa",
+    "../TextTools/CategoriasAdjetivos/polaridad_foa_foa.tsv",
+    "./data/FillMask/sentences.tsv"
+)
+
+cat_config_polaridad_foa_foa_with_visibles = CategorizacionConfig(
+    "result_fillmask/categorias_polaridad_foa_foa_with_visibles",
+    "../TextTools/CategoriasAdjetivos/polaridad_foa_foa_with_visibles.tsv",
+    "./data/FillMask/sentences.tsv"
+)
+
+cat_config_yulia = CategorizacionConfig(
+    "result_fillmask/categorias_yulia",
+    "../TextTools/CategoriasAdjetivos/yulia.tsv",
+    "./data/FillMask/sentences.tsv"
+)
+
+cconfig = cat_config_yulia
 
 # constantes
 T = "\t"

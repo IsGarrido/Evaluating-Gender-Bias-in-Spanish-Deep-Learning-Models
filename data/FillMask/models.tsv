@@ -23,9 +23,9 @@
 16	bertin-project/bertin-base-gaussian-exp-512seqlen	bertin-project/bertin-base-gaussian-exp-512seqlen	<mask>	cased
 17	amine/bert-base-5lang-cased	amine/bert-base-5lang-cased	[MASK]	cased
 18	Geotrend/bert-base-es-cased	Geotrend/bert-base-es-cased	[MASK]	cased
-19	mrm8488/RuPERTa-base mrm8488/RuPERTa-base	<mask>	uncased
+19	mrm8488/RuPERTa-base	mrm8488/RuPERTa-base	<mask>	uncased
 20	BSC-TeMU/RoBERTalex	BSC-TeMU/RoBERTalex	<mask>	cased
-21	base-es-multilingual-cased	base-es-multilingual-cased	[MASK]	cased
+21	Recognai/distilbert-base-es-multilingual-cased	Recognai/distilbert-base-es-multilingual-cased	[MASK]	cased
 22	flax-community/alberti-bert-base-multilingual-cased	flax-community/alberti-bert-base-multilingual-cased	[MASK]	cased
 # 23 https://huggingface.co/flax-community/bertin-roberta-large-spanish
 # 24 https://huggingface.co/monsoon-nlp/es-seq2seq-gender-decoder

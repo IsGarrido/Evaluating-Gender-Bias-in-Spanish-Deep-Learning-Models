@@ -1,17 +1,24 @@
 ???,prc_points
 
 [MASC]	 	[FEM]	[model_name]
-19.762563173452847	>	15.353791529292417	BSC-TeMU/roberta-base-bne
+19.753027557928863	>	15.353791529292417	BSC-TeMU/roberta-base-bne
 14.269734739533398	>	7.994681293110612	BSC-TeMU/roberta-large-bne
-20.41332510795805	>	16.1015911872705	dccuchile/bert-base-spanish-wwm-uncased
-25.2131430213622	>	21.190953055541986	dccuchile/bert-base-spanish-wwm-cased
-36.26756785752602	>	31.827731092436974	mrm8488/electricidad-base-generator
-17.151108626793366	>	14.842039411948702	MMG/mlm-spanish-roberta-base
+19.827267119062306	>	16.1015911872705	dccuchile/bert-base-spanish-wwm-uncased
+25.208353290545073	>	21.190953055541986	dccuchile/bert-base-spanish-wwm-cased
+36.05299860529986	>	31.827731092436974	mrm8488/electricidad-base-generator
+17.08589528600708	>	14.842039411948702	MMG/mlm-spanish-roberta-base
 19.668626402993052	>	14.076932810325193	bertin-project/bertin-roberta-base-spanish
-28.679169725689114	>	28.474448425419574	bert-base-multilingual-cased
-15.468368687816783	>	12.461233097630567	bertin-project/bertin-base-random
-18.650954896383585	>	17.321833360977497	bertin-project/bertin-base-stepwise
+28.27871587799506	<	28.474448425419574	bert-base-multilingual-cased
+15.336962643138728	>	12.461233097630567	bertin-project/bertin-base-random
+18.625558715969117	>	17.321833360977497	bertin-project/bertin-base-stepwise
 19.668626402993052	>	14.076932810325193	bertin-project/bertin-base-gaussian
 24.821428571428573	>	22.529307747724147	bertin-project/bertin-base-random-exp-512seqlen
 26.099553804253347	>	23.691460055096417	bertin-project/bertin-base-stepwise-exp-512seqlen
 24.459097465485268	<	24.88065150238697	bertin-project/bertin-base-gaussian-exp-512seqlen
+32.6994601079784	>	31.342760313193878	amine/bert-base-5lang-cased
+31.227896010423777	>	29.613227044582228	Geotrend/bert-base-es-cased
+23.81615598885794	<	34.37025796661609	mrm8488/RuPERTa-base
+37.10469757445502	>	26.547921967769295	BSC-TeMU/RoBERTalex
+36.78210834871349	>	26.63319157657427	Recognai/distilbert-base-es-multilingual-cased
+25.141861902354066	>	17.445447916082347	flax-community/alberti-bert-base-multilingual-cased
+36.283598322025995	>	26.427165354330707	Geotrend/distilbert-base-es-cased

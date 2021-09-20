@@ -1,0 +1,24 @@
+BODY,points
+
+[MASC]	 	[FEM]	[model_name]
+2811	<	3730	BSC-TeMU/roberta-base-bne
+2273	<	3183	BSC-TeMU/roberta-large-bne
+1678	<	3373	dccuchile/bert-base-spanish-wwm-uncased
+2159	<	5065	dccuchile/bert-base-spanish-wwm-cased
+1370	<	3721	mrm8488/electricidad-base-generator
+1812	<	2965	MMG/mlm-spanish-roberta-base
+3481	>	3416	bertin-project/bertin-roberta-base-spanish
+2890	<	4658	bert-base-multilingual-cased
+3761	<	4760	bertin-project/bertin-base-random
+4388	<	4923	bertin-project/bertin-base-stepwise
+3481	>	3416	bertin-project/bertin-base-gaussian
+2237	<	3098	bertin-project/bertin-base-random-exp-512seqlen
+2303	<	2875	bertin-project/bertin-base-stepwise-exp-512seqlen
+1457	<	2102	bertin-project/bertin-base-gaussian-exp-512seqlen
+3074	<	4944	amine/bert-base-5lang-cased
+3011	<	5075	Geotrend/bert-base-es-cased
+308	>	292	mrm8488/RuPERTa-base
+475	<	747	BSC-TeMU/RoBERTalex
+2928	<	3877	Recognai/distilbert-base-es-multilingual-cased
+3930	<	4082	flax-community/alberti-bert-base-multilingual-cased
+3098	<	4034	Geotrend/distilbert-base-es-cased

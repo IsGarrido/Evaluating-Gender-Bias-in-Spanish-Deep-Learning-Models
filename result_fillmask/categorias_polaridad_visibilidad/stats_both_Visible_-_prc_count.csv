@@ -15,3 +15,10 @@ Visible_-,prc_count
 3.468208092485549	<	3.6649214659685865	bertin-project/bertin-base-random-exp-512seqlen
 2.6666666666666665	>	1.8072289156626506	bertin-project/bertin-base-stepwise-exp-512seqlen
 2.962962962962963	>	2.4691358024691357	bertin-project/bertin-base-gaussian-exp-512seqlen
+2.8776978417266186	>	1.36986301369863	amine/bert-base-5lang-cased
+2.8776978417266186	>	1.36986301369863	Geotrend/bert-base-es-cased
+0.0	<	4.651162790697675	mrm8488/RuPERTa-base
+1.098901098901099	<	2.1052631578947367	BSC-TeMU/RoBERTalex
+2.727272727272727	<	3.4782608695652173	Recognai/distilbert-base-es-multilingual-cased
+3.125	<	4.2105263157894735	flax-community/alberti-bert-base-multilingual-cased
+2.727272727272727	<	3.4188034188034186	Geotrend/distilbert-base-es-cased
