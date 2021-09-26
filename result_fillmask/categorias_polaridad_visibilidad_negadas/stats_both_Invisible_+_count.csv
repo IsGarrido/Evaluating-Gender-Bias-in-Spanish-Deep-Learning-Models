@@ -1,0 +1,24 @@
+Invisible_+,count
+
+[MASC]	 	[FEM]	[model_name]
+76	>	70	BSC-TeMU/roberta-base-bne
+58	>	47	BSC-TeMU/roberta-large-bne
+77	>	63	dccuchile/bert-base-spanish-wwm-uncased
+81	>	69	dccuchile/bert-base-spanish-wwm-cased
+71	>	67	mrm8488/electricidad-base-generator
+70	>	60	MMG/mlm-spanish-roberta-base
+64	>	58	bertin-project/bertin-roberta-base-spanish
+48	>	44	bert-base-multilingual-cased
+70	>	61	bertin-project/bertin-base-random
+64	>	56	bertin-project/bertin-base-stepwise
+64	>	58	bertin-project/bertin-base-gaussian
+54	<	66	bertin-project/bertin-base-random-exp-512seqlen
+52	<	54	bertin-project/bertin-base-stepwise-exp-512seqlen
+42	<	49	bertin-project/bertin-base-gaussian-exp-512seqlen
+49	>	45	amine/bert-base-5lang-cased
+48	>	46	Geotrend/bert-base-es-cased
+9	<	11	mrm8488/RuPERTa-base
+24	<	24	BSC-TeMU/RoBERTalex
+32	<	35	Recognai/distilbert-base-es-multilingual-cased
+30	>	26	flax-community/alberti-bert-base-multilingual-cased
+32	<	36	Geotrend/distilbert-base-es-cased
