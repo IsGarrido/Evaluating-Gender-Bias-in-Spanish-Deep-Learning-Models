@@ -19,40 +19,54 @@ from src.ListHelper import *
 cat_config_ismael = CategorizacionConfig(
     "result_fillmask/categorias_ismael",
     "../TextTools/CategoriasAdjetivos/excel_ismael.tsv",
-    "./data/FillMask/sentences.tsv"
+    "./data/FillMask/sentences.tsv",
+    True
 )
 
 cat_config_polaridad_visibilidad = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_visibilidad",
     "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv",
-    "./data/FillMask/sentences.tsv"
+    "./data/FillMask/sentences.tsv",
+    True
 )
 
 cat_config_polaridad_visibilidad_negadas = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_visibilidad_negadas",
     "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv",
-    "./data/FillMask/sentences_neg.tsv"
+    "./data/FillMask/sentences_neg.tsv",
+    True
 )
 
 cat_config_polaridad_foa_foa = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_foa_foa",
     "../TextTools/CategoriasAdjetivos/polaridad_foa_foa.tsv",
-    "./data/FillMask/sentences.tsv"
+    "./data/FillMask/sentences.tsv",
+    True
 )
 
 cat_config_polaridad_foa_foa_with_visibles = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_foa_foa_with_visibles",
     "../TextTools/CategoriasAdjetivos/polaridad_foa_foa_with_visibles.tsv",
-    "./data/FillMask/sentences.tsv"
+    "./data/FillMask/sentences.tsv",
+    True
 )
 
 cat_config_yulia = CategorizacionConfig(
     "result_fillmask/categorias_yulia",
     "../TextTools/CategoriasAdjetivos/yulia.tsv",
-    "./data/FillMask/sentences.tsv"
+    "./data/FillMask/sentences.tsv",
+    True
 )
 
-cconfig = cat_config_polaridad_visibilidad_negadas
+cat_config_profesiones =  CategorizacionConfig(
+    "result_fillmask_profesiones/base",
+    "../TextTools/CategoriasAdjetivos/yulia.tsv",
+    "./data/FillMask/sentences_profesiones.tsv",
+    False
+)
+
+
+cconfig = cat_config_profesiones
 
 # constantes
 T = "\t"
@@ -122,7 +136,7 @@ def save_run(model_name, points, scores, kind="m"):
         all_filling_words.append(key)
 
         # Solo si es un adjetivo
-        if key in adjectives_map:
+        if key in adjectives_map or not cconfig.check_is_adjective:
             l_adj.append(from_int(points_value, 4) + T + key)
             all_filling_adjectives.append(key)
 
