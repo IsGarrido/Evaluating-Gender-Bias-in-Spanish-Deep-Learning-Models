@@ -60,7 +60,7 @@ cat_config_yulia = CategorizacionConfig(
 
 cat_config_profesiones =  CategorizacionConfig(
     "result_fillmask_profesiones/base",
-    "../TextTools/CategoriasAdjetivos/yulia.tsv",
+    "../TextTools/CategoriasAdjetivos/profesiones_10_cnae_2021t2.tsv",
     "./data/FillMask/sentences_profesiones.tsv",
     False
 )
@@ -71,9 +71,10 @@ cconfig = cat_config_profesiones
 # constantes
 T = "\t"
 #RESULT_PATH = "result_fillmask/categorias_ismael"
-RESULT_QTY = 25
+RESULT_QTY = 10
 TOTAL_CAT = "[_TOTAL]"
 WORD_MIN_LEN = 4
+WRITE_DEBUG = False
 
 # Inicializar cosas en espacio común, cuando esté estado hay que darle una vuelta, muy cutre esto
 
@@ -105,7 +106,7 @@ generator(
 '''
 
 def run_grouped(model, modelname, tokenizer, sentences):
-    filler = GroupedFillMask(model, modelname, tokenizer, cconfig.RESULT_PATH, RESULT_QTY).run_for_sentences(sentences)
+    filler = GroupedFillMask(model, modelname, tokenizer, cconfig.RESULT_PATH, RESULT_QTY, False).run_for_sentences(sentences)
     return filler
 
 
@@ -154,31 +155,6 @@ def save_run(model_name, points, scores, kind="m"):
             category_count[TOTAL_CAT] = category_count[TOTAL_CAT] + 1
             category_points[TOTAL_CAT] = category_points[TOTAL_CAT] + points_value
             category_score[TOTAL_CAT] = category_score[TOTAL_CAT] + score_value
-            '''
-            # Conteo de categorias, solo para los adjetivos encontrados
-            if category in category_count:
-                category_count[category] = category_count[category]+1
-            else:
-                category_count[category] = 0
-
-            category_count[TOTAL_CAT] = category_count[TOTAL_CAT] + 1
-
-            # Suma de los puntos
-            if category in category_points:
-                category_points[category] = category_points[category] + points_value
-            else:
-                category_points[category] = points_value
-
-            category_points[TOTAL_CAT] = category_points[TOTAL_CAT] + points_value
-
-            # Suma las scores
-            if category in category_score:
-                category_score[category] = category_score[category] + score_value
-            else:
-                category_score[category] = score_value
-
-            category_score[TOTAL_CAT] = category_score[TOTAL_CAT] + score_value
-            '''
 
     l_category = []
     dict_results = {}
@@ -219,9 +195,10 @@ def save_run(model_name, points, scores, kind="m"):
     # Pasar a disco
     path = cconfig.RESULT_PATH + "/run_" + str(run_id) + "_" + kind + "_" + as_file_name(model_name)
 
-    write_txt(data, path + ".csv")
-    write_txt(data_adj, path + "_adj.csv")
-    write_txt(data_category, path + "_cat.csv")
+    if WRITE_DEBUG:
+        write_txt(data, path + ".csv")
+        write_txt(data_adj, path + "_adj.csv")
+        write_txt(data_category, path + "_cat.csv")
 
     return dict_results
 

@@ -1,0 +1,23 @@
+Logistica,prc_points
+
+[MASC]	 	[FEM]	[model_name]
+6.490696668109043	>	0.17628911414720141	BSC-TeMU/roberta-base-bne
+7.0113314447592066	>	1.827485380116959	BSC-TeMU/roberta-large-bne
+2.6533996683250414	>	0.0	dccuchile/bert-base-spanish-wwm-uncased
+6.474820143884892	>	0.4290171606864275	dccuchile/bert-base-spanish-wwm-cased
+0.9349955476402493	>	0.0	mrm8488/electricidad-base-generator
+0.0	<	0.0	MMG/mlm-spanish-roberta-base
+0.0	<	0.0	bertin-project/bertin-roberta-base-spanish
+0.04950495049504951	>	0.0	bert-base-multilingual-cased
+0.0	<	0.0	bertin-project/bertin-base-random
+0.3058103975535168	>	0.0	bertin-project/bertin-base-stepwise
+0.0	<	0.0	bertin-project/bertin-base-gaussian
+0.4151291512915129	<	0.8093525179856115	bertin-project/bertin-base-random-exp-512seqlen
+0.0	<	0.0	bertin-project/bertin-base-stepwise-exp-512seqlen
+0.0	<	0.0	bertin-project/bertin-base-gaussian-exp-512seqlen
+0.17921146953405018	>	0.0	amine/bert-base-5lang-cased
+0.04653327128897161	>	0.0	Geotrend/bert-base-es-cased
+0.0	<	0.0	BSC-TeMU/RoBERTalex
+0.0	<	0.0	Recognai/distilbert-base-es-multilingual-cased
+0.0	<	0.0	flax-community/alberti-bert-base-multilingual-cased
+0.0	<	0.0	Geotrend/distilbert-base-es-cased
