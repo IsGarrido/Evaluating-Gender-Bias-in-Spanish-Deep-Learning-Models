@@ -1,0 +1,24 @@
+FEEL,points
+
+[MASC]	 	[FEM]	[model_name]
+2627	>	2614	BSC-TeMU/roberta-base-bne
+1502	<	1931	BSC-TeMU/roberta-large-bne
+1766	<	2047	dccuchile/bert-base-spanish-wwm-uncased
+1882	<	2155	dccuchile/bert-base-spanish-wwm-cased
+1004	<	1174	mrm8488/electricidad-base-generator
+2631	<	2680	MMG/mlm-spanish-roberta-base
+1627	>	1152	bertin-project/bertin-roberta-base-spanish
+329	<	331	bert-base-multilingual-cased
+992	<	1054	bertin-project/bertin-base-random
+1162	>	992	bertin-project/bertin-base-stepwise
+1627	>	1152	bertin-project/bertin-base-gaussian
+1083	<	1156	bertin-project/bertin-base-random-exp-512seqlen
+836	>	489	bertin-project/bertin-base-stepwise-exp-512seqlen
+352	<	386	bertin-project/bertin-base-gaussian-exp-512seqlen
+370	>	306	amine/bert-base-5lang-cased
+376	>	357	Geotrend/bert-base-es-cased
+0	<	81	mrm8488/RuPERTa-base
+39	>	2	BSC-TeMU/RoBERTalex
+55	>	48	Recognai/distilbert-base-es-multilingual-cased
+1447	<	2463	flax-community/alberti-bert-base-multilingual-cased
+63	>	56	Geotrend/distilbert-base-es-cased
