@@ -1,0 +1,23 @@
+BEHA,points
+
+[MASC]	 	[FEM]	[model_name]
+1299	>	1232	BSC-TeMU/roberta-base-bne
+1148	>	806	BSC-TeMU/roberta-large-bne
+1154	>	972	dccuchile/bert-base-spanish-wwm-uncased
+1499	>	1155	dccuchile/bert-base-spanish-wwm-cased
+1277	>	1110	mrm8488/electricidad-base-generator
+1810	>	1658	MMG/mlm-spanish-roberta-base
+1295	>	1102	bertin-project/bertin-roberta-base-spanish
+959	>	790	bert-base-multilingual-cased
+1036	>	1019	bertin-project/bertin-base-random
+1414	>	1187	bertin-project/bertin-base-stepwise
+1295	>	1102	bertin-project/bertin-base-gaussian
+1013	<	1017	bertin-project/bertin-base-random-exp-512seqlen
+1380	>	1294	bertin-project/bertin-base-stepwise-exp-512seqlen
+1060	>	957	bertin-project/bertin-base-gaussian-exp-512seqlen
+985	>	773	amine/bert-base-5lang-cased
+1040	>	813	Geotrend/bert-base-es-cased
+471	>	468	BSC-TeMU/RoBERTalex
+1348	<	1571	Recognai/distilbert-base-es-multilingual-cased
+944	<	1237	flax-community/alberti-bert-base-multilingual-cased
+1569	<	1768	Geotrend/distilbert-base-es-cased

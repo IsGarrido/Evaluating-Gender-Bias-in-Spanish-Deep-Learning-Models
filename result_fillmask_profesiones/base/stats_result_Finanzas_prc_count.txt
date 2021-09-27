@@ -1,0 +1,10 @@
+Test results for 20, 20 elementos 
+No se ha podido ejecutar wilcoxon
+No se ha podido ejecutar whitney
+[SHAP  ] Statistics=1.0 p=1.0
+[SHAP ✔] p >= alpha, Is normal distribution
+[TSTU  ] Different distribution (reject H0)
+2021-09-27 17:35
+
+
+

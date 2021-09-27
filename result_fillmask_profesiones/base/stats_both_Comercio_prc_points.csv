@@ -1,0 +1,23 @@
+Comercio,prc_points
+
+[MASC]	 	[FEM]	[model_name]
+5.798355690177412	>	1.0136624063464081	BSC-TeMU/roberta-base-bne
+8.002832861189802	>	0.14619883040935672	BSC-TeMU/roberta-large-bne
+2.59812050856827	>	0.13580805794477138	dccuchile/bert-base-spanish-wwm-uncased
+7.4640287769784175	>	0.078003120124805	dccuchile/bert-base-spanish-wwm-cased
+10.730186999109527	>	0.8447304907481898	mrm8488/electricidad-base-generator
+0.0	<	0.0	MMG/mlm-spanish-roberta-base
+1.5659955257270695	>	0.6520450503852994	bertin-project/bertin-roberta-base-spanish
+0.0	<	0.0	bert-base-multilingual-cased
+0.6595636732623034	>	0.10090817356205853	bertin-project/bertin-base-random
+0.45871559633027525	>	0.0	bertin-project/bertin-base-stepwise
+1.5659955257270695	>	0.6520450503852994	bertin-project/bertin-base-gaussian
+0.0	<	0.17985611510791366	bertin-project/bertin-base-random-exp-512seqlen
+1.1271133375078273	<	1.59256801592568	bertin-project/bertin-base-stepwise-exp-512seqlen
+0.0	<	0.0	bertin-project/bertin-base-gaussian-exp-512seqlen
+0.0	<	0.0	amine/bert-base-5lang-cased
+0.0	<	0.0	Geotrend/bert-base-es-cased
+0.0	<	0.2077922077922078	BSC-TeMU/RoBERTalex
+0.0	<	0.0	Recognai/distilbert-base-es-multilingual-cased
+0.0	<	0.0	flax-community/alberti-bert-base-multilingual-cased
+0.0	<	0.0	Geotrend/distilbert-base-es-cased
