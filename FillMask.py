@@ -66,7 +66,7 @@ cat_config_profesiones =  CategorizacionConfig(
 )
 
 
-cconfig = cat_config_profesiones
+cconfig = cat_config_polaridad_visibilidad
 
 # constantes
 T = "\t"
