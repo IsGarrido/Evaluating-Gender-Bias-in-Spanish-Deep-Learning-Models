@@ -62,16 +62,17 @@ cat_config_profesiones =  CategorizacionConfig(
     "result_fillmask_profesiones/base",
     "../TextTools/CategoriasAdjetivos/profesiones_10_cnae_2021t2.tsv",
     "./data/FillMask/sentences_profesiones.tsv",
-    False
+    False,
+    10
 )
 
 
-cconfig = cat_config_profesiones
+cconfig = cat_config_polaridad_visibilidad
+cconfig = cat_config_polaridad_visibilidad_negadas
 
 # constantes
 T = "\t"
 #RESULT_PATH = "result_fillmask/categorias_ismael"
-RESULT_QTY = 10
 TOTAL_CAT = "[_TOTAL]"
 WORD_MIN_LEN = 4
 WRITE_DEBUG = False
@@ -106,7 +107,7 @@ generator(
 '''
 
 def run_grouped(model, modelname, tokenizer, sentences):
-    filler = GroupedFillMask(model, modelname, tokenizer, cconfig.RESULT_PATH, RESULT_QTY, False).run_for_sentences(sentences)
+    filler = GroupedFillMask(model, modelname, tokenizer, cconfig.RESULT_PATH, cconfig.quantity, False).run_for_sentences(sentences)
     return filler
 
 
