@@ -67,15 +67,16 @@ cat_config_profesiones =  CategorizacionConfig(
 )
 
 
-cconfig = cat_config_polaridad_visibilidad
-cconfig = cat_config_polaridad_visibilidad_negadas
+cconfig = cat_config_ismael
 
 # constantes
 T = "\t"
 #RESULT_PATH = "result_fillmask/categorias_ismael"
 TOTAL_CAT = "[_TOTAL]"
+UNKOWN_CAT = "[???]"
 WORD_MIN_LEN = 4
 WRITE_DEBUG = False
+WRITE_STATS = False
 
 # Inicializar cosas en espacio común, cuando esté estado hay que darle una vuelta, muy cutre esto
 
@@ -127,6 +128,10 @@ def save_run(model_name, points, scores, kind="m"):
         category_points[category] = 0
         category_score[category] = 0
 
+    category_count[UNKOWN_CAT] = 0
+    category_points[UNKOWN_CAT] = 0
+    category_score[UNKOWN_CAT] = 0
+
     category_points[TOTAL_CAT] = 0
     category_count[TOTAL_CAT] = 0
     category_score[TOTAL_CAT] = 0
@@ -143,7 +148,7 @@ def save_run(model_name, points, scores, kind="m"):
             all_filling_adjectives.append(key)
 
             # Buscar la categoria
-            category = '[???]'
+            category = UNKOWN_CAT
             if key in adjetivos_categorizados:
                 category = adjetivos_categorizados[key]
 
@@ -243,8 +248,9 @@ def run_global_stats():
 
             # Escribir listas para posterior revisión
             data_m = list_as_file(list_as_str_list(l_before))
-            write_txt(data_m, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_m.txt")
             data_f = list_as_file(list_as_str_list(l_after))
+
+            write_txt(data_m, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_m.txt")
             write_txt(data_f, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_f.txt")
 
             l_both = []
@@ -293,10 +299,11 @@ sentences = read_pared_tsv(cconfig.sentences_path)
 uncased_sentences = [ [p[0].lower().replace("[mask]", "[MASK]"), p[1].lower().replace("[mask]", "[MASK]")] for p in sentences]
 models = read_pared_tsv("./data/FillMask/models.tsv")
 
-for model in models:
+for idx, model in enumerate(models):
     run_id = model[0]
     sentence_list = sentences if model[4] == "cased" else uncased_sentences
     run(model[1], model[2], model[3], sentence_list)
+    print("Finalizado modelo nro " + str(idx))
 
 data = list_as_file(all_filling_words)
 write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_words.csv")
@@ -304,8 +311,12 @@ write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_words.csv")
 data = list_as_file(all_filling_adjectives)
 write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_adjectives.csv")
 
+
 if cconfig.categories_ready:
-    run_global_stats()
+
+    if WRITE_STATS:
+        run_global_stats()
+
     adjetivos_sin_categorizar = filter( lambda adjetivo: not adjetivo in adjetivos_categorizados, all_filling_adjectives)
     data = list_as_file(adjetivos_sin_categorizar)
     write_txt(data, cconfig.RESULT_PATH + "/summary_adj_missing_category.csv")
