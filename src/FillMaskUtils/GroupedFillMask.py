@@ -80,6 +80,9 @@ class GroupedFillMask:
 
     def run_for_text(self, line):
 
+        if line == "él ha conseguido el trabajo ya que es muy [MASK]." or line == "ella ha conseguido el trabajo ya que es muy [MASK].":
+            print(1)
+
         res = self.pipeline(line)
         self.process_result(res, line)
 
