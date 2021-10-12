@@ -1,6 +1,6 @@
 class CategorizacionConfig:
 
-    def __init__(self, prefix, categories_source_file, sentences_path, check_is_adjective, qty = 1):
+    def __init__(self, prefix, categories_source_file, sentences_path, check_is_adjective, qty = 27):
         self.prefix = prefix
         self.categories_source_file = categories_source_file
         self.categories_ready = categories_source_file != ''

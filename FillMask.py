@@ -67,7 +67,7 @@ cat_config_profesiones =  CategorizacionConfig(
 )
 
 
-cconfig = cat_config_ismael
+cconfig = cat_config_yulia
 
 # constantes
 T = "\t"
