@@ -52,7 +52,7 @@ def read_lines_as_dict(path):
     hashmap = dict.fromkeys(items, True)
     return hashmap
 
-def read_pared_tsv(file):
+def read_paired_tsv(file):
     data = read_lines_as_list(file)
     data = filter(lambda line: not line.startswith("#"), data)
     data = filter(lambda line: line.strip() != "", data)

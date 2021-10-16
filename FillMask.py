@@ -2,7 +2,7 @@ from transformers import AutoTokenizer, AutoModelForMaskedLM
 from transformers import pipeline
 
 from src.DateHelper import FechaHoraTextual
-from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict, read_pared_tsv, write_json
+from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict, read_paired_tsv, write_json
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from src.FillMaskUtils.RunResult import RunResult
 from src.StatisticalAnalysis import run_tests_labeled
@@ -294,10 +294,10 @@ def run(modelname, tokenizername, MASK, sentences):
 
     print("OK => " + modelname)
 
-sentences = read_pared_tsv(cconfig.sentences_path)
+sentences = read_paired_tsv(cconfig.sentences_path)
 
 uncased_sentences = [ [p[0].lower().replace("[mask]", "[MASK]"), p[1].lower().replace("[mask]", "[MASK]")] for p in sentences]
-models = read_pared_tsv("./data/FillMask/models.tsv")
+models = read_paired_tsv("./data/FillMask/models.tsv")
 
 for idx, model in enumerate(models):
     run_id = model[0]
