@@ -22,3 +22,12 @@ class FunctionalHelper:
             full_groups[key] = subgroups
 
         return full_groups
+
+    @staticmethod
+    def sum(items, attribute):
+
+        total = 0
+        for item in items:
+            val = getattr(item, attribute)
+            total = total + val
+        return total

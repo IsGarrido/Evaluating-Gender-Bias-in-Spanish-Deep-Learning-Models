@@ -5,3 +5,6 @@ class TaskPrediction:
         self.token = token
         self.score = score
         self.index = index
+
+    def set_adjective(self, val : bool):
+        self.is_adjective = val

@@ -8,6 +8,7 @@ class TaskResult:
     sentence:str
     predictions:list[TaskPrediction]
     type:str = "undefined"
+    sentence_index:int = -1
 
     def __init__(self, model:str, sentence:str, predictions:list[TaskPrediction]):
         self.model = model
@@ -17,6 +18,9 @@ class TaskResult:
     def withType(self, type):
         self.type = type
         return self
+
+    def first_n_predictions(self, n:int):
+        return self.predictions[:n]
 
     @staticmethod
     def fromPipeline(model, sentence, predictions) -> TaskResult:
@@ -35,6 +39,16 @@ class TaskResult:
         for index, result in enumerate(result_list):
             type = type_list[index]
             result.type = type
+            arr.append(result)
+
+        return arr
+
+    @staticmethod
+    def assignIndex(sentence_index, result_list) -> list[TaskResult]:
+
+        arr = []
+        for index, result in enumerate(result_list):
+            result.sentence_index = sentence_index
             arr.append(result)
 
         return arr

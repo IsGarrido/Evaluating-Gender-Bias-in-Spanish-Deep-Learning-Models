@@ -5,7 +5,7 @@ from src.FillMask.Vm.FillMaskModel import FillMaskModel
 from src.FillMask.Vm.TaskResult import TaskResult
 from src.Utils.FileWriterHelper import FileWriterHelper
 from src.Utils.HuggingHelper import HuggingHelper
-from src.Utils.FileHelperReader import FileHelperReader as Reader
+from src.Utils.FileReaderHelper import FileReaderHelper as Reader
 from src.Utils.JsonHelper import JsonHelper
 
 
@@ -30,9 +30,12 @@ class Core:
         for model_item in self.models:
             model, tokenizer = model_item.get()
             task = FillMaskTask(model, tokenizer, 50)
-            for sentence_pair in self.sentences:
+
+            for pair_index, sentence_pair in enumerate(self.sentences):
                 results = task.fill_sentences(sentence_pair, model_item.mask)
                 sentence_results = TaskResult.assignTypes(self.types, results)
+                sentence_results = TaskResult.assignIndex(pair_index, sentence_results)
+
                 arr.extend(sentence_results)
 
         json = JsonHelper.encode(arr)
