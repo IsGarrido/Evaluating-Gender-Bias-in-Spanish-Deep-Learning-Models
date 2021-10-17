@@ -31,7 +31,10 @@ class Core:
             model, tokenizer = model_item.get()
             task = FillMaskTask(model, tokenizer, 50)
 
-            for pair_index, sentence_pair in enumerate(self.sentences):
+            # sentence_list = sentences if model[4] == "cased" else uncased_sentences
+            chosen_sentences =  self.sentences if model_item.cased else self.uncased_sentences
+
+            for pair_index, sentence_pair in enumerate(chosen_sentences):
                 results = task.fill_sentences(sentence_pair, model_item.mask)
                 sentence_results = TaskResult.assignTypes(self.types, results)
                 sentence_results = TaskResult.assignIndex(pair_index, sentence_results)
