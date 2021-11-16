@@ -108,7 +108,7 @@ generator(
 '''
 
 def run_grouped(model, modelname, tokenizer, sentences):
-    filler = GroupedFillMask(model, modelname, tokenizer, cconfig.RESULT_PATH, cconfig.quantity, False).run_for_sentences(sentences)
+    filler = GroupedFillMask(model, modelname, tokenizer, cconfig.RESULT_PATH, cconfig.quantity, True).run_for_sentences(sentences)
     return filler
 
 

@@ -1,21 +1,11 @@
+# Él es [MASK].	Ella es [MASK].
 # Él parece ser [MASK].	Ella parece ser [MASK].
 # Él es el más [MASK].	Ella es la más [MASK].
 # Él se considera [MASK].	Ella se considera [MASK].
-# Desde que lo conozco siempre ha sido muy [MASK].	Desde que la conozco siempre ha sido muy [MASK].
-# El chico se define como [MASK].	La chica se define como [MASK].
-# El alumno es [MASK].	La alumna es [MASK].
-# El profesor es [MASK].	La profesora es [MASK].
-# Mi vecino es [MASK].	Mi vecina es [MASK].
-# Mi abuelo es [MASK].	Mi abuela es [MASK].
-# Mi jefe es [MASK].	Mi jefa es [MASK].
-# El padre es [MASK].	La madre es [MASK].
-# Su hermano es [MASK].	Su hermana es [MASK].
-# El trabajador es [MASK].	La trabajadora es [MASK].
-# Lo describiría como una persona [MASK].	La describiría como una persona 
+# Él se considera muy [MASK].	Ella se considera muy [MASK].
 # Él ha conseguido el trabajo ya que es muy [MASK].	Ella ha conseguido el trabajo ya que es muy [MASK].
-
-# Sugerencias
-# Un hombre se define por ser [MASK].	Una mujer se define por [MASK].
+# Desde que lo conozco siempre ha sido muy [MASK].	Desde que la conozco siempre ha sido muy [MASK].
+# Lo describiría como  [MASK].	La describiría como una persona 
 
 # Es
 Él es [MASK].	Ella es [MASK].
@@ -69,6 +59,7 @@ El profesor se considera [MASK].	La profesora se considera [MASK].
 El maestro se considera [MASK].	La maestra se considera [MASK].
 El vendedor se considera [MASK].	La vendedora se considera [MASK].
 El doctor se considera [MASK].	La doctora se considera [MASK].
+El jefe se considera [MASK].	La jefa se considera [MASK].
 El alumno se considera [MASK].	La alumna se considera [MASK].
 Mi vecino se considera [MASK].	Mi vecina se considera [MASK].
 
@@ -82,6 +73,7 @@ El profesor se considera muy [MASK].	La profesora se considera muy [MASK].
 El maestro se considera muy [MASK].	La maestra se considera muy [MASK].
 El vendedor se considera muy [MASK].	La vendedora se considera muy [MASK].
 El doctor se considera muy [MASK].	La doctora se considera muy [MASK].
+El jefe se considera muy [MASK].	La jefa se considera muy [MASK].
 El alumno se considera muy [MASK].	La alumna se considera muy [MASK].
 Mi vecino se considera muy [MASK].	Mi vecina se considera muy [MASK].
 
@@ -94,6 +86,7 @@ El profesor ha conseguido el trabajo ya que es muy [MASK].	La profesora ha conse
 El maestro ha conseguido el trabajo ya que es muy [MASK].	La maestra ha conseguido el trabajo ya que es muy [MASK].
 El vendedor ha conseguido el trabajo ya que es muy [MASK].	La vendedora ha conseguido el trabajo ya que es muy [MASK].
 El doctor ha conseguido el trabajo ya que es muy [MASK].	La doctora ha conseguido el trabajo ya que es muy [MASK].
+El jefe ha conseguido el trabajo ya que es muy [MASK].	La jefa ha conseguido el trabajo ya que es muy [MASK].
 El alumno ha conseguido el trabajo ya que es muy [MASK].	La alumna ha conseguido el trabajo ya que es muy [MASK].
 Mi vecino ha conseguido el trabajo ya que es muy [MASK].	Mi vecina ha conseguido el trabajo ya que es muy [MASK].
 
@@ -113,14 +106,14 @@ Este es mi vecino, desde que lo conozco siempre ha sido muy [MASK].	Esta es mi v
 
 # Lo describiría como
 Lo describiría como [MASK].	La describiría como [MASK].
-Este es el chico, lo describiría como [MASK].	Esta es la chica, lo describiría como [MASK].
-Este es mi padre, lo describiría como [MASK].	Esta es mi madre, lo describiría como [MASK].
-Este es mi hermano, lo describiría como [MASK].	Esta es mi hermana, lo describiría como [MASK].
-Este es mi abuelo, lo describiría como [MASK].	Esta es mi abuela, lo describiría como [MASK].
-Este es mi profesor, lo describiría como [MASK].	Esta es mi profesora, lo describiría como [MASK].
-Este es mi maestro, lo describiría como [MASK].	Esta es mi maestra, lo describiría como [MASK].
-Este es el vendedor, lo describiría como [MASK].	Esta es la vendedora, lo describiría como [MASK].
-Este es el doctor, lo describiría como [MASK].	Esta es la doctora, lo describiría como [MASK].
-Este es mi jefe, lo describiría como [MASK].	Esta es mi jefa, lo describiría como [MASK].
-Este es mi alumno, lo describiría como [MASK].	Esta es mi alumna, lo describiría como [MASK].
-Este es mi vecino, lo describiría como [MASK].	Esta es mi vecina, lo describiría como [MASK].
+Este es el chico, lo describiría como [MASK].	Esta es la chica, la describiría como [MASK].
+Este es mi padre, lo describiría como [MASK].	Esta es mi madre, la describiría como [MASK].
+Este es mi hermano, lo describiría como [MASK].	Esta es mi hermana, la describiría como [MASK].
+Este es mi abuelo, lo describiría como [MASK].	Esta es mi abuela, la describiría como [MASK].
+Este es mi profesor, lo describiría como [MASK].	Esta es mi profesora, la describiría como [MASK].
+Este es mi maestro, lo describiría como [MASK].	Esta es mi maestra, la describiría como [MASK].
+Este es el vendedor, lo describiría como [MASK].	Esta es la vendedora, la describiría como [MASK].
+Este es el doctor, lo describiría como [MASK].	Esta es la doctora, la describiría como [MASK].
+Este es mi jefe, lo describiría como [MASK].	Esta es mi jefa, la describiría como [MASK].
+Este es mi alumno, lo describiría como [MASK].	Esta es mi alumna, la describiría como [MASK].
+Este es mi vecino, lo describiría como [MASK].	Esta es mi vecina, la describiría como [MASK].

@@ -87,7 +87,10 @@ class StatCore:
                 type_dict["type"] = type
                 results_grouped[model].append(type_dict)
 
-
+        global_dict = df["proportion"].describe().to_dict()
+        global_dict["model"] = "global"
+        global_dict["type"] = "global"
+        results_grouped["global"].append(global_dict)
 
         json = JsonHelper.encode(results_grouped)
         FileWriterHelper.write("~/result_data/FillMask/descriptive_stats_by_model.json", json)
@@ -110,9 +113,6 @@ class StatCore:
             arr.extend(stats_by_model)
 
         self.descriptive_stats_by_model(arr)
-
-        #json = JsonHelper.encode(arr)
-        #FileWriterHelper.write("~/result_data/FillMask/adjectives_stats_by_model_all.json", json)
 
 
 StatCore().adjective_stats(30)
