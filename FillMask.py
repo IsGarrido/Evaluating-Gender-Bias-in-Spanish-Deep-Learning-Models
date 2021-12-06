@@ -18,49 +18,49 @@ from src.ListHelper import *
 
 cat_config_ismael = CategorizacionConfig(
     "result_fillmask/categorias_ismael",
-    "../TextTools/CategoriasAdjetivos/excel_ismael.tsv",
+    "./data/CategoriasAdjetivos/excel_ismael.tsv",
     "./data/FillMask/sentences.tsv",
     True
 )
 
 cat_config_polaridad_visibilidad = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_visibilidad",
-    "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv",
+    "./data/CategoriasAdjetivos/polaridad_visibilidad.tsv",
     "./data/FillMask/sentences.tsv",
     True
 )
 
 cat_config_polaridad_visibilidad_negadas = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_visibilidad_negadas",
-    "../TextTools/CategoriasAdjetivos/polaridad_visibilidad.tsv",
+    "./data/CategoriasAdjetivos/polaridad_visibilidad.tsv",
     "./data/FillMask/sentences_neg.tsv",
     True
 )
 
 cat_config_polaridad_foa_foa = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_foa_foa",
-    "../TextTools/CategoriasAdjetivos/polaridad_foa_foa.tsv",
+    "./data/CategoriasAdjetivos/polaridad_foa_foa.tsv",
     "./data/FillMask/sentences.tsv",
     True
 )
 
 cat_config_polaridad_foa_foa_with_visibles = CategorizacionConfig(
     "result_fillmask/categorias_polaridad_foa_foa_with_visibles",
-    "../TextTools/CategoriasAdjetivos/polaridad_foa_foa_with_visibles.tsv",
+    "./data/CategoriasAdjetivos/polaridad_foa_foa_with_visibles.tsv",
     "./data/FillMask/sentences.tsv",
     True
 )
 
 cat_config_yulia = CategorizacionConfig(
     "result_fillmask/categorias_yulia",
-    "../TextTools/CategoriasAdjetivos/yulia.tsv",
+    "./data/CategoriasAdjetivos/yulia.tsv",
     "./data/FillMask/sentences.tsv",
     True
 )
 
 cat_config_profesiones =  CategorizacionConfig(
     "result_fillmask_profesiones/base",
-    "../TextTools/CategoriasAdjetivos/profesiones_10_cnae_2021t2.tsv",
+    "./data/CategoriasAdjetivos/profesiones_10_cnae_2021t2.tsv",
     "./data/FillMask/sentences_profesiones.tsv",
     False,
     10
@@ -108,7 +108,7 @@ generator(
 '''
 
 def run_grouped(model, modelname, tokenizer, sentences):
-    filler = GroupedFillMask(model, modelname, tokenizer, cconfig.RESULT_PATH, cconfig.quantity, True).run_for_sentences(sentences)
+    filler = GroupedFillMask(model, modelname, tokenizer, cconfig.RESULT_PATH, cconfig.quantity, WRITE_DEBUG).run_for_sentences(sentences)
     return filler
 
 
@@ -276,10 +276,10 @@ def run_global_stats():
             write_txt(result_text, path )
 
 def run(modelname, tokenizername, MASK, sentences):
-    print("Loading model")
+    print("Loading model " + modelname + " with mask " + MASK)
 
     tokenizer = AutoTokenizer.from_pretrained(tokenizername)
-    model = AutoModelForMaskedLM.from_pretrained(modelname)
+    model = AutoModelForMaskedLM.from_pretrained(modelname).to('cuda')
     print("Model loaded")
 
     sentences_m = [sentence[0].replace("[MASK]", MASK) for sentence in sentences]

@@ -16,7 +16,7 @@ class GroupedFillMask:
 
         self.tokenizer = tokenizer
 
-        self.pipeline = FillMaskPipeline(self.model, self.tokenizer, top_k=result_qty)
+        self.pipeline = FillMaskPipeline(self.model, self.tokenizer, top_k=result_qty, device=self.model.device.index)
 
         self.grouped_count = {}
         self.grouped_points = {}
@@ -92,6 +92,7 @@ class GroupedFillMask:
 
         counts = dict(sorted(self.grouped_count.items(), key=lambda item: item[1], reverse=True))
         points = dict(sorted(self.grouped_points.items(), key=lambda item: item[1], reverse=True))
-        scores = { key: sum(value)/len(value) for key,value in self.grouped_model_scores.items()}
+        #scores = { key: sum(value)/len(value) for key,value in self.grouped_model_scores.items()}
+        scores = { key: sum(value) for key,value in self.grouped_model_scores.items()}
 
         return counts, points, scores
