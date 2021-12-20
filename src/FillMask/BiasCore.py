@@ -29,7 +29,7 @@ class Core:
         arr = []
         for model_item in self.models:
             model, tokenizer = model_item.get()
-            task = FillMaskTask(model, tokenizer, 50)
+            task = FillMaskTask(model, tokenizer, 29)
 
             # sentence_list = sentences if model[4] == "cased" else uncased_sentences
             chosen_sentences =  self.sentences if model_item.cased else self.uncased_sentences

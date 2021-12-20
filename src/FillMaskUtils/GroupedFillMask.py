@@ -19,8 +19,8 @@ class GroupedFillMask:
         self.pipeline = FillMaskPipeline(self.model, self.tokenizer, top_k=result_qty, device=self.model.device.index)
 
         self.grouped_count = {}
-        self.grouped_points = {}
-        self.grouped_model_scores = {}
+        self.grouped_retrieval_status_values = {}
+        self.grouped_model_probabilities = {}
 
         self.result_path = result_path
         self.result_qty = result_qty
@@ -37,7 +37,7 @@ class GroupedFillMask:
 
         return True
 
-    def save_stats(self, word: str, score, idx):
+    def save_stats(self, word: str, probability, idx):
 
         word = word.strip()
         if not self.valid_token(word):
@@ -49,26 +49,26 @@ class GroupedFillMask:
         else:
             self.grouped_count[word] = 1
 
-        points = self.result_qty - idx
+        retrieval_status_values = self.result_qty - idx
 
-        if word in self.grouped_points:
-            self.grouped_points[word] = self.grouped_points[word] + points
+        if word in self.grouped_retrieval_status_values:
+            self.grouped_retrieval_status_values[word] = self.grouped_retrieval_status_values[word] + retrieval_status_values
         else:
-            self.grouped_points[word] = points
+            self.grouped_retrieval_status_values[word] = retrieval_status_values
 
-        if word in self.grouped_model_scores:
-            self.grouped_model_scores[word].append(score)
+        if word in self.grouped_model_probabilities:
+            self.grouped_model_probabilities[word].append(probability)
         else:
-            self.grouped_model_scores[word] = []
-            self.grouped_model_scores[word].append(score)
+            self.grouped_model_probabilities[word] = []
+            self.grouped_model_probabilities[word].append(probability)
 
 
     def process_result(self, items, orig_line):
         l = []
         for idx, item in enumerate(items):
             word: str = item["token_str"].lower()
-            score = item["score"]
-            self.save_stats(word, score, idx)
+            probability = item["score"]
+            self.save_stats(word, probability, idx)
 
             line = str(idx) + T + word + T + str(item["token"])
             l.append(line)
@@ -91,8 +91,8 @@ class GroupedFillMask:
             self.run_for_text(sentence)
 
         counts = dict(sorted(self.grouped_count.items(), key=lambda item: item[1], reverse=True))
-        points = dict(sorted(self.grouped_points.items(), key=lambda item: item[1], reverse=True))
-        #scores = { key: sum(value)/len(value) for key,value in self.grouped_model_scores.items()}
-        scores = { key: sum(value) for key,value in self.grouped_model_scores.items()}
+        retrieval_status_values = dict(sorted(self.grouped_retrieval_status_values.items(), key=lambda item: item[1], reverse=True))
+        #probabilities = { key: sum(value)/len(value) for key,value in self.grouped_model_probabilities.items()}
+        probabilities = { key: sum(value) for key,value in self.grouped_model_probabilities.items()}
 
-        return counts, points, scores
+        return counts, retrieval_status_values, probabilities

@@ -7,11 +7,11 @@ class FillMaskTask:
 
     def __init__(self, model, tokenizer, result_qty):
 
-        self.model = model
+        self.model = model.to('cuda')
         self.model.eval()
         self.tokenizer = tokenizer
 
-        self.pipeline = FillMaskPipeline(self.model, self.tokenizer, top_k=result_qty)
+        self.pipeline = FillMaskPipeline(self.model, self.tokenizer, top_k=result_qty, device=self.model.device.index)
 
     def fill(self, line, mask = "[MASK]") -> TaskResult:
 

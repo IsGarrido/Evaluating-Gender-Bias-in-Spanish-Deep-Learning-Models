@@ -106,13 +106,22 @@ class StatCore:
 
     def adjective_stats(self, max):
 
-        arr = []
-        for qty in range(1,max+1):
-            stats = self.adjective_tasks_stats(qty)
-            stats_by_model = self.adjective_tasks_stats_grouped_by_model(stats, qty)
-            arr.extend(stats_by_model)
+        #arr = []
 
-        self.descriptive_stats_by_model(arr)
+        #for qty in range(1,max+1):
+        #    stats = self.adjective_tasks_stats(qty)
+        #    stats_by_model = self.adjective_tasks_stats_grouped_by_model(stats, qty)
+        #    arr.extend(stats_by_model)
+
+        stats = self.adjective_tasks_stats(max)
+        stats_by_model = self.adjective_tasks_stats_grouped_by_model(stats, max)
+        #arr.extend(stats_by_model)
+
+        json = JsonHelper.encode(stats_by_model)
+        FileWriterHelper.write("~/result_data/FillMask/stats_by_model.json", json)
+
+        x = 0
+        #self.descriptive_stats_by_model(arr)
 
 
-StatCore().adjective_stats(30)
+StatCore().adjective_stats(29)
