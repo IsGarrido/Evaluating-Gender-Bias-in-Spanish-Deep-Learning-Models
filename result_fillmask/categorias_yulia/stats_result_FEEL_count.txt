@@ -1,0 +1,11 @@
+Test results for 20, 20 elementos 
+[WCX   ] Statistics=16.5 p=0.4536952997039291
+[WCX  ✔] Same distribution (fail to reject H0)
+[MANN  ] Statistics=194.0 p=0.440312593671061
+[MANN ✔] Same distribution (fail to reject H0)
+[SHAP  ] Statistics=0.8704567551612854 p=0.011968299746513367
+[SHAP  ] p < alpha, Is NOT normal distribution
+2021-11-01 16:11
+
+
+
