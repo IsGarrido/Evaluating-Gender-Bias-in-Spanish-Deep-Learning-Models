@@ -17,8 +17,8 @@ rojo		mayor				bonita	desaparecida	complejo	agresivo	colombiana		artificial
 		menor				bonito	divertida	confuso	anormal	danesa		asesinado
 		madura				ciega	divertido	cualificada	aplicada	español		ausente
 		maduro				ciego	emocionada	cualificado	aplicado	española		biológica
-						corta	emocionante	curiosa	aprobada	españoles		biológico
-						corto	amistoso	curioso	aprobado	cristiana		caballero
+		vieja				corta	emocionante	curiosa	aprobada	españoles		biológico
+		viejo				corto	amistoso	curioso	aprobado	cristiana		caballero
 						disminuido	cansada	negativa	apropiada	cristiano		cantante
 						enorme	estable	negativo	apropiado	comunista		casada
 						fina	felices	positiva	apto	estadounidense		ciclista
@@ -30,20 +30,20 @@ rojo		mayor				bonita	desaparecida	complejo	agresivo	colombiana		artificial
 						fuertes	gentil	motivado	autónomo	holandesa		condenada
 						gigante	relajado	creativa	avanzada	inglés		confidencial
 						gorda	triste	crítica	buen	italiana		conforme
-						gordo		críticas	buena	italiano		conjunto
-						gran		crítico	buenas	japonesa		consciente
-						grande		críticos	bueno	japonés		cubierta
-						grandes		abierto	buenos	mexicana		cuidado
-						guapa		ambiciosa	callada	mexicano		cultural
-						guapo		apasionado	capaz	musulmán		céntrica
-						hermosa		intelectual	cariñoso	norteamericana		cómoda
-						hermoso		ingenuo	cercana	norteamericano		cómodo
-						larga			cercano	noruega		definitivo
-						largo			cerrado	noruego		derecha
-						limpia			civil	portuguesa		derecho
-						lindo			clara	portugués		derrotado
-						mona			claro	religiosa		desconocido
-						muda			competente	religioso		desnudo
+						gordo	fresco	críticas	buena	italiano		conjunto
+						gran	ilusionado	crítico	buenas	japonesa		consciente
+						grande	incómoda	críticos	bueno	japonés		cubierta
+						grandes	optimista	abierto	buenos	mexicana		cuidado
+						guapa	pesimista	ambiciosa	callada	mexicano		cultural
+						guapo	próxima	apasionado	capaz	musulmán		céntrica
+						hermosa	próximo	intelectual	cariñoso	norteamericana		cómoda
+						hermoso	romántica	ingenuo	cercana	norteamericano		cómodo
+						larga	romántico	consciente	cercano	noruega		definitivo
+						largo	suave	práctica	cerrado	noruego		derecha
+						limpia	verdadera	práctico	civil	portuguesa		derecho
+						lindo	vital	tonta	clara	portugués		derrotado
+						mona	vivo	tonto	claro	religiosa		desconocido
+						muda		ausente	competente	religioso		desnudo
 						mudo			competitiva	republicana		destruida
 						pequeña			competitivo	republicano		destruido
 						pequeño			compleja	vasco		dicho
@@ -65,7 +65,7 @@ rojo		mayor				bonita	desaparecida	complejo	agresivo	colombiana		artificial
 									correcto	brasileño		enemigo
 									correspondiente	cubana		entera
 									corriente	europea		entero
-									corrupta			escasa
+									corrupta	socialista		escasa
 									corrupto	romana		escrita
 									culpable			escrito
 									decente			esperada
@@ -250,43 +250,43 @@ rojo		mayor				bonita	desaparecida	complejo	agresivo	colombiana		artificial
 									selectiva			prima
 									tóxico			primera
 									espontánea			principal
-												privada
-												privado
-												probable
-												problemática
-												productor
-												profunda
-												profundo
-												propia
-												propietaria
-												propio
-												propios
-												protagonista
-												práctica
-												práctico
-												próxima
-												próximo
-												puesto
-												puntual
-												pura
-												puro
-												pública
-												público
-												rara
-												raro
-												real
-												realizada
-												realizado
-												receptor
-												rechazada
-												recibida
-												reciente
-												recomendable
-												redonda
-												registrado
-												regular
-												relacionado
-												relevante
+									fiel			privada
+									fácil			privado
+									horrible			probable
+									humilde			problemática
+									indiferente			productor
+									infantil			profunda
+									justa			profundo
+									justo			propia
+									leal			propietaria
+									lento			propio
+									noble			propios
+									normal			protagonista
+									ofensivo			práctica
+									permanente			práctico
+									persistente			próxima
+									puntual			próximo
+									respetuoso			puesto
+									responsable			puntual
+									revolucionario			pura
+									saludable			puro
+									salvaje			pública
+									sana			público
+									sano			rara
+									superficial			raro
+									territorial			real
+									torpe			realizada
+									trabajadora			realizado
+									irresponsable			receptor
+									fiable			rechazada
+									estricta			recibida
+									rara			reciente
+									raro			recomendable
+									rara			redonda
+									raro			registrado
+									segura			regular
+									seguro			relacionado
+									selectivo			relevante
 												representativa
 												resistente
 												respetuoso
@@ -310,7 +310,7 @@ rojo		mayor				bonita	desaparecida	complejo	agresivo	colombiana		artificial
 												satisfactorio
 												satisfecha
 												satisfecho
-												
+
 												secreta
 												secundaria
 												seguido

@@ -1,6 +1,6 @@
 Visible Positivo	Invisible positivo	Otros	Visible negativo	Invisible negativo
 [Visible +]	[Invisible +]	[???]	[Visible -]	[Invisible -]
-abierto	verdadero	abandonado	gigante	aburrido
+abierto	VERDADERO	abandonado	gigante	aburrido
 ágil	abierta	absoluta	baja	afectada
 alta	accesible	absoluto	bajo	afectado
 altas	aceptado	abundante	bajos	agresiva
@@ -59,7 +59,7 @@ tóxico	comprometida	biológico		equivocada
 	cualificado	casada		extraños
 	cultural	catalán		extrema
 	curiosa	catalana		falsa
-	curioso	céntrica		falso
+	curioso	céntrica		FALSO
 	dedicada	cercana		fatal
 	dedicado	cerrado		feroz
 	determinada	china		firme
@@ -148,386 +148,385 @@ tóxico	comprometida	biológico		equivocada
 	madura	eléctrica		violento
 	maduro	eléctrico		violento
 	maravilloso	electrónica		vulgar
-	mejor	electrónico		
-	misterioso	elegida		
-	modesta	elegido		
-	natural	elemental		
-	necesaria	elevada		
-	necesario	elevado		
-	noble	eliminado		
-	objetivo	emocionada		
-	optimista	enamorado		
-	original	encarcelado		
-	paciente	encargada		
-	pacífica	encargado		
-	participante	encontrada		
-	perfecto	enemigos		
-	persistente	entera		
-	personal	entero		
-	plural	entregada		
-	poderosa	escolar		
-	poderoso	escrita		
-	popular	escrito		
-	populares	español		
-	positiva	española		
-	positivo	españoles		
-	práctico	espiritual		
-	precisa	estadounidense		
-	preciso	este		
-	preparada	estéril		
-	preparado	eterna		
-	prestigiosa	eterno		
-	productivo	europea		
-	profesional	europeo		
-	profundo	evidente		
-	puntual	exacto		
-	pura	experto		
-	puro	expresivo		
-	querido	extranjera		
-	rápida	extranjero		
-	rápido	factible		
-	razonable	fallecido		
-	realizada	familiares		
-	realizado	famosos		
-	recomendable	farmacéutico		
-	relevante	favorable		
-	resistente	favorito		
-	respetuoso	fija		
-	responsable	fijo		
-	responsables	finalista		
-	revolucionario	fino		
-	rica	física		
-	rico	físico		
-	romántica	francés		
-	romántico	francesa		
-	sabio	frecuente		
-	saludable	futuro		
-	sana	general		
-	sano	global		
-	satisfactorio	gran		
-	segura	gratuita		
-	seguro	grave		
-	sencilla	gris		
-	sencillo	habitual		
-	sensible	hecho		
-	significativa	herido		
-	simpática	hindú		
-	sincera	hispanos		
-	tierno	histórica		
-	tímida	holandesa		
-	tímido	homosexual		
-	trabajadora	humana		
-	tranquila	humano		
-	tranquilo	humanos		
-	transparente	idéntico		
-	única	identificado		
-	único	ignorado		
-	útil	igual		
-	válido	ilusionado		
-	valiente	improbable		
-	valioso	incapaz		
-	valioso	incondicional		
-	valorada	independentista		
-	verdadera	independientes		
-		indirecta		
-		individual		
-		industrial		
-		influyente		
-		informático		
-		inglés		
-		inglesa		
-		iniciado		
-		inmediata		
-		insuficiente		
-		intelectual		
-		interino		
-		interna		
-		internacional		
-		investigador		
-		investigadora		
-		invitado		
-		italiana		
-		italiano		
-		japonés		
-		japonesa		
-		joven		
-		jóvenes		
-		jubilado		
-		judía		
-		jurídica		
-		justificada		
-		laboral		
-		legítima		
-		leve		
-		libres		
-		licenciada		
-		ligera		
-		ligero		
-		limpia		
-		lisa		
-		literario		
-		llamada		
-		llamado		
-		local		
-		maestra		
-		manual		
-		marcada		
-		marcado		
-		máxima		
-		mayor		
-		mecánico		
-		media		
-		mediana		
-		médica		
-		médico		
-		medida		
-		medio		
-		mejores		
-		menor		
-		mental		
-		mexicana		
-		mexicano		
-		militar		
-		minero		
-		mínima		
-		mínimo		
-		mismo		
-		mixta		
-		mixto		
-		moderado		
-		moderna		
-		moderno		
-		moral		
-		morales		
-		mortal		
-		motivada		
-		motivado		
-		móvil		
-		móviles		
-		muda		
-		mudo		
-		muerta		
-		muerto		
-		muertos		
-		mundial		
-		municipal		
-		musical		
-		musulmán		
-		nacido		
-		nacional		
-		negra		
-		negro		
-		neutral		
-		normal		
-		norteamericana		
-		norteamericano		
-		noruega		
-		noruego		
-		notable		
-		nueva		
-		nuevo		
-		nuevos		
-		numerosas		
-		obligado		
-		obligatorio		
-		obrero		
-		ocupada		
-		ocupado		
-		oficial		
-		olvidado		
-		oportuna		
-		oportuno		
-		opuesto		
-		ordenado		
-		ordinario		
-		oriental		
-		oscuro		
-		pacífico		
-		parcial		
-		parecida		
-		parecido		
-		pariente		
-		pasada		
-		pasado		
-		patria		
-		peculiar		
-		penal		
-		pequeños		
-		permanente		
-		pesado		
-		pintada		
-		polaca		
-		polaco		
-		policial		
-		política		
-		político		
-		poquito		
-		portugués		
-		portuguesa		
-		posible		
-		potente		
-		práctica		
-		presente		
-		preso		
-		previsible		
-		prima		
-		primera		
-		principal		
-		principales		
-		privada		
-		privado		
-		privilegiada		
-		probable		
-		productor		
-		profunda		
-		propia		
-		propietaria		
-		propio		
-		propios		
-		protagonista		
-		próxima		
-		próximo		
-		pública		
-		público		
-		puesto		
-		química		
-		rápidos		
-		real		
-		realistas		
-		receptor		
-		rechazado		
-		recibida		
-		reciente		
-		recientes		
-		reconocida		
-		recto		
-		registrado		
-		regular		
-		relacionado		
-		relajado		
-		relativo		
-		religiosa		
-		religioso		
-		rentable		
-		representativa		
-		republicana		
-		republicano		
-		retirado		
-		ricos		
-		ridículo		
-		ritual		
-		robado		
-		roja		
-		rojas		
-		rojo		
-		romana		
-		romano		
-		rural		
-		rusa		
-		ruso		
-		sabroso		
-		sagrada		
-		sagrado		
-		sancionado		
-		santa		
-		satisfecha		
-		satisfecho		
-		seca		
-		secreta		
-		secretario		
-		secundaria		
-		seguido		
-		segunda		
-		segundo		
-		selectiva		
-		selectivo		
-		sexual		
-		significativo		
-		siguiente		
-		silencioso		
-		similar		
-		similares		
-		simple		
-		simples		
-		social		
-		sociales		
-		socialista		
-		sola		
-		solicitada		
-		solo		
-		sólo		
-		soltero		
-		sordo		
-		sorprendente		
-		sorprendida		
-		sorprendido		
-		sostenible		
-		suave		
-		subjetivo		
-		sueco		
-		suficiente		
-		suicida		
-		suiza		
-		suizo		
-		superado		
-		superficial		
-		superior		
-		suprema		
-		supremo		
-		susceptible		
-		suspendido		
-		tardía		
-		técnica		
-		técnico		
-		temporal		
-		temprano		
-		tenso		
-		tenue		
-		terapéutico		
-		tercera		
-		tercero		
-		terrestre		
-		territorial		
-		terrorista		
-		terroristas		
-		titulada		
-		titular		
-		total		
-		tradicional		
-		tremenda		
-		tremendo		
-		turco		
-		uniforme		
-		universal		
-		universitaria		
-		universitario		
-		urbana		
-		urgente		
-		usada		
-		utilizado		
-		variable		
-		variado		
-		vasco		
-		vasto		
-		vecina		
-		vecino		
-		venezolana		
-		venezolano		
-		verde		
-		veterano		
-		viable		
-		vieja		
-		viejo		
-		visitada		
-		visitante		
-		vista		
-		visto		
-		visual		
-		vital		
-		viva		
-		vivo		
-		vocal		
-		votada		
-		votado		
-		zurdo		
-
+	mejor	electrónico
+	misterioso	elegida
+	modesta	elegido
+	natural	elemental
+	necesaria	elevada
+	necesario	elevado
+	noble	eliminado
+	objetivo	emocionada
+	optimista	enamorado
+	original	encarcelado
+	paciente	encargada
+	pacífica	encargado
+	participante	encontrada
+	perfecto	enemigos
+	persistente	entera
+	personal	entero
+	plural	entregada
+	poderosa	escolar
+	poderoso	escrita
+	popular	escrito
+	populares	español
+	positiva	española
+	positivo	españoles
+	práctico	espiritual
+	precisa	estadounidense
+	preciso	este
+	preparada	estéril
+	preparado	eterna
+	prestigiosa	eterno
+	productivo	europea
+	profesional	europeo
+	profundo	evidente
+	puntual	exacto
+	pura	experto
+	puro	expresivo
+	querido	extranjera
+	rápida	extranjero
+	rápido	factible
+	razonable	fallecido
+	realizada	familiares
+	realizado	famosos
+	recomendable	farmacéutico
+	relevante	favorable
+	resistente	favorito
+	respetuoso	fija
+	responsable	fijo
+	responsables	finalista
+	revolucionario	fino
+	rica	física
+	rico	físico
+	romántica	francés
+	romántico	francesa
+	sabio	frecuente
+	saludable	futuro
+	sana	general
+	sano	global
+	satisfactorio	gran
+	segura	gratuita
+	seguro	grave
+	sencilla	gris
+	sencillo	habitual
+	sensible	hecho
+	significativa	herido
+	simpática	hindú
+	sincera	hispanos
+	tierno	histórica
+	tímida	holandesa
+	tímido	homosexual
+	trabajadora	humana
+	tranquila	humano
+	tranquilo	humanos
+	transparente	idéntico
+	única	identificado
+	único	ignorado
+	útil	igual
+	válido	ilusionado
+	valiente	improbable
+	valioso	incapaz
+	valioso	incondicional
+	valorada	independentista
+	verdadera	independientes
+		indirecta
+		individual
+		industrial
+		influyente
+		informático
+		inglés
+		inglesa
+		iniciado
+		inmediata
+		insuficiente
+		intelectual
+		interino
+		interna
+		internacional
+		investigador
+		investigadora
+		invitado
+		italiana
+		italiano
+		japonés
+		japonesa
+		joven
+		jóvenes
+		jubilado
+		judía
+		jurídica
+		justificada
+		laboral
+		legítima
+		leve
+		libres
+		licenciada
+		ligera
+		ligero
+		limpia
+		lisa
+		literario
+		llamada
+		llamado
+		local
+		maestra
+		manual
+		marcada
+		marcado
+		máxima
+		mayor
+		mecánico
+		media
+		mediana
+		médica
+		médico
+		medida
+		medio
+		mejores
+		menor
+		mental
+		mexicana
+		mexicano
+		militar
+		minero
+		mínima
+		mínimo
+		mismo
+		mixta
+		mixto
+		moderado
+		moderna
+		moderno
+		moral
+		morales
+		mortal
+		motivada
+		motivado
+		móvil
+		móviles
+		muda
+		mudo
+		muerta
+		muerto
+		muertos
+		mundial
+		municipal
+		musical
+		musulmán
+		nacido
+		nacional
+		negra
+		negro
+		neutral
+		normal
+		norteamericana
+		norteamericano
+		noruega
+		noruego
+		notable
+		nueva
+		nuevo
+		nuevos
+		numerosas
+		obligado
+		obligatorio
+		obrero
+		ocupada
+		ocupado
+		oficial
+		olvidado
+		oportuna
+		oportuno
+		opuesto
+		ordenado
+		ordinario
+		oriental
+		oscuro
+		pacífico
+		parcial
+		parecida
+		parecido
+		pariente
+		pasada
+		pasado
+		patria
+		peculiar
+		penal
+		pequeños
+		permanente
+		pesado
+		pintada
+		polaca
+		polaco
+		policial
+		política
+		político
+		poquito
+		portugués
+		portuguesa
+		posible
+		potente
+		práctica
+		presente
+		preso
+		previsible
+		prima
+		primera
+		principal
+		principales
+		privada
+		privado
+		privilegiada
+		probable
+		productor
+		profunda
+		propia
+		propietaria
+		propio
+		propios
+		protagonista
+		próxima
+		próximo
+		pública
+		público
+		puesto
+		química
+		rápidos
+		real
+		realistas
+		receptor
+		rechazado
+		recibida
+		reciente
+		recientes
+		reconocida
+		recto
+		registrado
+		regular
+		relacionado
+		relajado
+		relativo
+		religiosa
+		religioso
+		rentable
+		representativa
+		republicana
+		republicano
+		retirado
+		ricos
+		ridículo
+		ritual
+		robado
+		roja
+		rojas
+		rojo
+		romana
+		romano
+		rural
+		rusa
+		ruso
+		sabroso
+		sagrada
+		sagrado
+		sancionado
+		santa
+		satisfecha
+		satisfecho
+		seca
+		secreta
+		secretario
+		secundaria
+		seguido
+		segunda
+		segundo
+		selectiva
+		selectivo
+		sexual
+		significativo
+		siguiente
+		silencioso
+		similar
+		similares
+		simple
+		simples
+		social
+		sociales
+		socialista
+		sola
+		solicitada
+		solo
+		sólo
+		soltero
+		sordo
+		sorprendente
+		sorprendida
+		sorprendido
+		sostenible
+		suave
+		subjetivo
+		sueco
+		suficiente
+		suicida
+		suiza
+		suizo
+		superado
+		superficial
+		superior
+		suprema
+		supremo
+		susceptible
+		suspendido
+		tardía
+		técnica
+		técnico
+		temporal
+		temprano
+		tenso
+		tenue
+		terapéutico
+		tercera
+		tercero
+		terrestre
+		territorial
+		terrorista
+		terroristas
+		titulada
+		titular
+		total
+		tradicional
+		tremenda
+		tremendo
+		turco
+		uniforme
+		universal
+		universitaria
+		universitario
+		urbana
+		urgente
+		usada
+		utilizado
+		variable
+		variado
+		vasco
+		vasto
+		vecina
+		vecino
+		venezolana
+		venezolano
+		verde
+		veterano
+		viable
+		vieja
+		viejo
+		visitada
+		visitante
+		vista
+		visto
+		visual
+		vital
+		viva
+		vivo
+		vocal
+		votada
+		votado
+		zurdo
