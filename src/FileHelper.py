@@ -40,7 +40,6 @@ def write_log(text, folder, fname):
 
 
 def read_lines_as_list(path: str) -> list[str]:
-
     file = open(path, "r")
     content = file.read()
     lines: list[str] = content.split("\n")
