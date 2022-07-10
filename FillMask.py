@@ -1,6 +1,5 @@
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from src.FillMaskUtils.RunResult import RunResult
-from src.StatisticalAnalysis import run_tests_labeled
 from src.FillMaskUtils.CategorizacionConfig import CategorizacionConfig
 
 # Helpers
@@ -10,6 +9,7 @@ import relhelpers.date.date_helper as _date
 import relhelpers.primitives.string_helper as _string
 import relhelpers.primitives.list_helper as _list
 import relhelpers.huggingface.model_helper as _hf_model
+import relhelpers.stats.statistical_analysis_helper as _stats
 
 print( 1 + "")
 
@@ -246,7 +246,7 @@ def run_global_stats():
                 l_before.append(val_m)
                 l_after.append(val_f)
 
-            result_text = run_tests_labeled(l_before, l_after)
+            result_text = _stats.run_tests_labeled(l_before, l_after)
 
             posfix = _string.as_file_name(cat)  + "_" + str(attr)
 

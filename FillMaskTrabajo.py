@@ -4,7 +4,7 @@ from transformers import pipeline
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict
 from src.FillMaskUtils.RunResult import RunResult
-from src.StatisticalAnalysis import run_tests_labeled
+import relhelpers.stats.statistical_analysis_helper as _stats
 from src.StringHelper import as_file_name
 
 from transformers import AutoModelForMaskedLM

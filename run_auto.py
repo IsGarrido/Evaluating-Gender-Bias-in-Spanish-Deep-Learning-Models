@@ -4,7 +4,7 @@ import csv
 from src import ModelScorer, FileHelper
 from src.FileHelper import save_array_as_excel
 from src.ScorerConfig import ScorerConfig
-from src.StatisticalAnalysis import *
+from relhelpers.stats.StatisticalAnalysis import *
 from src.FileHelper import *
 
 ''' TEST SEIS  '''

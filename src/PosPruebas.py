@@ -6,13 +6,11 @@ from nltk import BigramTagger as bt
 # B
 
 from nltk import download
-from nltk.corpus import brown
-from nltk.corpus import gutenberg
 from nltk.corpus import cess_esp
 #from unigram import UnigramModel
 
 # improts
-from src.FileHelper import write_txt
+import relhelpers.io.write_helper as _write
 
 # A
 def run_a():
@@ -85,15 +83,15 @@ def extraer_adjetivos():
 	adjetivos_tagged = list(filter(len, [word + "\t" + tag if tag.startswith("a") else "" for (word,tag) in cess_esp.tagged_words()]))
 	adjetivos = list(filter(len, [word if tag.startswith("a") else "" for (word,tag) in cess_esp.tagged_words()]))
 
-	write_txt(generar_fichero(adjetivos), "../../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
-	write_txt(generar_fichero(adjetivos_tagged), "../../TextTools/GenerarListadoPalabras/result/adjetivos_tagged.txt")
+	_write.write_txt(generar_fichero(adjetivos), "../../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
+	_write.write_txt(generar_fichero(adjetivos_tagged), "../../TextTools/GenerarListadoPalabras/result/adjetivos_tagged.txt")
 
 def extraer_nacionalidades():
 	download('cess_esp')
 	nacionalidades_m_ruido_tagged = list(filter(len, [word + "\t" + tag if tag.startswith("aq0ms0") else "" for (word,tag) in cess_esp.tagged_words()]))
 	nacionalidades_m_ruido = list(filter(len, [word if tag.startswith("aq0ms0") else "" for (word,tag) in cess_esp.tagged_words()]))
-	write_txt(generar_fichero(nacionalidades_m_ruido), "../../TextTools/GenerarListadoPalabras/result/nacionalidades_ruido_aq0ms0.txt")
-	write_txt(generar_fichero(nacionalidades_m_ruido_tagged), "../../TextTools/GenerarListadoPalabras/result/nacionalidades_ruido_aq0ms0_tagged.txt")
+	_write.write_txt(generar_fichero(nacionalidades_m_ruido), "../../TextTools/GenerarListadoPalabras/result/nacionalidades_ruido_aq0ms0.txt")
+	_write.write_txt(generar_fichero(nacionalidades_m_ruido_tagged), "../../TextTools/GenerarListadoPalabras/result/nacionalidades_ruido_aq0ms0_tagged.txt")
 
 
 #extraer_nacionalidades()
