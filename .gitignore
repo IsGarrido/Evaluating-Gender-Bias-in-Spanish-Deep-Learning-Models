@@ -3,3 +3,4 @@ venv
 /*.txt
 src/__pycache__/*
 *.pyc
+__pycache__

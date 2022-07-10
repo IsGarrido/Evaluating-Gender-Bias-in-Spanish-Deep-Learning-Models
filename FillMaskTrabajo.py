@@ -2,15 +2,14 @@ from transformers import AutoTokenizer, AutoModelForMaskedLM
 from transformers import pipeline
 
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
-from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict
 from src.FillMaskUtils.RunResult import RunResult
 import relhelpers.stats.statistical_analysis_helper as _stats
-from src.StringHelper import as_file_name
 
-from transformers import AutoModelForMaskedLM
-from transformers import AutoTokenizer
-
-from src.ListHelper import *
+import relhelpers.io.read_helper as _read
+import relhelpers.io.write_helper as _write
+import relhelpers.primitives.list_helper as _list
+import relhelpers.primitives.string_helper as _string
+import relhelpers.huggingface.model_helper as _hf_model
 
 # constantes
 T = "\t"
@@ -22,9 +21,9 @@ WORD_MIN_LEN = 4
 # Inicializar cosas en espacio común, cuando esté estado hay que darle una vuelta, muy cutre esto
 
 # Stores
-adjectives_map = read_lines_as_dict("../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
-adjetivos_categorizados = read_lines_as_col_excel_asdict("../TextTools/CategoriasAdjetivos/excel.tsv")
-adjetivos_categorias = list_unique(list(adjetivos_categorizados.values())) # Bastante bruto esto
+adjectives_map = _read.read_lines_as_dict("../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
+adjetivos_categorizados = _read.read_lines_as_col_excel_asdict("../TextTools/CategoriasAdjetivos/excel.tsv")
+adjetivos_categorias = _list.unique(list(adjetivos_categorizados.values())) # Bastante bruto esto
 
 # Comunes a todas las runs
 all_filling_words = []
@@ -32,9 +31,6 @@ all_filling_profs = []
 run_id = 0
 
 run_results = []
-
-# tokenizer = AutoTokenizer.from_pretrained("dccuchile/bert-base-spanish-wwm-uncased")
-# model = AutoModelForMaskedLM.from_pretrained("dccuchile/bert-base-spanish-wwm-uncased")
 
 '''
 generator = pipeline("text-generation", model = "dccuchile/bert-base-spanish-wwm-uncased", tokenizer= "dccuchile/bert-base-spanish-wwm-uncased")
@@ -131,20 +127,18 @@ def save_run(model_name, points, kind="m"):
     data_category = "\n".join(l_category)
 
     # Pasar a disco
-    path = RESULT_PATH + "/run_" + str(run_id) + "_" + kind + "_" + as_file_name(model_name)
+    path = RESULT_PATH + "/run_" + str(run_id) + "_" + kind + "_" + _string.as_file_name(model_name)
 
-    write_txt(data, path + ".csv")
-    write_txt(data_adj, path + "_adj.csv")
-    write_txt(data_category, path + "_cat.csv")
+    _write.txt(data, path + ".csv")
+    _write.txt(data_adj, path + "_adj.csv")
+    _write.txt(data_category, path + "_cat.csv")
 
     return dict_results
 
 
 def run(modelname, tokenizername, MASK, DOT="."):
     print("Loading model")
-
-    tokenizer = AutoTokenizer.from_pretrained(tokenizername)
-    model = AutoModelForMaskedLM.from_pretrained(modelname)
+    model, tokenizer = _hf_model.load_model(modelname, tokenizer)
     print("Model loaded")
 
     # run_for_text(unmasker, "El trabajaba de [MASK]")
@@ -205,8 +199,8 @@ run("xlm-roberta-large-finetuned-conll02-spanish", "xlm-roberta-large-finetuned-
 run("joseangelatm/spanishpanama", "joseangelatm/spanishpanama", "<mask>")
 '''
 
-data = list_as_file(all_filling_words)
-write_txt(data, RESULT_PATH + "/summary_all_filling_words.csv")
+data = _list.as_file(all_filling_words)
+_write.txt(data, RESULT_PATH + "/summary_all_filling_words.csv")
 
-data = list_as_file(all_filling_profs)
-write_txt(data, RESULT_PATH + "/summary_all_filling_adjectives.csv")
+data = _list.as_file(all_filling_profs)
+_write.txt(data, RESULT_PATH + "/summary_all_filling_adjectives.csv")

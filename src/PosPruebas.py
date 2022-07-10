@@ -83,15 +83,15 @@ def extraer_adjetivos():
 	adjetivos_tagged = list(filter(len, [word + "\t" + tag if tag.startswith("a") else "" for (word,tag) in cess_esp.tagged_words()]))
 	adjetivos = list(filter(len, [word if tag.startswith("a") else "" for (word,tag) in cess_esp.tagged_words()]))
 
-	_write.write_txt(generar_fichero(adjetivos), "../../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
-	_write.write_txt(generar_fichero(adjetivos_tagged), "../../TextTools/GenerarListadoPalabras/result/adjetivos_tagged.txt")
+	_write.txt(generar_fichero(adjetivos), "../../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
+	_write.txt(generar_fichero(adjetivos_tagged), "../../TextTools/GenerarListadoPalabras/result/adjetivos_tagged.txt")
 
 def extraer_nacionalidades():
 	download('cess_esp')
 	nacionalidades_m_ruido_tagged = list(filter(len, [word + "\t" + tag if tag.startswith("aq0ms0") else "" for (word,tag) in cess_esp.tagged_words()]))
 	nacionalidades_m_ruido = list(filter(len, [word if tag.startswith("aq0ms0") else "" for (word,tag) in cess_esp.tagged_words()]))
-	_write.write_txt(generar_fichero(nacionalidades_m_ruido), "../../TextTools/GenerarListadoPalabras/result/nacionalidades_ruido_aq0ms0.txt")
-	_write.write_txt(generar_fichero(nacionalidades_m_ruido_tagged), "../../TextTools/GenerarListadoPalabras/result/nacionalidades_ruido_aq0ms0_tagged.txt")
+	_write.txt(generar_fichero(nacionalidades_m_ruido), "../../TextTools/GenerarListadoPalabras/result/nacionalidades_ruido_aq0ms0.txt")
+	_write.txt(generar_fichero(nacionalidades_m_ruido_tagged), "../../TextTools/GenerarListadoPalabras/result/nacionalidades_ruido_aq0ms0_tagged.txt")
 
 
 #extraer_nacionalidades()

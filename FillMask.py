@@ -89,7 +89,7 @@ adjectives_map = _read.read_lines_as_dict("../TextTools/GenerarListadoPalabras/r
 
 if cconfig.categories_ready:
     adjetivos_categorizados = _read.read_lines_as_col_excel_asdict(cconfig.categories_source_file)
-    adjetivos_categorias = _list.list_unique(list(adjetivos_categorizados.values())) # Bastante bruto esto
+    adjetivos_categorias = _list.unique(list(adjetivos_categorizados.values())) # Bastante bruto esto
 else:
     adjetivos_categorizados = {}
     adjetivos_categorias = []
@@ -206,9 +206,9 @@ def save_run(model_name, retrieval_status_values, probabilities, kind="m"):
     path = cconfig.RESULT_PATH + "/run_" + str(run_id) + "_" + kind + "_" + _string.as_file_name(model_name)
 
     if WRITE_DEBUG:
-        _write.write_txt(data, path + ".csv")
-        _write.write_txt(data_adj, path + "_adj.csv")
-        _write.write_txt(data_category, path + "_cat.csv")
+        _write.txt(data, path + ".csv")
+        _write.txt(data_adj, path + "_adj.csv")
+        _write.txt(data_category, path + "_cat.csv")
 
     return dict_results
 
@@ -254,8 +254,8 @@ def run_global_stats():
             data_m = _list.list_as_file(_list.list_as_str_list(l_before))
             data_f = _list.list_as_file(_list.list_as_str_list(l_after))
 
-            _write.write_txt(data_m, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_m.txt")
-            _write.write_txt(data_f, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_f.txt")
+            _write.txt(data_m, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_m.txt")
+            _write.txt(data_f, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_f.txt")
 
             l_both = []
             for idx, val in enumerate(l_before):
@@ -273,11 +273,11 @@ def run_global_stats():
 
             data_both = _list.list_as_file(str_both_l, False)
 
-            _write.write_txt(data_both, cconfig.RESULT_PATH + "/stats_both_" + posfix + ".csv")
+            _write.txt(data_both, cconfig.RESULT_PATH + "/stats_both_" + posfix + ".csv")
 
             # Escribir resultado
             path = cconfig.RESULT_PATH + "/stats_result_" + posfix + ".txt"
-            _write.write_txt(result_text, path )
+            _write.txt(result_text, path )
 
 def run(modelname, tokenizername, MASK, sentences):
 
@@ -309,10 +309,10 @@ for idx, model in enumerate(models):
     print("Finalizado modelo nro " + str(idx))
 
 data = _list.list_as_file(all_filling_words)
-_write.write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_words.csv")
+_write.txt(data, cconfig.RESULT_PATH + "/summary_all_filling_words.csv")
 
 data = _list.list_as_file(all_filling_adjectives)
-_write.write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_adjectives.csv")
+_write.txt(data, cconfig.RESULT_PATH + "/summary_all_filling_adjectives.csv")
 
 
 if cconfig.categories_ready:
@@ -322,7 +322,7 @@ if cconfig.categories_ready:
 
     adjetivos_sin_categorizar = filter( lambda adjetivo: not adjetivo in adjetivos_categorizados, all_filling_adjectives)
     data = _list.list_as_file(adjetivos_sin_categorizar)
-    _write.write_txt(data, cconfig.RESULT_PATH + "/summary_adj_missing_category.csv")
+    _write.txt(data, cconfig.RESULT_PATH + "/summary_adj_missing_category.csv")
     _write.write_json(run_results, cconfig.RESULT_PATH + "/run_result.json")
 
 

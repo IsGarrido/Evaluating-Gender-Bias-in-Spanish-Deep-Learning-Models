@@ -76,7 +76,7 @@ class GroupedFillMask:
         if self.write_files:
             text = "\n".join(l)
             path = self.result_path + "/" + _string.as_file_name(self.modelname) + "/" + _string.as_file_name(orig_line) + ".csv"
-            _write.write_txt(text, path)
+            _write.txt(text, path)
 
     def run_for_text(self, line):
 
