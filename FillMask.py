@@ -1,6 +1,10 @@
-from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
-from src.FillMaskUtils.RunResult import RunResult
-from src.FillMaskUtils.CategorizacionConfig import CategorizacionConfig
+from dataclass.fill_template_config import FillTemplateConfig
+from source.FillMaskUtils.GroupedFillMask import GroupedFillMask
+from source.FillMaskUtils.RunResult import RunResult
+from source.FillMaskUtils.CategorizacionConfig import CategorizacionConfig
+
+# View Models
+
 
 # Helpers
 import relhelpers.io.read_helper as _read
@@ -12,6 +16,7 @@ import relhelpers.huggingface.model_helper as _hf_model
 import relhelpers.stats.statistical_analysis_helper as _stats
 
 print( 1 + "")
+
 
 cat_config_ismael = CategorizacionConfig(
     "result_fillmask/categorias_ismael",

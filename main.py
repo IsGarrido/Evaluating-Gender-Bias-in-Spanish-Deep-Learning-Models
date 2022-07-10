@@ -2,11 +2,10 @@ import numpy as np
 import csv
 
 from src import ModelScorer, FileHelper
-from src.FileHelper import save_array_as_excel
 from src.ScorerConfig import ScorerConfig
-from src.FileHelper import *
 
-import relhelpers.stats.StatisticalAnalysis as _stats
+import relhelpers.stats.statistical_analysis_helper as _stats
+import relhelpers.io.write_helper as _writer
 
 ''' TEST SEIS  '''
 '''
@@ -253,11 +252,11 @@ def RunTest(folder, name, config: ScorerConfig, verbose: bool = False):
             l1.append(result.get("score_m"))
             l2.append(result.get("score_f"))
 
-        text_log = run_tests_labeled(l1, l2)
+        text_log = _stats.run_tests_labeled(l1, l2)
         text_log = text_log + "Errores:" + str(errores) + "/" + str(i)
 
         # Save
-        write_log(text_log, folder, file_clean_name +'.txt')
+        _writer.write_log(text_log, folder, file_clean_name +'.txt')
         save_array_as_excel(results, folder, file_clean_name)
 
 
