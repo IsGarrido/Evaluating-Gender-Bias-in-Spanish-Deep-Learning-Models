@@ -39,7 +39,7 @@ def write_log(text, folder, fname):
     print('Fichero guardado en ' + path)
 
 
-def read_lines_as_list(path: str) -> list[str]:
+def read_lines_as_list(path: str) -> 'list[str]':
     file = open(path, "r")
     content = file.read()
     lines: list[str] = content.split("\n")
@@ -59,7 +59,7 @@ def read_paired_tsv(file):
     paired = [item.split("\t") for item in data]
     return paired
 
-def read_lines_as_col_excel(path: str) -> dict[str, list[str]]:
+def read_lines_as_col_excel(path: str) -> 'dict[str, list[str]]':
     data: dict[str, list[str]] = {}
 
     lines: list[str] = read_lines_as_list(path)
@@ -83,7 +83,7 @@ def read_lines_as_col_excel(path: str) -> dict[str, list[str]]:
 
 
 # Deja el objeto de listas de string como un hashmap/lookup
-def read_lines_as_col_excel_asdict(path: str) -> dict[str, str]:
+def read_lines_as_col_excel_asdict(path: str) -> 'dict[str, str]':
     data: dict[str, list[str]] = read_lines_as_col_excel(path)
     plain_data: dict[str, str] = {}
 

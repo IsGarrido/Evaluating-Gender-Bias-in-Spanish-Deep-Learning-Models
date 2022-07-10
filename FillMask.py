@@ -16,6 +16,8 @@ from transformers import AutoTokenizer, FillMaskPipeline
 from src.ListHelper import *
 
 
+print( 1 + "")
+
 cat_config_ismael = CategorizacionConfig(
     "result_fillmask/categorias_ismael",
     "./data/CategoriasAdjetivos/excel_ismael_v2.tsv",
