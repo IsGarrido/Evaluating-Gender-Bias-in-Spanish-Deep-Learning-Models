@@ -2,7 +2,6 @@ from src.FillMask.Vm.AdjectiveStatResult import AdjectiveStatResult
 from src.FillMask.Vm.TaskPrediction import TaskPrediction
 from src.FillMask.Vm.TaskResult import TaskResult
 
-
 class ScoreService:
 
     def __init__(self):
@@ -21,12 +20,12 @@ class ScoreService:
     def get_scores_for_sentence(self, sentence):
         predictions = sentence.predictions
 
-    def get_score_for_sentence_task(self, task_sentences: dict[list[TaskPrediction]]):
+    def get_score_for_sentence_task(self, task_sentences: 'dict[list[TaskPrediction]]'):
         for task_key in task_sentences:
             sentence = task_sentences[task_key]
             self.get_scores_for_sentence(sentence)
 
-    def get_scores_for_model(self, model_predictions: dict[dict[list[TaskPrediction]]]):
+    def get_scores_for_model(self, model_predictions: 'dict[dict[list[TaskPrediction]]]'):
         for model_key in model_predictions:
             sentences = model_predictions[model_key]
             self.get_score_for_sentence_task(sentences)

@@ -3,23 +3,24 @@ from typing import List
 from src.FillMask.HuggingFace.FillMaskTask import FillMaskTask
 from src.FillMask.Vm.FillMaskModel import FillMaskModel
 from src.FillMask.Vm.TaskResult import TaskResult
-from src.Utils.FileWriterHelper import FileWriterHelper
 from src.Utils.HuggingHelper import HuggingHelper
-from src.Utils.FileReaderHelper import FileReaderHelper as Reader
 from src.Utils.JsonHelper import JsonHelper
+
+import relhelpers.io.read_helper as _read
+import relhelpers.io.write_helper as _writer
 
 
 class Core:
-    sentences: list[list[str]]
-    uncased_sentences: list[list[str]]
-    models: list[FillMaskModel]
+    sentences: 'list[list[str]]'
+    uncased_sentences: 'list[list[str]]'
+    models: 'list[FillMaskModel]'
 
     def __init__(self):
-        self.sentences = Reader.read_tsv("~/data/FillMask/sentences.tsv")
+        self.sentences = _read.read_tsv("~/data/FillMask/sentences.tsv")
         self.uncased_sentences = [[HuggingHelper.lower(p[0]), HuggingHelper.lower(p[1])] for p in self.sentences]
         self.types = ["male", "female"]
 
-        model_names = Reader.read_tsv("~/data/FillMask/models.tsv")
+        model_names = _read.read_tsv("~/data/FillMask/models.tsv")
         self.models = [FillMaskModel.from_tsv(model) for model in model_names ]
 
         self.run()
@@ -42,7 +43,7 @@ class Core:
                 arr.extend(sentence_results)
 
         json = JsonHelper.encode(arr)
-        FileWriterHelper.write("~/result_data/FillMask/predictions.json", json)
+        _writer.write("~/result_data/FillMask/predictions.json", json)
 
-
+# TODO: BORRAR?
 Core()

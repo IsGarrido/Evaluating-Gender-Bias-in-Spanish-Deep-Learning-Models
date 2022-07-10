@@ -1,11 +1,11 @@
 import numpy as np
 import csv
 
-from src import ModelScorer, FileHelper
-from src.FileHelper import save_array_as_excel
+from src import ModelScorer
 from src.ScorerConfig import ScorerConfig
-from relhelpers.stats.StatisticalAnalysis import *
-from src.FileHelper import *
+import relhelpers.stats.statistical_analysis_helper as _stats
+import relhelpers.io.write_helper as _writer
+import relhelpers.io.filesystem_helper as _fs
 
 ''' TEST SEIS  '''
 '''
@@ -180,11 +180,6 @@ def asDict(row):
     return dict
 '''
 
-
-# INIT
-# INIT
-# INIT
-# INIT
 # INIT
 
 autoconfig = ScorerConfig(
@@ -198,7 +193,7 @@ folder_base = "/mnt/disco2tb/Datos/OneDrive/P/TextTools/FormarFrases/test_auto"
 def Run():
 
     path = folder_base
-    files = FileHelper.get_file_list(path)
+    files = _fs.get_file_list(path)
 
     [ RunTest(name , autoconfig, False) for name in files ]
 
@@ -233,13 +228,13 @@ def RunTest(name, config: ScorerConfig, verbose: bool = False):
             l1.append(result.get("score_m"))
             l2.append(result.get("score_f"))
 
-        text_log = run_tests_labeled(l1, l2)
+        text_log = _stats.run_tests_labeled(l1, l2)
         text_log = text_log + "Errores:" + str(errores) + "/" + str(i)
 
         # Save
         folder = "Auto"
-        write_log(text_log, folder, file_clean_name +'.txt')
-        save_array_as_excel(results, folder, file_clean_name)
+        _writer.write_log(text_log, folder, file_clean_name +'.txt')
+        _writer.save_array_as_excel(results, folder, file_clean_name)
 
 
 Run()

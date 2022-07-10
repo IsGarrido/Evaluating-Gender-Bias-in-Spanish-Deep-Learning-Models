@@ -48,14 +48,14 @@ def find_suggestion(suggestion_list, word):
     return res
 
 # formulas
-def att_estimator(y_i_list: list[float], y_ji_list: list[float]):
+def att_estimator(y_i_list: 'list[float]', y_ji_list: 'list[float]'):
     l = [x - y for x, y in zip(y_i_list, y_ji_list)]
     l2 = [x**2 for x in l]
 
     return np.mean(l2)
 
 # if and only if there are any untreated members that are being used more than once as a match to the treated, otherwise we only use the first term.
-def att_estimator_variance(y_i_list: list[float], y_ji_list: list[float], att_estimator_result: float):
+def att_estimator_variance(y_i_list: 'list[float]', y_ji_list: 'list[float]', att_estimator_result: float):
     l = [x - y - att_estimator_result for x, y in zip(y_i_list, y_ji_list)]
     return np.mean(l)
 
