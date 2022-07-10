@@ -1,7 +1,7 @@
 from transformers import FillMaskPipeline
 
-from src.FileHelper import write_txt
-from src.StringHelper import as_file_name
+import relhelpers.io.write_helper as _write
+import relhelpers.primitives.string_helper as _string
 
 WORD_MIN_LEN = 4
 T = "\t"
@@ -75,8 +75,8 @@ class GroupedFillMask:
 
         if self.write_files:
             text = "\n".join(l)
-            path = self.result_path + "/" + as_file_name(self.modelname) + "/" + as_file_name(orig_line) + ".csv"
-            write_txt(text, path)
+            path = self.result_path + "/" + _string.as_file_name(self.modelname) + "/" + _string.as_file_name(orig_line) + ".csv"
+            _write.write_txt(text, path)
 
     def run_for_text(self, line):
 

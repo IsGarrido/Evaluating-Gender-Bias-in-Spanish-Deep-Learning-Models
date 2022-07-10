@@ -1,20 +1,15 @@
-from transformers import AutoTokenizer, AutoModelForMaskedLM
-from transformers import pipeline
-
-from src.DateHelper import FechaHoraTextual
-from src.FileHelper import write_txt, read_lines_as_dict, read_lines_as_col_excel_asdict, read_paired_tsv, write_json
 from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from src.FillMaskUtils.RunResult import RunResult
 from src.StatisticalAnalysis import run_tests_labeled
-from src.StringHelper import as_file_name, from_int
 from src.FillMaskUtils.CategorizacionConfig import CategorizacionConfig
 
-# Solo para BNE
-from transformers import AutoModelForMaskedLM
-from transformers import AutoTokenizer, FillMaskPipeline
-
-from src.ListHelper import *
-
+# Helpers
+import relhelpers.io.read_helper as _read
+import relhelpers.io.write_helper as _write
+import relhelpers.date.date_helper as _date
+import relhelpers.primitives.string_helper as _string
+import relhelpers.primitives.list_helper as _list
+import relhelpers.huggingface.model_helper as _hf_model
 
 print( 1 + "")
 
@@ -90,11 +85,11 @@ WRITE_STATS = False
 # Inicializar cosas en espacio común, cuando esté estado hay que darle una vuelta, muy cutre esto
 
 # Stores
-adjectives_map = read_lines_as_dict("../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
+adjectives_map = _read.read_lines_as_dict("../TextTools/GenerarListadoPalabras/result/adjetivos.txt")
 
 if cconfig.categories_ready:
-    adjetivos_categorizados = read_lines_as_col_excel_asdict(cconfig.categories_source_file)
-    adjetivos_categorias = list_unique(list(adjetivos_categorizados.values())) # Bastante bruto esto
+    adjetivos_categorizados = _read.read_lines_as_col_excel_asdict(cconfig.categories_source_file)
+    adjetivos_categorias = _list.list_unique(list(adjetivos_categorizados.values())) # Bastante bruto esto
 else:
     adjetivos_categorizados = {}
     adjetivos_categorias = []
@@ -148,12 +143,12 @@ def save_run(model_name, retrieval_status_values, probabilities, kind="m"):
     for key, retrieval_status_values_value in retrieval_status_values.items():
         probability_value = probabilities[key]
 
-        l.append(from_int(retrieval_status_values_value, 4) + T + key)
+        l.append(_string.from_int(retrieval_status_values_value, 4) + T + key)
         all_filling_words.append(key)
 
         # Solo si es un adjetivo
         if key in adjectives_map or not cconfig.check_is_adjective:
-            l_adj.append(from_int(retrieval_status_values_value, 4) + T + key)
+            l_adj.append(_string.from_int(retrieval_status_values_value, 4) + T + key)
             all_filling_adjectives.append(key)
 
             # Buscar la categoria
@@ -204,16 +199,16 @@ def save_run(model_name, retrieval_status_values, probabilities, kind="m"):
 
     # Juntar lineas
     data = "\n".join(l)
-    data_adj = "\n".join(l_adj) + "\n" + FechaHoraTextual()
+    data_adj = "\n".join(l_adj) + "\n" + _date.FechaHoraTextual()
     data_category = "\n".join(l_category)
 
     # Pasar a disco
-    path = cconfig.RESULT_PATH + "/run_" + str(run_id) + "_" + kind + "_" + as_file_name(model_name)
+    path = cconfig.RESULT_PATH + "/run_" + str(run_id) + "_" + kind + "_" + _string.as_file_name(model_name)
 
     if WRITE_DEBUG:
-        write_txt(data, path + ".csv")
-        write_txt(data_adj, path + "_adj.csv")
-        write_txt(data_category, path + "_cat.csv")
+        _write.write_txt(data, path + ".csv")
+        _write.write_txt(data_adj, path + "_adj.csv")
+        _write.write_txt(data_category, path + "_cat.csv")
 
     return dict_results
 
@@ -253,14 +248,14 @@ def run_global_stats():
 
             result_text = run_tests_labeled(l_before, l_after)
 
-            posfix = as_file_name(cat)  + "_" + str(attr)
+            posfix = _string.as_file_name(cat)  + "_" + str(attr)
 
             # Escribir listas para posterior revisión
-            data_m = list_as_file(list_as_str_list(l_before))
-            data_f = list_as_file(list_as_str_list(l_after))
+            data_m = _list.list_as_file(_list.list_as_str_list(l_before))
+            data_f = _list.list_as_file(_list.list_as_str_list(l_after))
 
-            write_txt(data_m, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_m.txt")
-            write_txt(data_f, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_f.txt")
+            _write.write_txt(data_m, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_m.txt")
+            _write.write_txt(data_f, cconfig.RESULT_PATH + "/stats_source_" + posfix + "_f.txt")
 
             l_both = []
             for idx, val in enumerate(l_before):
@@ -270,25 +265,24 @@ def run_global_stats():
                 arrow = ">" if m_val > f_val else "<"
                 l_both.append( str(m_val) + T + arrow + T + str(f_val) + T + modelname)
 
-            str_both_l = list_as_str_list(l_both)
+            str_both_l = _list.list_as_str_list(l_both)
             str_both_l.insert(0, "[MASC]" + T + " " + T + "[FEM]" + T + "[model_name]")
             str_both_l.insert(0, "")
             str_both_l.insert(0, "")
-            str_both_l.insert(0, as_file_name(cat) + "," + str(attr))
+            str_both_l.insert(0, _string.as_file_name(cat) + "," + str(attr))
 
-            data_both = list_as_file(str_both_l, False)
+            data_both = _list.list_as_file(str_both_l, False)
 
-            write_txt(data_both, cconfig.RESULT_PATH + "/stats_both_" + posfix + ".csv")
+            _write.write_txt(data_both, cconfig.RESULT_PATH + "/stats_both_" + posfix + ".csv")
 
             # Escribir resultado
             path = cconfig.RESULT_PATH + "/stats_result_" + posfix + ".txt"
-            write_txt(result_text, path )
+            _write.write_txt(result_text, path )
 
 def run(modelname, tokenizername, MASK, sentences):
-    print("Loading model " + modelname + " with mask " + MASK)
 
-    tokenizer = AutoTokenizer.from_pretrained(tokenizername)
-    model = AutoModelForMaskedLM.from_pretrained(modelname).to('cuda')
+    print("Loading model " + modelname + " with mask " + MASK)
+    model, tokenizer = _hf_model.load_model(modelname, tokenizername)
     print("Model loaded")
 
     sentences_m = [sentence[0].replace("[MASK]", MASK) for sentence in sentences]
@@ -303,10 +297,10 @@ def run(modelname, tokenizername, MASK, sentences):
 
     print("OK => " + modelname)
 
-sentences = read_paired_tsv(cconfig.sentences_path)
+sentences = _read.read_paired_tsv(cconfig.sentences_path)
 
 uncased_sentences = [ [p[0].lower().replace("[mask]", "[MASK]"), p[1].lower().replace("[mask]", "[MASK]")] for p in sentences]
-models = read_paired_tsv("./data/FillMask/models.tsv")
+models = _read.read_paired_tsv("./data/FillMask/models.tsv")
 
 for idx, model in enumerate(models):
     run_id = model[0]
@@ -314,11 +308,11 @@ for idx, model in enumerate(models):
     run(model[1], model[2], model[3], sentence_list)
     print("Finalizado modelo nro " + str(idx))
 
-data = list_as_file(all_filling_words)
-write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_words.csv")
+data = _list.list_as_file(all_filling_words)
+_write.write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_words.csv")
 
-data = list_as_file(all_filling_adjectives)
-write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_adjectives.csv")
+data = _list.list_as_file(all_filling_adjectives)
+_write.write_txt(data, cconfig.RESULT_PATH + "/summary_all_filling_adjectives.csv")
 
 
 if cconfig.categories_ready:
@@ -327,9 +321,8 @@ if cconfig.categories_ready:
         run_global_stats()
 
     adjetivos_sin_categorizar = filter( lambda adjetivo: not adjetivo in adjetivos_categorizados, all_filling_adjectives)
-    data = list_as_file(adjetivos_sin_categorizar)
-    write_txt(data, cconfig.RESULT_PATH + "/summary_adj_missing_category.csv")
-
-    write_json(run_results, cconfig.RESULT_PATH + "/run_result.json");
+    data = _list.list_as_file(adjetivos_sin_categorizar)
+    _write.write_txt(data, cconfig.RESULT_PATH + "/summary_adj_missing_category.csv")
+    _write.write_json(run_results, cconfig.RESULT_PATH + "/run_result.json")
 
 
