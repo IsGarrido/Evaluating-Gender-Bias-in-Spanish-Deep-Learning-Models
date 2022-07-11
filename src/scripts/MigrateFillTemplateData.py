@@ -35,7 +35,7 @@ class MigrateFillTemplateData:
         self.migrate_to_tsv(data)
 
     def migrate_to_tsv(self, df: pd.DataFrame):
-        path = _project.result_path("self.__class__.__name__ + ", "FillMask.tsv" )
+        path = _project.result_path("FillMask", "FillMask.tsv" )
         _pd.save(df, path)
 
 MigrateFillTemplateData()
