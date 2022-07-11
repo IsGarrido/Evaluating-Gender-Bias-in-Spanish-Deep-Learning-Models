@@ -8,11 +8,23 @@ from relhelpers.io.project_helper import ProjectHelper as _project
 from relhelpers.huggingface.model_helper import HuggingFaceModelHelper as _hf_model
 from relhelpers.huggingface.fillmask_helper import FillMaskHelper as _hf_fillmask
 from relhelpers.pandas.pandas_helper import PandasHelper as _pd
+from relhelpers.primitives.string_helper import StringHelper as _string
+from relhelpers.io.write_helper import WriteHelper as _write
+
+import warnings
+warnings.filterwarnings("ignore")
 
 class FillTemplate:
 
     def __init__(self, cfg: FillTemplateConfig) -> None:
+
         self.cfg = cfg        
+        self.data = pd.DataFrame()
+        self.model_data = pd.DataFrame()
+
+        folder = _project.result_path(self.__class__.__name__, None)
+        _write.create_dir(folder)
+
         self.run()
 
     def run(self):
@@ -40,10 +52,11 @@ class FillTemplate:
                 else:
                     templates = uncased_templates_roberta_df
 
-            self.run_for_model(model.id, model.name, model.tokenizer, model.mask, templates)
-        x = 0
+            self.run_for_model(model.name, model.tokenizer, model.mask, templates)
+        
+        self.export_all_results()
 
-    def run_for_model(self, uid: int, model_name: str, tokenizer_name: str, mask: str, templates_df: pd.DataFrame):
+    def run_for_model(self, model_name: str, tokenizer_name: str, mask: str, templates_df: pd.DataFrame):
 
         model, tokenizer = _hf_model.load_model(model_name, tokenizer_name)
         pipeline = FillMaskPipeline(model, tokenizer, top_k=self.cfg.n_predictions, device=model.device.index)
@@ -51,36 +64,52 @@ class FillTemplate:
         dimensions = templates_df.columns
         for dimension in dimensions:
             dimension_df = templates_df[dimension]
-            self.run_for_dimension(pipeline, dimension_df)
+            self.run_for_dimension(pipeline, model_name, dimension_df, dimension)
+        
+        self.data = self.data.append(self.model_data)
+        self.export_model_result(model_name)
+        self.model_data = pd.DataFrame()
 
         # c_m, retrieval_status_values_m, probability_m = run_grouped(model, model_name, tokenizer, sentences_m)
         # c_f, retrieval_status_values_f, probability_f = run_grouped(model, modelname, tokenizer, sentences_f)
-    def run_for_dimension(self, pipeline: FillMaskPipeline, df: pd.DataFrame):
-        [self.run_for_sentence(pipeline, sentence) for sentence in df]
+    def run_for_dimension(self, pipeline: FillMaskPipeline, model_name: str, df: pd.DataFrame, dimension: str):
+        [self.run_for_sentence(pipeline, model_name, sentence, dimension) for sentence in df]
 
-    def run_for_sentence(self, pipeline: FillMaskPipeline, sentence):
+    def run_for_sentence(self, pipeline: FillMaskPipeline,  model_name: str, sentence: str, dimension: str):
+        # Predict
         res = pipeline(sentence)
+
+        # To pandas
         res_df = _pd.from_dict(res)
+
+        # Delete extra
         res_df = _pd.remove_col(res_df, 'sequence')
 
-        index_name = 'idx'
-        inverse_index_name = 'rsv'
+        # Add context
+        res_df['sentence'] = sentence   # He is [MASK]
+        res_df['model'] = model_name    # beto
+        res_df['dimension'] = dimension # m/f
 
+        # Alter
         res_df.reset_index(inplace=True)
-        res_df[index_name] = res_df.index
-        res_df[inverse_index_name] = [len(res_df)]*len(res_df) - res_df.index 
+        # res_df['idx'] = res_df.index
+        res_df['rsv'] = [len(res_df)]*len(res_df) - res_df.index 
 
-        x = 0
+        self.model_data = self.model_data.append(res_df) 
 
+    def export_model_result(self, model_name):
+        path = _project.result_path(self.__class__.__name__, _string.as_file_name(model_name) + ".tsv" )
+        _pd.save(self.model_data, path)
+
+    def export_all_results(self):
+        path = _project.result_path(self.__class__.__name__, self.__class__.__name__ + ".tsv" )
+        _pd.save(self.data, path)
 
         # result_table_m = save_run(modelname, retrieval_status_values_m, probability_m, "m")
         # result_table_f = save_run(modelname, retrieval_status_values_f, probability_f, "f")
         # run_results.append((modelname, result_table_m, result_table_f))
 
         # print("OK => " + modelname)
-
-        
-
 
 
 cfg = FillTemplateConfig(
