@@ -2,7 +2,8 @@
 
 import pandas as pd
 from transformers import FillMaskPipeline
-from dataclass.fill_template_config import FillTemplateConfig
+from dataclass.evaluate.categories_container import CategoriesContainer
+from dataclass.filltemplate.fill_template_config import FillTemplateConfig
 from dataclass.model_config import ModelConfig
 from relhelpers.io.project_helper import ProjectHelper as _project
 from relhelpers.huggingface.model_helper import HuggingFaceModelHelper as _hf_model
@@ -21,8 +22,10 @@ class FillTemplate:
         self.cfg = cfg        
         self.data = pd.DataFrame()
         self.model_data = pd.DataFrame()
+        self.experiment = _string.as_file_name(cfg.label)
 
-        folder = _project.result_path(self.__class__.__name__, None)
+        # TODO revisar si esto hace falta aún 
+        folder = _project.result_path(self.experiment, FillTemplate.__name__)
         _write.create_dir(folder)
 
         self.run()
@@ -35,7 +38,7 @@ class FillTemplate:
         cased_templates_roberta_df = _pd.apply_all_cells(cased_templates_df, _hf_fillmask.to_robert_mask)
         uncased_templates_roberta_df = _pd.apply_all_cells(uncased_templates_df, _hf_fillmask.to_robert_mask)
 
-        models_df = _pd.read_tsv(_project.data_path("FillMask", "models.tsv"))
+        models_df = _pd.read_tsv(_project.data_path(FillTemplate.__name__, "models.tsv"))
         models: 'list[ModelConfig]' = models_df.apply( lambda row: ModelConfig(row[0],row[1],row[2],row[3], row[3] == 'cased'), axis = 1)
 
         for model in models:
@@ -98,24 +101,27 @@ class FillTemplate:
         self.model_data = self.model_data.append(res_df) 
 
     def export_model_result(self, model_name):
-        path = _project.result_path(self.__class__.__name__, _string.as_file_name(model_name) + ".tsv" )
+        path = _project.result_path(self.experiment, FillTemplate.__name__, _string.as_file_name(model_name) + ".tsv" )
         _pd.save(self.model_data, path)
 
     def export_all_results(self):
-        path = _project.result_path(self.__class__.__name__, self.__class__.__name__ + ".tsv" )
-        _pd.save(self.data, path)
+        self.data.reset_index(drop=True)
 
-        # result_table_m = save_run(modelname, retrieval_status_values_m, probability_m, "m")
-        # result_table_f = save_run(modelname, retrieval_status_values_f, probability_f, "f")
-        # run_results.append((modelname, result_table_m, result_table_f))
+        path = _project.result_path(self.experiment, FillTemplate.__name__, FillTemplate.__name__ )
+        file_tsv = path + ".tsv"
+        file_json = path + ".json"
 
-        # print("OK => " + modelname)
-
+        _pd.save(self.data, file_tsv)
+        
+        result_container = CategoriesContainer()
+        result_container.add_all(self.data.values.tolist())
+        _write.json(result_container, file_json)
+        
 
 cfg = FillTemplateConfig(
         'genre',
         'Spanish Genre',
-        _project.data_path('FillMask','sentences.tsv')
+        _project.data_path(FillTemplate.__name__,'sentences.tsv')
 )
 print(cfg)
 

@@ -1,4 +1,4 @@
-from dataclass.fill_template_config import FillTemplateConfig
+from dataclass.filltemplate.fill_template_config import FillTemplateConfig
 from source.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from source.FillMaskUtils.RunResult import RunResult
 from source.FillMaskUtils.CategorizacionConfig import CategorizacionConfig
@@ -328,6 +328,6 @@ if cconfig.categories_ready:
     adjetivos_sin_categorizar = filter( lambda adjetivo: not adjetivo in adjetivos_categorizados, all_filling_adjectives)
     data = _list.list_as_file(adjetivos_sin_categorizar)
     _write.txt(data, cconfig.RESULT_PATH + "/summary_adj_missing_category.csv")
-    _write.write_json(run_results, cconfig.RESULT_PATH + "/run_result.json")
+    _write.json(run_results, cconfig.RESULT_PATH + "/run_result.json")
 
 
