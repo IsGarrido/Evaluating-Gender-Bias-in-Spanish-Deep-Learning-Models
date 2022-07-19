@@ -51,18 +51,6 @@ class ModelScorer:
         target_logits = self.get_score_for_word(sentence_logits, target_word)
         return np.log(target_logits)
 
-        return target_logits
-
-
-    ''' BORRAR '''
-
-    def find_mask(self, sentence):
-        words = sentence.split()
-        idx = words.index('MASK')
-        return idx
-
-    ''' BORRAR '''
-
     def get_mask_index_as_torch(seq):
         words = seq.split(sep=' ')
         for idx, word in enumerate(words):

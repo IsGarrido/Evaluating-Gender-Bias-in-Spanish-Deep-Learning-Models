@@ -2,7 +2,7 @@
 
 import pandas as pd
 from transformers import FillMaskPipeline
-from dataclass.evaluate.categories_container import CategoriesContainer
+from dataclass.evaluate_categories.categories_container import CategoriesContainer
 from dataclass.filltemplate.fill_template_config import FillTemplateConfig
 from dataclass.model_config import ModelConfig
 from relhelpers.io.project_helper import ProjectHelper as _project
@@ -11,6 +11,7 @@ from relhelpers.huggingface.fillmask_helper import FillMaskHelper as _hf_fillmas
 from relhelpers.pandas.pandas_helper import PandasHelper as _pd
 from relhelpers.primitives.string_helper import StringHelper as _string
 from relhelpers.io.write_helper import WriteHelper as _write
+from relhelpers.io.read_helper import ReadHelper as _read
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -106,22 +107,37 @@ class FillTemplate:
 
     def export_all_results(self):
         self.data.reset_index(drop=True)
+        self.data["token_str"] = self.data["token_str"].str.strip()
+        self.data["token_str"] = self.data["token_str"].str.lower()
 
         path = _project.result_path(self.experiment, FillTemplate.__name__, FillTemplate.__name__ )
         file_tsv = path + ".tsv"
         file_json = path + ".json"
 
         _pd.save(self.data, file_tsv)
+        adjectives = _read.read_lines_as_dict(_project.data_path("Adjectives", "adjetivos.txt"))
+        adjectives = [adjective.lower() for adjective in adjectives]
         
+        records = self.data.to_dict('records')
+        unique_words = pd.unique(self.data["token_str"].values).tolist()
+
+        unique_adjectives = []
+        other_words = []
+        for word in unique_words:
+            if word in adjectives:
+                unique_adjectives.append(word)
+            else:
+                other_words.append(word)
+
         result_container = CategoriesContainer()
-        result_container.add_all(self.data.values.tolist())
+        result_container.add_all(records, unique_adjectives, other_words)
         _write.json(result_container, file_json)
         
 
 cfg = FillTemplateConfig(
-        'genre',
-        'Spanish Genre',
-        _project.data_path(FillTemplate.__name__,'sentences.tsv')
+    'genre',
+    'Spanish Genre',
+    _project.data_path(FillTemplate.__name__,'sentences.tsv')
 )
 print(cfg)
 
