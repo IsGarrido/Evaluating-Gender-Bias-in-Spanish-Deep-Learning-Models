@@ -1,8 +1,8 @@
 import numpy as np
 import csv
 
-from src import ModelScorer, FileHelper
-from src.ScorerConfig import ScorerConfig
+from source import ModelScorer, FileHelper
+from source.ScorerConfig import ScorerConfig
 
 import relhelpers.stats.statistical_analysis_helper as _stats
 import relhelpers.io.write_helper as _writer

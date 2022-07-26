@@ -2,7 +2,7 @@
 
 import pandas as pd
 from transformers import FillMaskPipeline
-from dataclass.evaluate_categories.categories_container import CategoriesContainer
+from dataclass.filltemplate.fill_template_result import FillTemplateResult
 from dataclass.filltemplate.fill_template_config import FillTemplateConfig
 from dataclass.model_config import ModelConfig
 from relhelpers.io.project_helper import ProjectHelper as _project
@@ -96,7 +96,6 @@ class FillTemplate:
 
         # Alter
         res_df.reset_index(inplace=True)
-        # res_df['idx'] = res_df.index
         res_df['rsv'] = [len(res_df)]*len(res_df) - res_df.index 
 
         self.model_data = self.model_data.append(res_df) 
@@ -129,7 +128,7 @@ class FillTemplate:
             else:
                 other_words.append(word)
 
-        result_container = CategoriesContainer()
+        result_container = FillTemplateResult()
         result_container.add_all(records, unique_adjectives, other_words)
         _write.json(result_container, file_json)
         
@@ -168,32 +167,5 @@ class GroupedFillMask:
             return False
 
         return True
-
-    def save_stats(self, word: str, probability, idx):
-
-        word = word.strip()
-        if not self.valid_token(word):
-            return
-
-        # Count
-        if word in self.grouped_count:
-            self.grouped_count[word] = self.grouped_count[word] + 1
-        else:
-            self.grouped_count[word] = 1
-
-        retrieval_status_values = self.result_qty - idx
-
-        if word in self.grouped_retrieval_status_values:
-            self.grouped_retrieval_status_values[word] = self.grouped_retrieval_status_values[word] + retrieval_status_values
-        else:
-            self.grouped_retrieval_status_values[word] = retrieval_status_values
-
-        if word in self.grouped_model_probabilities:
-            self.grouped_model_probabilities[word].append(probability)
-        else:
-            self.grouped_model_probabilities[word] = []
-            self.grouped_model_probabilities[word].append(probability)
-
-
 
 '''

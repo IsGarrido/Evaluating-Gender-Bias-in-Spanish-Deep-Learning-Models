@@ -1,8 +1,8 @@
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 from transformers import pipeline
 
-from src.FillMaskUtils.GroupedFillMask import GroupedFillMask
-from src.FillMaskUtils.RunResult import RunResult
+from source.FillMaskUtils.GroupedFillMask import GroupedFillMask
+from source.FillMaskUtils.RunResult import RunResult
 import relhelpers.stats.statistical_analysis_helper as _stats
 
 import relhelpers.io.read_helper as _read
