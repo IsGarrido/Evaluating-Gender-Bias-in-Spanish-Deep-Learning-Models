@@ -88,9 +88,28 @@ class EvaluateCategories:
                 adjective_count = ('adjective_count', 'sum')
             )
 
-        def group_by_model_fn(df_by_category: pd.DataFrame) -> pd.DataFrame:
+        def group_by_dimension_fn(df_by_category: pd.DataFrame) -> pd.DataFrame:
             return df_by_category.groupby(
                 ['dimension', 'model'], as_index = False
+            ).agg(
+                rsv_sum = ('rsv_sum', 'sum'),
+                score_sum = ('score_sum', 'sum'),
+                count = ('count', 'sum'),
+
+                rsv_min = ('rsv_min', 'min'),
+                rsv_max = ('rsv_max', 'max'),
+                rsv_mean = ('rsv_mean', 'mean'),
+
+                score_min = ('score_min', 'min'),
+                score_max = ('score_max', 'max'),
+                score_mean = ('score_mean', 'mean'),
+
+                adjective_count = ('adjective_count', 'sum')
+            )
+
+        def group_by_model_fn(df_by_category: pd.DataFrame) -> pd.DataFrame:
+            return df_by_category.groupby(
+                ['model'], as_index = False
             ).agg(
                 rsv_sum = ('rsv_sum', 'sum'),
                 score_sum = ('score_sum', 'sum'),
@@ -114,15 +133,20 @@ class EvaluateCategories:
         df_by_category = _pd.log(group_by_category_fn(df_by_sentence))
         df_by_category = add_adjective_proportion(df_by_category)
 
-        df_by_model = _pd.log(group_by_model_fn(df_by_category))
+        df_by_dimension = _pd.log(group_by_dimension_fn(df_by_category))
+        df_by_dimension = add_adjective_proportion(df_by_dimension)
+
+        df_by_model = _pd.log(group_by_model_fn(df_by_dimension))
         df_by_model = add_adjective_proportion(df_by_model)
 
         path_sentence = _project.result_path(self.experiment, "EvaluateCategories", "BySentence.json" )
         path_category = _project.result_path(self.experiment, "EvaluateCategories", "ByCategory.json" )
+        path_dimension = _project.result_path(self.experiment, "EvaluateCategories", "ByDimension.json" )
         path_model = _project.result_path(self.experiment, "EvaluateCategories", "ByModel.json" )
 
         _write.df_as_json(df_by_sentence, path_sentence)
         _write.df_as_json(df_by_category, path_category)
+        _write.df_as_json(df_by_dimension, path_dimension)
         _write.df_as_json(df_by_model, path_model)
 
         #self.compute_statistics_for_words(df_data)
