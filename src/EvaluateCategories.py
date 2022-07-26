@@ -107,8 +107,8 @@ class EvaluateCategories:
                 adjective_count = ('adjective_count', 'sum')
             )
 
-        def group_by_model_fn(df_by_category: pd.DataFrame) -> pd.DataFrame:
-            return df_by_category.groupby(
+        def group_by_model_fn(df_by_dimension: pd.DataFrame) -> pd.DataFrame:
+            return df_by_dimension.groupby(
                 ['model'], as_index = False
             ).agg(
                 rsv_sum = ('rsv_sum', 'sum'),
