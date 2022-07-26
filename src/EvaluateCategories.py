@@ -38,24 +38,29 @@ class EvaluateCategories:
         def get_category(row):
             return self.word_categories.get(row['token_str'], 'unknown')
 
+        def is_adjective(row):
+            return row['token_str'] in self.word_categories
+
+        def add_adjective_proportion(df: pd.DataFrame) -> pd.DataFrame:
+            df["adjetive_proportion"] = (df["adjective_count"] / df["count"]) * 100
+            return df
+
         df_data["category"] = df_data.apply( lambda row: get_category(row), axis=1 ) 
-        df_data["is_adjective"] = df_data.apply( lambda row: 1 if get_category(row) != 'unknown' else 0, axis=1 ) 
+        df_data["is_adjective"] = df_data.apply( lambda row: 1 if is_adjective(row) else 0, axis=1 ) 
+        # df_data["is_adjective"] = df_data.apply( lambda row: 1 if self.word_categories.has_key(row['token_str']) != 'unknown' else 0, axis=1 ) 
 
         # df_by_sentence = df_data.groupby(['dimension', 'model', 'sentence', "category"], as_index = False).agg({ 'rsv': ['min', 'max', 'mean', 'sum', 'count'], 'score': ['min', 'max', 'mean', 'sum', 'count'] })
-
         def group_by_sentence_fn(df_data: pd.DataFrame) -> pd.DataFrame:
-            res_df = df_data.groupby(
+            return df_data.groupby(
                 ['dimension', 'model', 'category', 'sentence' ], as_index = False
             ).agg(
                 rsv_sum = ('rsv', 'sum'),
-                # rsv_count = ('rsv', 'count'),
 
                 rsv_min = ('rsv', 'min'),
                 rsv_max = ('rsv', 'max'),
                 rsv_mean = ('rsv', 'mean'),
 
                 score_sum = ('score', 'sum'),
-                # score_count = ('score', 'count'),
 
                 score_min = ('score', 'min'),
                 score_max = ('score', 'max'),
@@ -71,18 +76,16 @@ class EvaluateCategories:
                 ['dimension', 'model', 'category'], as_index = False
             ).agg(
                 rsv_sum = ('rsv_sum', 'sum'),
+                score_sum = ('score_sum', 'sum'),
+                count = ('count', 'sum'),
 
                 rsv_min = ('rsv_min', 'min'),
                 rsv_max = ('rsv_max', 'max'),
                 rsv_mean = ('rsv_sum', 'mean'),
 
-                score_sum = ('score_sum', 'sum'),
-
                 score_min = ('score_min', 'min'),
                 score_max = ('score_max', 'max'),
                 score_mean = ('score_sum', 'mean'),
-
-                count = ('count', 'sum')
 
                 adjective_count = ('adjective_count', 'sum')
             )
@@ -92,28 +95,29 @@ class EvaluateCategories:
                 ['dimension', 'model'], as_index = False
             ).agg(
                 rsv_sum = ('rsv_sum', 'sum'),
-                rsv_count = ('rsv_count', 'sum'),
+                score_sum = ('score_sum', 'sum'),
+                count = ('count', 'sum'),
 
                 rsv_min = ('rsv_min', 'min'),
                 rsv_max = ('rsv_max', 'max'),
                 rsv_mean = ('rsv_sum', 'mean'),
 
-                score_sum = ('score_sum', 'sum'),
-                score_count = ('score_count', 'sum'),
-
                 score_min = ('score_min', 'min'),
                 score_max = ('score_max', 'max'),
                 score_mean = ('score_sum', 'mean'),
-
-                count = ('count', 'sum')
 
                 adjective_count = ('adjective_count', 'sum')
             )
         
         
         df_by_sentence = _pd.log(group_by_sentence_fn(df_data))
+        df_by_sentence = add_adjective_proportion(df_by_sentence)
+
         df_by_category = _pd.log(group_by_category_fn(df_by_sentence))
+        df_by_category = add_adjective_proportion(df_by_category)
+
         df_by_model = _pd.log(group_by_model_fn(df_by_category))
+        df_by_model = add_adjective_proportion(df_by_model)
 
         path_sentence = _project.result_path(self.experiment, "EvaluateCategories", "BySentence.json" )
         path_category = _project.result_path(self.experiment, "EvaluateCategories", "ByCategory.json" )
