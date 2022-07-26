@@ -1,15 +1,12 @@
 from dataclasses import dataclass
 
 @dataclass(frozen=True)
-class  FillTemplateConfig(object):
+class  EvaluateCategoriesConfig(object):
 
     label: str
     """Readable experiment label"""
 
-    templates_path: str
-    """Templates path"""
-
-    n_predictions: int = 29
+    categories_path: str
     """Number of predictions"""
 
     dimensions = [

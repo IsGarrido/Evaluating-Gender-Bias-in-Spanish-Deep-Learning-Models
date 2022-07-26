@@ -3,9 +3,6 @@ from source.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from source.FillMaskUtils.RunResult import RunResult
 from source.FillMaskUtils.CategorizacionConfig import CategorizacionConfig
 
-# View Models
-
-
 # Helpers
 import relhelpers.io.read_helper as _read
 import relhelpers.io.write_helper as _write
@@ -151,12 +148,12 @@ def save_run(model_name, retrieval_status_values, probabilities, kind="m"):
         l.append(_string.from_int(retrieval_status_values_value, 4) + T + key)
         all_filling_words.append(key)
 
-        # Solo si es un adjetivo
+        # Solo si es un adjetivo OK
         if key in adjectives_map or not cconfig.check_is_adjective:
             l_adj.append(_string.from_int(retrieval_status_values_value, 4) + T + key)
             all_filling_adjectives.append(key)
 
-            # Buscar la categoria
+            # Buscar la categoria OK
             category = UNKOWN_CAT
             if key in adjetivos_categorizados:
                 category = adjetivos_categorizados[key]

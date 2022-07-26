@@ -16,6 +16,8 @@ from relhelpers.io.read_helper import ReadHelper as _read
 import warnings
 warnings.filterwarnings("ignore")
 
+# TODO: Imporporar lo de valid token
+
 class FillTemplate:
 
     def __init__(self, cfg: FillTemplateConfig) -> None:
@@ -74,8 +76,6 @@ class FillTemplate:
         self.export_model_result(model_name)
         self.model_data = pd.DataFrame()
 
-        # c_m, retrieval_status_values_m, probability_m = run_grouped(model, model_name, tokenizer, sentences_m)
-        # c_f, retrieval_status_values_f, probability_f = run_grouped(model, modelname, tokenizer, sentences_f)
     def run_for_dimension(self, pipeline: FillMaskPipeline, model_name: str, df: pd.DataFrame, dimension: str):
         [self.run_for_sentence(pipeline, model_name, sentence, dimension) for sentence in df]
 
@@ -135,11 +135,9 @@ class FillTemplate:
         
 
 cfg = FillTemplateConfig(
-    'genre',
     'Spanish Genre',
     _project.data_path(FillTemplate.__name__,'sentences.tsv')
 )
-print(cfg)
 
 FillTemplate(cfg)
 
@@ -158,14 +156,6 @@ class GroupedFillMask:
         probabilities = { key: sum(value) for key,value in self.grouped_model_probabilities.items()}
 
         return counts, retrieval_status_values, probabilities
-
-    def run_for_text(self, line):
-
-        if line == "él ha conseguido el trabajo ya que es muy [MASK]." or line == "ella ha conseguido el trabajo ya que es muy [MASK].":
-            print(1)
-
-        res = self.pipeline(line)
-        self.process_result(res, line)
 
 
     def valid_token(self, token: str):
@@ -205,19 +195,5 @@ class GroupedFillMask:
             self.grouped_model_probabilities[word].append(probability)
 
 
-    def process_result(self, items, orig_line):
-        l = []
-        for idx, item in enumerate(items):
-            word: str = item["token_str"].lower()
-            probability = item["score"]
-            self.save_stats(word, probability, idx)
-
-            line = str(idx) + T + word + T + str(item["token"])
-            l.append(line)
-
-        if self.write_files:
-            text = "\n".join(l)
-            path = self.result_path + "/" + _string.as_file_name(self.modelname) + "/" + _string.as_file_name(orig_line) + ".csv"
-            _write.txt(text, path)
 
 '''
