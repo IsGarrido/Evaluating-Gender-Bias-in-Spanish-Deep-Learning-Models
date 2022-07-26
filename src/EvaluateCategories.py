@@ -49,7 +49,7 @@ class EvaluateCategories:
         df_data["is_adjective"] = df_data.apply( lambda row: 1 if is_adjective(row) else 0, axis=1 ) 
 
         def group_by_sentence_fn(df_data: pd.DataFrame) -> pd.DataFrame:
-            return df_data[df_data.category != 'unknown'].groupby(
+            return df_data.groupby(
                 ['dimension', 'model', 'category', 'sentence' ], as_index = False
             ).agg(
                 rsv_sum = ('rsv', 'sum'),
@@ -79,11 +79,11 @@ class EvaluateCategories:
 
                 rsv_min = ('rsv_min', 'min'),
                 rsv_max = ('rsv_max', 'max'),
-                rsv_mean = ('rsv_sum', 'mean'),
+                rsv_mean = ('rsv_mean', 'mean'),
 
                 score_min = ('score_min', 'min'),
                 score_max = ('score_max', 'max'),
-                score_mean = ('score_sum', 'mean'),
+                score_mean = ('score_mean', 'mean'),
 
                 adjective_count = ('adjective_count', 'sum')
             )
@@ -98,11 +98,11 @@ class EvaluateCategories:
 
                 rsv_min = ('rsv_min', 'min'),
                 rsv_max = ('rsv_max', 'max'),
-                rsv_mean = ('rsv_sum', 'mean'),
+                rsv_mean = ('rsv_mean', 'mean'),
 
                 score_min = ('score_min', 'min'),
                 score_max = ('score_max', 'max'),
-                score_mean = ('score_sum', 'mean'),
+                score_mean = ('score_mean', 'mean'),
 
                 adjective_count = ('adjective_count', 'sum')
             )
