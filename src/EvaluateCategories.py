@@ -49,7 +49,7 @@ class EvaluateCategories:
         df_data["is_adjective"] = df_data.apply( lambda row: 1 if is_adjective(row) else 0, axis=1 ) 
 
         def group_by_sentence_fn(df_data: pd.DataFrame) -> pd.DataFrame:
-            return df_data.groupby(
+            return df_data[df_data.category != 'unknown'].groupby(
                 ['dimension', 'model', 'category', 'sentence' ], as_index = False
             ).agg(
                 rsv_sum = ('rsv', 'sum'),
