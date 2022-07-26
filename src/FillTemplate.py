@@ -12,6 +12,7 @@ from relhelpers.pandas.pandas_helper import PandasHelper as _pd
 from relhelpers.primitives.string_helper import StringHelper as _string
 from relhelpers.io.write_helper import WriteHelper as _write
 from relhelpers.io.read_helper import ReadHelper as _read
+from relhelpers.io.json_helper import JsonHelper as _json
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -115,6 +116,7 @@ class FillTemplate:
 
         _pd.save(self.data, file_tsv)
         adjectives = _read.read_lines_as_dict(_project.data_path("Adjectives", "adjetivos.txt"))
+        adjectives2 = _read.json_as_list(_project.data_path("Adjectives", "spanish_adjectives.json"))
         adjectives = [adjective.lower() for adjective in adjectives]
         
         records = self.data.to_dict('records')
