@@ -115,7 +115,7 @@ class FillTemplate:
         file_json = path + ".json"
 
         _pd.save(self.data, file_tsv)
-        adjectives = _read.json_list_as_lookup(_project.data_path("Adjectives", "spanish_adjectives.json"))
+        adjectives = _read.json_list_as_lookup(_project.data_path("Adjectives", "cess_spanish_adjectives.json"))
         adjectives = [adjective.lower() for adjective in adjectives]
         
         records = self.data.to_dict('records')
