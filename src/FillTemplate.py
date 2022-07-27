@@ -78,11 +78,9 @@ class FillTemplate:
         self.model_data = pd.DataFrame()
 
     def run_for_dimension(self, pipeline: FillMaskPipeline, model_name: str, df: pd.DataFrame, dimension: str):
-        template_index = 0
-        for idx, sentence in df.iteritems():
-            self.run_for_sentence(pipeline, model_name, sentence, dimension, template_index)
+        [self.run_for_sentence(pipeline, model_name, sentence, dimension) for sentence in df]
 
-    def run_for_sentence(self, pipeline: FillMaskPipeline,  model_name: str, sentence: str, dimension: str, template_index: int):
+    def run_for_sentence(self, pipeline: FillMaskPipeline,  model_name: str, sentence: str, dimension: str):
         # Predict
         res = pipeline(sentence)
 
@@ -96,7 +94,6 @@ class FillTemplate:
         res_df['sentence'] = sentence   # He is [MASK]
         res_df['model'] = model_name    # beto
         res_df['dimension'] = dimension # m/f
-        res_df['template_index'] = template_index # 0 to 29, to sync m/f
 
         # Alter
         res_df.reset_index(inplace=True)
