@@ -1,0 +1,39 @@
+{
+    "py/object": "dataclass.filltemplate.fill_template_result.FillTemplateResult",
+    "data": [
+        {
+            "index": 26,
+            "score": 0.3,
+            "token": 4549,
+            "token_str": "esposa",
+            "sentence": "esta es mi vecina, la describir\u00eda como [MASK].",
+            "model": "Geotrend/distilbert-base-es-cased",
+            "dimension": "a",
+            "rsv": 3
+        },
+        {
+            "index": 27,
+            "score": 0.4,
+            "token": 15429,
+            "token_str": "santa",
+            "sentence": "esta es mi vecina, la describir\u00eda como [MASK].",
+            "model": "Geotrend/distilbert-base-es-cased",
+            "dimension": "a",
+            "rsv": 2
+        },
+        {
+            "index": 28,
+            "score": 0.5,
+            "token": 0,
+            "token_str": "hija",
+            "sentence": "sentence 1",
+            "model": "model 1",
+            "dimension": "a",
+            "rsv": 1
+        }
+    ],
+    "words": [
+    ],
+    "other_words": [
+    ]
+}

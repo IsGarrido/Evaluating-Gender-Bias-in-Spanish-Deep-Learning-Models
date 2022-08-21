@@ -2,17 +2,20 @@
 
 import pandas as pd
 from transformers import FillMaskPipeline
+
 from dataclass.filltemplate.fill_template_result import FillTemplateResult
 from dataclass.filltemplate.fill_template_config import FillTemplateConfig
 from dataclass.model_config import ModelConfig
+
+from relhelpers.huggingface.service.PostTagger import PosTaggerService
 from relhelpers.io.project_helper import ProjectHelper as _project
 from relhelpers.huggingface.model_helper import HuggingFaceModelHelper as _hf_model
 from relhelpers.huggingface.fillmask_helper import FillMaskHelper as _hf_fillmask
 from relhelpers.pandas.pandas_helper import PandasHelper as _pd
+from relhelpers.primitives.annotations import log_time
 from relhelpers.primitives.string_helper import StringHelper as _string
 from relhelpers.io.write_helper import WriteHelper as _write
 from relhelpers.io.read_helper import ReadHelper as _read
-from relhelpers.io.json_helper import JsonHelper as _json
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -63,43 +66,56 @@ class FillTemplate:
         
         self.export_all_results()
 
+    @log_time
     def run_for_model(self, model_name: str, tokenizer_name: str, mask: str, templates_df: pd.DataFrame):
 
         model, tokenizer = _hf_model.load_model(model_name, tokenizer_name)
         pipeline = FillMaskPipeline(model, tokenizer, top_k=self.cfg.n_predictions, device=model.device.index)
+        tagger = PosTaggerService(device_index=model.device.index)
 
         dimensions = templates_df.columns
         for dimension in dimensions:
             dimension_df = templates_df[dimension]
-            self.run_for_dimension(pipeline, model_name, dimension_df, dimension)
+            self.run_for_dimension(tagger, pipeline, model_name, dimension_df, dimension, mask)
         
         self.data = self.data.append(self.model_data)
         self.export_model_result(model_name)
         self.model_data = pd.DataFrame()
 
-    def run_for_dimension(self, pipeline: FillMaskPipeline, model_name: str, df: pd.DataFrame, dimension: str):
-        [self.run_for_sentence(pipeline, model_name, sentence, dimension) for sentence in df]
+    @log_time
+    def run_for_dimension(self, tagger: PosTaggerService, pipeline: FillMaskPipeline, model_name: str, df: pd.DataFrame, dimension: str, mask: str):
+        [self.run_for_sentence(tagger, pipeline, model_name, sentence, dimension, mask) for sentence in df]
 
-    def run_for_sentence(self, pipeline: FillMaskPipeline,  model_name: str, sentence: str, dimension: str):
+    def run_for_sentence(self, tagger: PosTaggerService, pipeline: FillMaskPipeline,  model_name: str, sentence: str, dimension: str, mask: str):
         # Predict
         res = pipeline(sentence)
 
         # To pandas
         res_df = _pd.from_dict(res)
 
-        # Delete extra
-        res_df = _pd.remove_col(res_df, 'sequence')
-
         # Add context
         res_df['sentence'] = sentence   # He is [MASK]
         res_df['model'] = model_name    # beto
         res_df['dimension'] = dimension # m/f
-
-        # Alter
+        res_df['pos_tag'] = res_df.apply(lambda row: self.tag_sentence(tagger, mask, row) , axis = 1)
+        
         res_df.reset_index(inplace=True)
         res_df['rsv'] = [len(res_df)]*len(res_df) - res_df.index 
 
+        # Alter
+        res_df["token_str"] = res_df["token_str"].str.strip()
+        res_df["token_str"] = res_df["token_str"].str.lower()
+
+        # Delete extra
+        #res_df = _pd.remove_col(res_df, 'sequence')
+
         self.model_data = self.model_data.append(res_df) 
+
+    def tag_sentence(self, tagger: PosTaggerService, mask: str, row):
+        word = row['token_str'].strip()
+        sequence = row['sentence'].replace(mask, word)
+        return tagger.tag(sequence, word)
+        
 
     def export_model_result(self, model_name):
         path = _project.result_path(self.experiment, FillTemplate.__name__, _string.as_file_name(model_name) + ".tsv" )
@@ -107,8 +123,8 @@ class FillTemplate:
 
     def export_all_results(self):
         self.data.reset_index(drop=True)
-        self.data["token_str"] = self.data["token_str"].str.strip()
-        self.data["token_str"] = self.data["token_str"].str.lower()
+        # self.data["token_str"] = self.data["token_str"].str.strip()
+        # self.data["token_str"] = self.data["token_str"].str.lower()
 
         path = _project.result_path(self.experiment, FillTemplate.__name__, FillTemplate.__name__ )
         file_tsv = path + ".tsv"
