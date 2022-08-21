@@ -1,7 +1,7 @@
 import pandas as pd
 from relhelpers.primitives.dict_helper import DictHelper as _dict
 
-class EvaluateCategoriesFilterService():
+class EvaluateCategoriesDataService():
 
     def add_is_adjective_column(self, df: pd.DataFrame):
 
@@ -17,8 +17,8 @@ class EvaluateCategoriesFilterService():
         , axis=1 ) 
         return df
 
-    def add_adjective_proportion(df: pd.DataFrame) -> pd.DataFrame:
-        df["adjetive_proportion"] = (df["adjective_count"] / df["count"]) * 100
+    def add_adjective_proportion(self, df: pd.DataFrame) -> pd.DataFrame:
+        df["adjective_proportion"] = (df["adjective_count"] / df["count"]) * 100
         return df
 
     def group_by_sentence_fn(self, df_data: pd.DataFrame) -> pd.DataFrame:

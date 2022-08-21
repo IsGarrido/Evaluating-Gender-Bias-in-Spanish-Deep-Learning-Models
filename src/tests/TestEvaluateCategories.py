@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
 
-from src.service.EvaluateCategoriesFilterService import EvaluateCategoriesFilterService
+from src.service.EvaluateCategoriesDataService import EvaluateCategoriesDataService
 
 
 class TestEvaluateCategories(unittest.TestCase):
@@ -139,6 +139,44 @@ class TestEvaluateCategories(unittest.TestCase):
 
         # assert
         self.assertEqual(len(df), 8)
+
+    def test__add_category_column__column_is_added(self):
+        # arrange
+        df = self.__datadf()
+        categories = self.__categories_data()
+        
+        # act
+        df = self.service.add_category_column(df, categories)
+
+        # assert
+        self.assertTrue('category' in df.columns)
+
+    def test__add_adjective_proportion_column__column_is_valid(self):
+        # arrange
+        df = self.__datadf()
+
+        # act
+        df = self.service.add_is_adjective_column(df)
+        df = self.service.add_category_column(df, self.__categories_data())
+        df = self.service.group_by_model_fn(df)
+        df = self.service.add_adjective_proportion(df)
+
+        # assert
+        self.assertTrue('adjective_proportion' in df.columns)
+
+    def test__adjective_proportion__group_count(self):
+        # arrange
+        df = self.__datadf()
+
+        # act
+        df = self.service.add_is_adjective_column(df)
+        df = self.service.add_category_column(df, self.__categories_data())
+        df = self.service.group_by_model_fn(df)
+        df = self.service.add_adjective_proportion(df)
+        res = df.iloc[0]
+
+        # assert
+        self.assertAlmostEqual(res['adjective_proportion'], 33.3, 1)
 
     def test__group_by_sentence_fn__valid_columns(self):
         # arrange
