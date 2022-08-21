@@ -13,7 +13,7 @@ from relhelpers.primitives.string_helper import StringHelper as _string
 from relhelpers.primitives.dict_helper import DictHelper as _dict
 from relhelpers.pandas.pandas_helper import PandasHelper as _pd
 from relhelpers.io.write_helper import WriteHelper as _write
-from service.evaluate_categories_filter_service import EvaluateCategoriesFilterService
+from service.EvaluateCategoriesFilterService import EvaluateCategoriesFilterService
 
 
 class EvaluateCategories:
@@ -24,42 +24,34 @@ class EvaluateCategories:
         self.experiment = _string.as_file_name(cfg.label)
         filters = EvaluateCategoriesFilterService()
 
-        # Load categories
-        categories = _read.json_as_dict(cfg.categories_path)
-        self.word_categories = _dict.as_lookup(categories)
 
         # Load data
         fill_template_path = _project.result_path(self.experiment, "FillTemplate", "FillTemplate.json" )
         fill_template_json = _read.as_text(fill_template_path)
+        categories = _read.json_as_dict(cfg.categories_path)
         
         fill_template_result: FillTemplateResult = _json.decode(fill_template_json)
         all_data = fill_template_result.data
-        df_data = pd.DataFrame.from_records(all_data)
         
-        # Add categories to data
-        def get_category(row):
-            return self.word_categories.get(row['token_str'], 'unknown')
-
-        def is_adjective(row):
-            return row['token_str'] in self.word_categories
+        df_data = pd.DataFrame.from_records(all_data)
+        df_data = filters.add_is_adjective_column(df_data)
+        df_data = filters.add_category_column(df_data, categories)
 
         def add_adjective_proportion(df: pd.DataFrame) -> pd.DataFrame:
             df["adjetive_proportion"] = (df["adjective_count"] / df["count"]) * 100
             return df
 
-        df_data["category"] = df_data.apply( lambda row: get_category(row), axis=1 ) 
-        df_data["is_adjective"] = df_data.apply( lambda row: 1 if is_adjective(row) else 0, axis=1 ) 
         
         df_by_sentence = _pd.log(filters.group_by_sentence_fn(df_data))
         df_by_sentence = add_adjective_proportion(df_by_sentence)
 
-        df_by_category = _pd.log(filters.group_by_category_fn(df_by_sentence))
+        df_by_category = _pd.log(filters.group_by_category_fn(df_data))
         df_by_category = add_adjective_proportion(df_by_category)
 
-        df_by_dimension = _pd.log(filters.group_by_dimension_fn(df_by_category))
+        df_by_dimension = _pd.log(filters.group_by_dimension_fn(df_data))
         df_by_dimension = add_adjective_proportion(df_by_dimension)
 
-        df_by_model = _pd.log(filters.group_by_model_fn(df_by_dimension))
+        df_by_model = _pd.log(filters.group_by_model_fn(df_data))
         df_by_model = add_adjective_proportion(df_by_model)
 
         path_sentence = _project.result_path(self.experiment, "EvaluateCategories", "BySentence.json" )

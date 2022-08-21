@@ -1,8 +1,6 @@
 #### Run tests
 
 ```bash
-conda develop ~/dllas-evaluator
-nosetests --with-watch --rednose --nologcapture --exe ./src/TestEvaluateCategories.py
+nosetests --with-watch --rednose --nologcapture src.tests
+chmod -x ./tests/TestEvaluateCategories.py
 ```
-
-1
