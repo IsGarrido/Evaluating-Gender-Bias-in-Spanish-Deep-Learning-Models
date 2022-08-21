@@ -65,8 +65,15 @@ class FillTemplate:
 
             self.run_for_model(model.name, model.tokenizer, model.mask, idx, templates)
         
+        templates_export = {}
+        templetes_dict = cased_templates_df.to_dict()
+        for key in templetes_dict:
+            val = templetes_dict[key]
+            vals = val.values()
+            templates_export[key] = vals
+        
         model_names = [model.name for model in models]
-        self.export_all_results(cased_templates_df.to_dict(), model_names)
+        self.export_all_results(templates_export, model_names)
 
     @log_time
     def run_for_model(self, model_name: str, tokenizer_name: str, mask: str, model_idx: int, templates_df: pd.DataFrame):
