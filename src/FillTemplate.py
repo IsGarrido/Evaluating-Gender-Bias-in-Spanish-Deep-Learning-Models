@@ -69,7 +69,7 @@ class FillTemplate:
         templetes_dict = cased_templates_df.to_dict()
         for key in templetes_dict:
             val = templetes_dict[key]
-            vals = val.values()
+            vals = list(val.values())
             templates_export[key] = vals
         
         model_names = [model.name for model in models]
@@ -139,24 +139,13 @@ class FillTemplate:
         path = _project.result_path(self.experiment, FillTemplate.__name__, FillTemplate.__name__ )
         file_tsv = path + ".tsv"
         file_json = path + ".json"
-
         _pd.save(self.data, file_tsv)
-        adjectives = _read.json_list_as_lookup(_project.data_path("Adjectives", "cess_spanish_adjectives.json"))
-        adjectives = [adjective.lower() for adjective in adjectives]
         
         records = self.data.to_dict('records')
         unique_words = pd.unique(self.data["word"].values).tolist()
 
-        unique_adjectives = []
-        other_words = []
-        for word in unique_words:
-            if word in adjectives:
-                unique_adjectives.append(word)
-            else:
-                other_words.append(word)
-
         result_container = FillTemplateResult()
-        result_container.add_all(records, unique_adjectives, other_words, templates, models)
+        result_container.add_all(records, unique_words, templates, models)
         _write.json(result_container, file_json)
         
 
