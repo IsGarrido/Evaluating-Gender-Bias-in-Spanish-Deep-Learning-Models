@@ -9,7 +9,7 @@ class TestEvaluateCategories(unittest.TestCase):
     def __init__(self, methodName: str = ...) -> None:
         super().__init__(methodName)
 
-        self.service = EvaluateCategoriesFilterService()
+        self.service = EvaluateCategoriesDataService()
 
     # Creates mock df row
     def __r(self, rsv, prob, token, pos_token, sentence='', sequence = '', model='', dimension='') -> 'dict[str, str]':
@@ -162,7 +162,7 @@ class TestEvaluateCategories(unittest.TestCase):
         df = self.service.add_adjective_proportion(df)
 
         # assert
-        self.assertTrue('adjective_proportion' in df.columns)
+        self.assertTrue('adj_prop' in df.columns)
 
     def test__adjective_proportion__group_count(self):
         # arrange
@@ -176,7 +176,7 @@ class TestEvaluateCategories(unittest.TestCase):
         res = df.iloc[0]
 
         # assert
-        self.assertAlmostEqual(res['adjective_proportion'], 33.3, 1)
+        self.assertAlmostEqual(res['adj_prop'], 33.3, 1)
 
     def test__group_by_sentence_fn__valid_columns(self):
         # arrange
@@ -201,7 +201,7 @@ class TestEvaluateCategories(unittest.TestCase):
         self.assertFalse('rsv' in df.columns)
 
         self.assertTrue('count' in df.columns)
-        self.assertTrue('adjective_count' in df.columns)
+        self.assertTrue('adj_cnt' in df.columns)
 
         self.assertTrue('rsv_sum' in df.columns)
         self.assertTrue('rsv_min' in df.columns)
@@ -236,8 +236,8 @@ class TestEvaluateCategories(unittest.TestCase):
         df = self.service.group_by_sentence_fn(df)
 
         # assert
-        self.assertEqual(df.iloc[0]['adjective_count'], 1)
-        self.assertEqual(df.iloc[1]['adjective_count'], 2)
+        self.assertEqual(df.iloc[0]['adj_cnt'], 1)
+        self.assertEqual(df.iloc[1]['adj_cnt'], 2)
 
     def test__group_by_sentence_fn__rsv_aggregated_values(self):
         # arrange
@@ -289,7 +289,7 @@ class TestEvaluateCategories(unittest.TestCase):
         self.assertFalse('sequence' in df.columns)
 
         self.assertTrue('count' in df.columns)
-        self.assertTrue('adjective_count' in df.columns)
+        self.assertTrue('adj_cnt' in df.columns)
 
         self.assertTrue('rsv_sum' in df.columns)
         self.assertTrue('rsv_min' in df.columns)
@@ -328,11 +328,11 @@ class TestEvaluateCategories(unittest.TestCase):
 
         # assert
         print(df)
-        self.assertEqual(df[(df.category == 'Cat 1') & (df.dimension == 'male')]['adjective_count'].iloc[0], 2) 
-        self.assertEqual(df[(df.category == 'Cat 2') & (df.dimension == 'male')]['adjective_count'].iloc[0], 1) 
-        self.assertEqual(df[(df.category == 'Cat 2') & (df.dimension == 'female')]['adjective_count'].iloc[0], 3) 
-        self.assertEqual(df[(df.category == 'unknown') & (df.dimension == 'female')]['adjective_count'].iloc[0], 0)
-        self.assertEqual(df[(df.category == 'unknown') & (df.dimension == 'male')]['adjective_count'].iloc[0], 0) 
+        self.assertEqual(df[(df.category == 'Cat 1') & (df.dimension == 'male')]['adj_cnt'].iloc[0], 2) 
+        self.assertEqual(df[(df.category == 'Cat 2') & (df.dimension == 'male')]['adj_cnt'].iloc[0], 1) 
+        self.assertEqual(df[(df.category == 'Cat 2') & (df.dimension == 'female')]['adj_cnt'].iloc[0], 3) 
+        self.assertEqual(df[(df.category == 'unknown') & (df.dimension == 'female')]['adj_cnt'].iloc[0], 0)
+        self.assertEqual(df[(df.category == 'unknown') & (df.dimension == 'male')]['adj_cnt'].iloc[0], 0) 
 
     def test__group_by_category_fn__rsv_aggregated_values(self):
         # arrange
@@ -401,7 +401,7 @@ class TestEvaluateCategories(unittest.TestCase):
         self.assertFalse('category' in df.columns)
 
         self.assertTrue('count' in df.columns)
-        self.assertTrue('adjective_count' in df.columns)
+        self.assertTrue('adj_cnt' in df.columns)
 
         self.assertTrue('rsv_sum' in df.columns)
         self.assertTrue('rsv_min' in df.columns)
@@ -437,8 +437,8 @@ class TestEvaluateCategories(unittest.TestCase):
 
         # assert
         print(df)
-        self.assertEqual(df[df.dimension == 'male']['adjective_count'].iloc[0], 3) 
-        self.assertEqual(df[df.dimension == 'female']['adjective_count'].iloc[0], 3) 
+        self.assertEqual(df[df.dimension == 'male']['adj_cnt'].iloc[0], 3) 
+        self.assertEqual(df[df.dimension == 'female']['adj_cnt'].iloc[0], 3) 
 
     def test__group_by_dimension_fn__rsv_aggregated_values(self):
         # arrange
@@ -507,7 +507,7 @@ class TestEvaluateCategories(unittest.TestCase):
         self.assertFalse('dimension' in df.columns)
 
         self.assertTrue('count' in df.columns)
-        self.assertTrue('adjective_count' in df.columns)
+        self.assertTrue('adj_cnt' in df.columns)
 
         self.assertTrue('rsv_sum' in df.columns)
         self.assertTrue('rsv_min' in df.columns)
@@ -543,7 +543,7 @@ class TestEvaluateCategories(unittest.TestCase):
 
         # assert
         print(df)
-        self.assertEqual(df['adjective_count'].iloc[0], 6) 
+        self.assertEqual(df['adj_cnt'].iloc[0], 6) 
 
     def test__group_by_model_fn__rsv_aggregated_values(self):
         # arrange

@@ -18,7 +18,7 @@ class EvaluateCategoriesDataService():
         return df
 
     def add_adjective_proportion(self, df: pd.DataFrame) -> pd.DataFrame:
-        df["adjective_proportion"] = (df["adjective_count"] / df["count"]) * 100
+        df["adj_prop"] = (df["adj_cnt"] / df["count"]) * 100
         return df
 
     def group_by_sentence_fn(self, df_data: pd.DataFrame) -> pd.DataFrame:
@@ -39,7 +39,7 @@ class EvaluateCategoriesDataService():
 
             count=('rsv', 'count'),
 
-            adjective_count=('is_adjective', 'sum')
+            adj_cnt=('is_adjective', 'sum')
         )
         # return grouped_res[grouped_res.category != 'unknown']
 
@@ -61,7 +61,7 @@ class EvaluateCategoriesDataService():
 
             count=('rsv', 'count'),
 
-            adjective_count=('is_adjective', 'sum')
+            adj_cnt=('is_adjective', 'sum')
         )
 
     def group_by_dimension_fn(self, df_by_category: pd.DataFrame) -> pd.DataFrame:
@@ -82,7 +82,7 @@ class EvaluateCategoriesDataService():
 
             count=('rsv', 'count'),
 
-            adjective_count=('is_adjective', 'sum')
+            adj_cnt=('is_adjective', 'sum')
         )
 
     def group_by_model_fn(self, df_by_dimension: pd.DataFrame) -> pd.DataFrame:
@@ -103,6 +103,6 @@ class EvaluateCategoriesDataService():
 
             count=('rsv', 'count'),
 
-            adjective_count=('is_adjective', 'sum')
+            adj_cnt=('is_adjective', 'sum')
         )
 
