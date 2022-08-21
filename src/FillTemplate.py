@@ -48,9 +48,10 @@ class FillTemplate:
         models_df = _pd.read_tsv(_project.data_path(FillTemplate.__name__, "models.tsv"))
         models: 'list[ModelConfig]' = models_df.apply( lambda row: ModelConfig(row[0],row[1],row[2],row[3], row[3] == 'cased'), axis = 1)
 
-        for model in models:
+        for idx, model in enumerate(models):
 
             # TODO: Generalizar y cachear
+            templates = {}
             if model.cased:
                 if model.mask == "[MASK]":
                     templates = cased_templates_df
@@ -62,12 +63,13 @@ class FillTemplate:
                 else:
                     templates = uncased_templates_roberta_df
 
-            self.run_for_model(model.name, model.tokenizer, model.mask, templates)
+            self.run_for_model(model.name, model.tokenizer, model.mask, idx, templates)
         
-        self.export_all_results()
+        model_names = [model.name for model in models]
+        self.export_all_results(cased_templates_df, model_names)
 
     @log_time
-    def run_for_model(self, model_name: str, tokenizer_name: str, mask: str, templates_df: pd.DataFrame):
+    def run_for_model(self, model_name: str, tokenizer_name: str, mask: str, model_idx: int, templates_df: pd.DataFrame):
 
         model, tokenizer = _hf_model.load_model(model_name, tokenizer_name)
         pipeline = FillMaskPipeline(model, tokenizer, top_k=self.cfg.n_predictions, device=model.device.index)
@@ -76,17 +78,20 @@ class FillTemplate:
         dimensions = templates_df.columns
         for dimension in dimensions:
             dimension_df = templates_df[dimension]
-            self.run_for_dimension(tagger, pipeline, model_name, dimension_df, dimension, mask)
+            self.run_for_dimension(tagger, pipeline, model_idx, dimension_df, dimension, mask)
         
         self.data = self.data.append(self.model_data)
         self.export_model_result(model_name)
         self.model_data = pd.DataFrame()
 
     @log_time
-    def run_for_dimension(self, tagger: PosTaggerService, pipeline: FillMaskPipeline, model_name: str, df: pd.DataFrame, dimension: str, mask: str):
-        [self.run_for_sentence(tagger, pipeline, model_name, sentence, dimension, mask) for sentence in df]
+    def run_for_dimension(self, tagger: PosTaggerService, pipeline: FillMaskPipeline, model_idx: int, df: pd.DataFrame, dimension: str, mask: str):
+        cdf = df.copy()
+        cdf = cdf.reset_index()
 
-    def run_for_sentence(self, tagger: PosTaggerService, pipeline: FillMaskPipeline,  model_name: str, sentence: str, dimension: str, mask: str):
+        [self.run_for_sentence(tagger, pipeline, model_idx, sentence[1], index, dimension, mask) for index, sentence in cdf.iterrows()]
+
+    def run_for_sentence(self, tagger: PosTaggerService, pipeline: FillMaskPipeline,  model_idx: int, sentence: str, sentence_index: int, dimension: str, mask: str):
         # Predict
         res = pipeline(sentence)
 
@@ -94,37 +99,35 @@ class FillTemplate:
         res_df = _pd.from_dict(res)
 
         # Add context
-        res_df['sentence'] = sentence   # He is [MASK]
-        res_df['model'] = model_name    # beto
+        # res_df['stn'] = sentence   # He is [MASK]
+        res_df['sentence'] = sentence_index
+        res_df['model'] = model_idx    # beto by its index
         res_df['dimension'] = dimension # m/f
-        res_df['pos_tag'] = res_df.apply(lambda row: self.tag_sentence(tagger, mask, row) , axis = 1)
+        res_df['pos_tag'] = res_df.apply(lambda row: self.tag_sentence(tagger, mask, sentence, row['token_str'].strip()) , axis = 1)
         
         res_df.reset_index(inplace=True)
         res_df['rsv'] = [len(res_df)]*len(res_df) - res_df.index 
 
         # Alter
-        res_df["token_str"] = res_df["token_str"].str.strip()
-        res_df["token_str"] = res_df["token_str"].str.lower()
+        res_df["word"] = res_df["token_str"].str.strip()
+        res_df["word"] = res_df["word"].str.lower()
 
         # Delete extra
-        #res_df = _pd.remove_col(res_df, 'sequence')
+        res_df = _pd.remove_col(res_df, 'sequence')
+        res_df = _pd.remove_col(res_df, 'token_str')
 
         self.model_data = self.model_data.append(res_df) 
 
-    def tag_sentence(self, tagger: PosTaggerService, mask: str, row):
-        word = row['token_str'].strip()
-        sequence = row['sentence'].replace(mask, word)
-        return tagger.tag(sequence, word)
-        
+    def tag_sentence(self, tagger: PosTaggerService, mask: str, sentence: str, word: str):
+        msequence = sentence.replace(mask, word)
+        return tagger.tag(msequence, word)
 
     def export_model_result(self, model_name):
         path = _project.result_path(self.experiment, FillTemplate.__name__, _string.as_file_name(model_name) + ".tsv" )
         _pd.save(self.model_data, path)
 
-    def export_all_results(self):
+    def export_all_results(self, templates, models):
         self.data.reset_index(drop=True)
-        # self.data["token_str"] = self.data["token_str"].str.strip()
-        # self.data["token_str"] = self.data["token_str"].str.lower()
 
         path = _project.result_path(self.experiment, FillTemplate.__name__, FillTemplate.__name__ )
         file_tsv = path + ".tsv"
@@ -135,7 +138,7 @@ class FillTemplate:
         adjectives = [adjective.lower() for adjective in adjectives]
         
         records = self.data.to_dict('records')
-        unique_words = pd.unique(self.data["token_str"].values).tolist()
+        unique_words = pd.unique(self.data["word"].values).tolist()
 
         unique_adjectives = []
         other_words = []
@@ -146,7 +149,7 @@ class FillTemplate:
                 other_words.append(word)
 
         result_container = FillTemplateResult()
-        result_container.add_all(records, unique_adjectives, other_words)
+        result_container.add_all(records, unique_adjectives, other_words, templates, models)
         _write.json(result_container, file_json)
         
 

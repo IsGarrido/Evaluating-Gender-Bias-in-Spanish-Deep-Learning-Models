@@ -2,4 +2,8 @@
     "files.exclude": {
         "**/__pycache__": true
     },
+    "search.exclude": {
+        "**/assets/data": true,
+        "**/assets/result": true
+    },
 }

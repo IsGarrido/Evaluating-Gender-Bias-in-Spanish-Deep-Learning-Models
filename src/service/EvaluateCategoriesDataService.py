@@ -13,7 +13,7 @@ class EvaluateCategoriesDataService():
     def add_category_column(self, df: pd.DataFrame, categories: 'dict[str, str]'):
         category_lookup = _dict.as_lookup(categories)
         df["category"] = df.apply(
-            lambda row: category_lookup.get(row['token_str'], 'unknown')
+            lambda row: category_lookup.get(row['word'], 'unknown')
         , axis=1 ) 
         return df
 
@@ -23,7 +23,7 @@ class EvaluateCategoriesDataService():
 
     def group_by_sentence_fn(self, df_data: pd.DataFrame) -> pd.DataFrame:
         return df_data.groupby(
-            ['dimension', 'model', 'category', 'sentence', 'sequence'], as_index=False
+            ['dimension', 'model', 'category', 'sentence'], as_index=False
         ).agg(
             rsv_sum=('rsv', 'sum'),
 
@@ -85,8 +85,8 @@ class EvaluateCategoriesDataService():
             adj_cnt=('is_adjective', 'sum')
         )
 
-    def group_by_model_fn(self, df_by_dimension: pd.DataFrame) -> pd.DataFrame:
-        return df_by_dimension.groupby(
+    def group_by_model_fn(self, df: pd.DataFrame) -> pd.DataFrame:
+        return df.groupby(
             ['model'], as_index = False
         ).agg(
             rsv_sum=('rsv', 'sum'),
@@ -106,3 +106,23 @@ class EvaluateCategoriesDataService():
             adj_cnt=('is_adjective', 'sum')
         )
 
+    def group_sentences(self, df):
+        return df.groupby(
+            ['sentence'], as_index = False
+        ).agg(
+            rsv_sum=('rsv', 'sum'),
+
+            rsv_min=('rsv', 'min'),
+            rsv_max=('rsv', 'max'),
+            rsv_mean=('rsv', 'mean'),
+
+            score_sum=('score', 'sum'),
+
+            score_min=('score', 'min'),
+            score_max=('score', 'max'),
+            score_mean=('score', 'mean'),
+
+            count=('rsv', 'count'),
+
+            adj_cnt=('is_adjective', 'sum')
+        )

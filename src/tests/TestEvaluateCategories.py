@@ -12,20 +12,19 @@ class TestEvaluateCategories(unittest.TestCase):
         self.service = EvaluateCategoriesDataService()
 
     # Creates mock df row
-    def __r(self, rsv, prob, token, pos_token, sentence='', sequence = '', model='', dimension='') -> 'dict[str, str]':
+    def __r(self, rsv, prob, token, pos_token, sentence='', model=0, dimension='') -> 'dict[str, str]':
         return {
             'rsv': rsv,
             'score': prob,
-            'token_str': token,
+            'word': token,
             'sentence': sentence,
-            'sequence': sequence,
             'model': model,
             'dimension': dimension,
             'pos_tag': pos_token
         }
 
     def __result(self, rsv, prob, token, pos_token, sentence, dimension = "Dim 1") -> 'dict[str, str]':
-        return self.__r(rsv, prob, token, pos_token, sentence, sentence, "Model 1", dimension)
+        return self.__r(rsv, prob, token, pos_token, sentence, 0, dimension)
 
     def __data(self):
         return [
@@ -100,8 +99,8 @@ class TestEvaluateCategories(unittest.TestCase):
         df_adjectives = df[df['is_adjective'] == True]
 
         # assert
-        self.assertEqual(df_adjectives['token_str'][0], 'cool')
-        self.assertEqual(df_adjectives['token_str'][6], 'nice')
+        self.assertEqual(df_adjectives['word'][0], 'cool')
+        self.assertEqual(df_adjectives['word'][6], 'nice')
 
     def test__add_category_column__column_is_added(self):
         # arrange
@@ -189,13 +188,12 @@ class TestEvaluateCategories(unittest.TestCase):
 
         # assert
         self.assertTrue('sentence' in df.columns)
-        self.assertTrue('sequence' in df.columns)
         self.assertTrue('model' in df.columns)
         self.assertTrue('dimension' in df.columns)
         self.assertTrue('category' in df.columns)
 
         self.assertFalse('token' in df.columns)
-        self.assertFalse('token_str' in df.columns)
+        self.assertFalse('word' in df.columns)
         self.assertFalse('pos_tag' in df.columns)
         self.assertFalse('score' in df.columns)
         self.assertFalse('rsv' in df.columns)
@@ -281,12 +279,11 @@ class TestEvaluateCategories(unittest.TestCase):
         self.assertTrue('category' in df.columns)
 
         self.assertFalse('token' in df.columns)
-        self.assertFalse('token_str' in df.columns)
+        self.assertFalse('word' in df.columns)
         self.assertFalse('pos_tag' in df.columns)
         self.assertFalse('score' in df.columns)
         self.assertFalse('rsv' in df.columns)
         self.assertFalse('sentence' in df.columns)
-        self.assertFalse('sequence' in df.columns)
 
         self.assertTrue('count' in df.columns)
         self.assertTrue('adj_cnt' in df.columns)
@@ -392,12 +389,11 @@ class TestEvaluateCategories(unittest.TestCase):
         self.assertTrue('dimension' in df.columns)
 
         self.assertFalse('token' in df.columns)
-        self.assertFalse('token_str' in df.columns)
+        self.assertFalse('word' in df.columns)
         self.assertFalse('pos_tag' in df.columns)
         self.assertFalse('score' in df.columns)
         self.assertFalse('rsv' in df.columns)
         self.assertFalse('sentence' in df.columns)
-        self.assertFalse('sequence' in df.columns)
         self.assertFalse('category' in df.columns)
 
         self.assertTrue('count' in df.columns)
@@ -497,12 +493,11 @@ class TestEvaluateCategories(unittest.TestCase):
         self.assertTrue('model' in df.columns)
 
         self.assertFalse('token' in df.columns)
-        self.assertFalse('token_str' in df.columns)
+        self.assertFalse('word' in df.columns)
         self.assertFalse('pos_tag' in df.columns)
         self.assertFalse('score' in df.columns)
         self.assertFalse('rsv' in df.columns)
         self.assertFalse('sentence' in df.columns)
-        self.assertFalse('sequence' in df.columns)
         self.assertFalse('category' in df.columns)
         self.assertFalse('dimension' in df.columns)
 

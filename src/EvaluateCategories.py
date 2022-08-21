@@ -13,6 +13,7 @@ from relhelpers.primitives.string_helper import StringHelper as _string
 from relhelpers.pandas.pandas_helper import PandasHelper as _pd
 from relhelpers.io.write_helper import WriteHelper as _write
 from service.EvaluateCategoriesDataService import EvaluateCategoriesDataService
+from relhelpers.primitives.annotations import log_time
 
 
 class EvaluateCategories:
@@ -35,17 +36,31 @@ class EvaluateCategories:
         df_data = _service.add_is_adjective_column(df_data)
         df_data = _service.add_category_column(df_data, categories)
 
-        df_by_sentence = _pd.log(_service.group_by_sentence_fn(df_data))
-        df_by_sentence = _pd.log(_service.add_adjective_proportion(df_by_sentence))
+        self.compute_sentences_statistics(_service, df_data.copy())
+        self.compute_general_statistics(_service, df_data.copy())
 
-        df_by_category = _pd.log(_service.group_by_category_fn(df_data))
-        df_by_category = _pd.log(_service.add_adjective_proportion(df_by_category))
+    @log_time
+    def compute_sentences_statistics(self, _service: EvaluateCategoriesDataService, df):
+        df_sentences = _service.group_sentences(df)
+        df_sentences = _service.add_adjective_proportion(df_sentences)
 
-        df_by_dimension = _pd.log(_service.group_by_dimension_fn(df_data))
-        df_by_dimension = _pd.log(_service. add_adjective_proportion(df_by_dimension))
+        path_sentences = _project.result_path(self.experiment, "EvaluateCategories", "SentenceStatistics.json" )
 
-        df_by_model = _pd.log(_service.group_by_model_fn(df_data))
-        df_by_model = _pd.log(_service.add_adjective_proportion(df_by_model))
+        _write.df_as_json(df_sentences, path_sentences)
+
+    @log_time
+    def compute_general_statistics(self, _service: EvaluateCategoriesDataService, df: pd.DataFrame):
+        df_by_sentence = _service.group_by_sentence_fn(df)
+        df_by_sentence = _service.add_adjective_proportion(df_by_sentence)
+
+        df_by_category = _service.group_by_category_fn(df)
+        df_by_category = _service.add_adjective_proportion(df_by_category)
+
+        df_by_dimension = _service.group_by_dimension_fn(df)
+        df_by_dimension = _service.add_adjective_proportion(df_by_dimension)
+
+        df_by_model = _service.group_by_model_fn(df)
+        df_by_model = _service.add_adjective_proportion(df_by_model)
 
         path_sentence = _project.result_path(self.experiment, "EvaluateCategories", "BySentence.json" )
         path_category = _project.result_path(self.experiment, "EvaluateCategories", "ByCategory.json" )
@@ -56,36 +71,6 @@ class EvaluateCategories:
         _write.df_as_json(df_by_category, path_category)
         _write.df_as_json(df_by_dimension, path_dimension)
         _write.df_as_json(df_by_model, path_model)
-
-        #self.compute_statistics_for_words(df_data)
-        
-
-    # def split_by_dimension(self, df, column):
-    #     df.groupby(['dimension', column], as_index = False).head()
-    #     df.groupby(['dimension', 'model'], as_index = False)['rsv'].agg(['min', 'max', 'mean']).add_prefix('rsv_').reset_index()
-    #     df.groupby(['dimension', 'model', 'sentence'], as_index = False)['rsv'].agg(['min', 'max', 'mean', 'sum']).add_prefix('rsv_').reset_index()
-    #     df.groupby(['dimension', 'model', 'sentence', "category"], as_index = False)['rsv'].agg(['min', 'max', 'mean', 'sum']).add_prefix('rsv_').reset_index()
-    #     df.groupby(['dimension', 'model', 'sentence', "category"], as_index = False).agg({ 'rsv': ['min', 'max', 'mean', 'sum'], 'score': ['min', 'max', 'mean', 'sum'] })
-    #     df.groupby(['dimension', 'model', 'sentence', "category"], as_index = False).agg({ 'rsv': ['min', 'max', 'mean', 'sum'], 'score': ['min', 'max', 'mean', 'sum'] }).sort_values( by = [('score', 'mean')], ascending = False)
-    #     df.groupby(['dimension', 'model', 'sentence', "category"], as_index = False).agg({ 'rsv': ['min', 'max', 'mean', 'sum'], 'score': ['min', 'max', 'mean', 'sum'] }).sort_values( by = [('score', 'mean')], ascending = False).groupby('model', 'sentence', "category").agg({})
-    #     df.groupby(['dimension', 'model', 'sentence', "category"], as_index = False).agg({ 'rsv': ['min', 'max', 'mean', 'sum'], 'score': ['min', 'max', 'mean', 'sum'] }).sort_values( by = [('score', 'mean')], ascending = False).groupby(["model","sentence", "category"]).agg({ })
-
-    #     df["category"] = df["token_str"] + "_"
-
-    def compute_statistics_for_words(self, df):
-        df_male = df[df.dimension == "male"]
-        df_female = df[df.dimension == "female"]
-
-        df_word_male = df_male.groupby(by = ["token_str"], dropna = True ).sum()
-        df_word_female = df_female.groupby(by = ["token_str"], dropna = True ).sum()
-        
-        df.groupby("token_str").agg(mean_index = ('index', np.mean), sum_index = ('index', np.sum), mean_rsv = ('rsv', np.mean), sum_rsv = ('rsv', np.sum) )
-
-        df.groupby(['dimension', 'model'], as_index = False)
-
-        x = 1
-        # pd_male = pd[]
-        # pd_data.groupby( by = ["token_str"] , dropna=True).sum()
 
     def compute_statistics_for_categories(self):
         pass
