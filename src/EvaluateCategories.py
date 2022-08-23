@@ -51,12 +51,14 @@ class EvaluateCategories:
 
         _write.df_as_json(df_sentences, path_sentences)
 
+        by_dimension = {}
         for dimension in dimensions:
             sub_df = _service.group_sentences_with_dimensions(df)
             sub_df = sub_df[sub_df.dimension == dimension]
+            by_dimension[dimension] = _pd.to_dict(sub_df)
             
-            path_dim = _project.result_path(self.experiment, "EvaluateCategories", dimension + ".SentenceStatistics.json" )
-            _write.df_as_json(sub_df, path_dim)
+        path_dim = _project.result_path(self.experiment, "EvaluateCategories", "SentenceAndDimensionStatistics.json" )
+        _write.df_as_json(sub_df, path_dim)
 
 
 
