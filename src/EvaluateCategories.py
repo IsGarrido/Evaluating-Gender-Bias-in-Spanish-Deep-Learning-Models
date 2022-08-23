@@ -55,6 +55,8 @@ class EvaluateCategories:
         for dimension in dimensions:
             sub_df = _service.group_sentences_with_dimensions(df)
             sub_df = sub_df[sub_df.dimension == dimension]
+            sub_df = _service.add_adjective_proportion(sub_df)
+
             by_dimension[dimension] = _pd.to_dict(sub_df)
             
         path_dim = _project.result_path(self.experiment, "EvaluateCategories", "SentenceAndDimensionStatistics.json" )
