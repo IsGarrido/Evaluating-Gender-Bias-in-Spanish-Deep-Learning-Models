@@ -126,3 +126,24 @@ class EvaluateCategoriesDataService():
 
             adj_cnt=('is_adjective', 'sum')
         )
+
+    def group_sentences_with_dimensions(self, df):
+        return df.groupby(
+            ['sentence', 'dimension'], as_index = False
+        ).agg(
+            rsv_sum=('rsv', 'sum'),
+
+            rsv_min=('rsv', 'min'),
+            rsv_max=('rsv', 'max'),
+            rsv_mean=('rsv', 'mean'),
+
+            score_sum=('score', 'sum'),
+
+            score_min=('score', 'min'),
+            score_max=('score', 'max'),
+            score_mean=('score', 'mean'),
+
+            count=('rsv', 'count'),
+
+            adj_cnt=('is_adjective', 'sum')
+        )

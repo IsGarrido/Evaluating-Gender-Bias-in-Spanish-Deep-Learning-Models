@@ -12,8 +12,10 @@ from relhelpers.io.read_helper import ReadHelper as _read
 from relhelpers.primitives.string_helper import StringHelper as _string
 from relhelpers.pandas.pandas_helper import PandasHelper as _pd
 from relhelpers.io.write_helper import WriteHelper as _write
-from service.EvaluateCategoriesDataService import EvaluateCategoriesDataService
 from relhelpers.primitives.annotations import log_time
+from relhelpers.primitives.dict_helper import DictHelper as _dict
+# Service
+from service.EvaluateCategoriesDataService import EvaluateCategoriesDataService
 
 
 class EvaluateCategories:
@@ -31,22 +33,32 @@ class EvaluateCategories:
         
         fill_template_result: FillTemplateResult = _json.decode(fill_template_json)
         all_data = fill_template_result.data
+        dimensions = _dict.keys(fill_template_result.sentences)
         
         df_data = pd.DataFrame.from_records(all_data)
         df_data = _service.add_is_adjective_column(df_data)
         df_data = _service.add_category_column(df_data, categories)
 
-        self.compute_sentences_statistics(_service, df_data.copy())
+        self.compute_sentences_statistics(_service, df_data.copy(), dimensions)
         self.compute_general_statistics(_service, df_data.copy())
 
     @log_time
-    def compute_sentences_statistics(self, _service: EvaluateCategoriesDataService, df):
+    def compute_sentences_statistics(self, _service: EvaluateCategoriesDataService, df: pd.DataFrame,  dimensions: 'list[str]'):
         df_sentences = _service.group_sentences(df)
         df_sentences = _service.add_adjective_proportion(df_sentences)
 
         path_sentences = _project.result_path(self.experiment, "EvaluateCategories", "SentenceStatistics.json" )
 
         _write.df_as_json(df_sentences, path_sentences)
+
+        for dimension in dimensions:
+            sub_df = _service.group_sentences_with_dimensions(df)
+            sub_df = sub_df[sub_df.dimension == dimension]
+            
+            path_dim = _project.result_path(self.experiment, "EvaluateCategories", dimension + ".SentenceStatistics.json" )
+            _write.df_as_json(sub_df, path_dim)
+
+
 
     @log_time
     def compute_general_statistics(self, _service: EvaluateCategoriesDataService, df: pd.DataFrame):
