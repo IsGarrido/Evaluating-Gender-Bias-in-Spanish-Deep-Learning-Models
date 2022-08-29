@@ -62,8 +62,6 @@ class EvaluateCategories:
         path_dim = _project.result_path(self.experiment, "EvaluateCategories", "SentenceAndDimensionStatistics.json" )
         _write.dict_as_json(by_dimension, path_dim)
 
-
-
     @log_time
     def compute_general_statistics(self, _service: EvaluateCategoriesDataService, df: pd.DataFrame):
         df_by_sentence = _service.group_by_sentence_fn(df)

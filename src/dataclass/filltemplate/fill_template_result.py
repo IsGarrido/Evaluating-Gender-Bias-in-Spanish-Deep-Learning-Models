@@ -6,9 +6,9 @@ class FillTemplateResult:
         self.sentences: 'dict[str, list[str]]' #  { m: [ 29 ], f: [29] }
         self.models: 'list[str]'
 
-    def add_all(self, words, unique_words, templates, models):
+    def add_all(self, data, unique_words, templates, models):
         
-        self.data.extend(words)
+        self.data.extend(data)
         self.words = unique_words
         self.sentences = templates
         self.models = models

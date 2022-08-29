@@ -12,7 +12,7 @@ from relhelpers.io.project_helper import ProjectHelper as _project
 from relhelpers.huggingface.model_helper import HuggingFaceModelHelper as _hf_model
 from relhelpers.huggingface.fillmask_helper import FillMaskHelper as _hf_fillmask
 from relhelpers.pandas.pandas_helper import PandasHelper as _pd
-from relhelpers.primitives.annotations import log_time
+from relhelpers.primitives.annotations import log_time, log_time_with_counter
 from relhelpers.primitives.string_helper import StringHelper as _string
 from relhelpers.io.write_helper import WriteHelper as _write
 from relhelpers.io.read_helper import ReadHelper as _read
@@ -75,7 +75,7 @@ class FillTemplate:
         model_names = [model.name for model in models]
         self.export_all_results(templates_export, model_names)
 
-    @log_time
+    @log_time_with_counter
     def run_for_model(self, model_name: str, tokenizer_name: str, mask: str, model_idx: int, templates_df: pd.DataFrame):
 
         model, tokenizer = _hf_model.load_model(model_name, tokenizer_name)
@@ -147,7 +147,10 @@ class FillTemplate:
         result_container = FillTemplateResult()
         result_container.add_all(records, unique_words, templates, models)
         _write.json(result_container, file_json)
-        
+
+        unique_adjectives = pd.unique(self.data[self.data["pos_tag"] == "AQ"]["word"]).tolist()
+        path_adjectives = _project.result_path(self.experiment, "FillTemplate", "Adjectives.json" )
+        _write.list_as_json(unique_adjectives, path_adjectives)
 
 cfg = FillTemplateConfig(
     'Spanish Genre',

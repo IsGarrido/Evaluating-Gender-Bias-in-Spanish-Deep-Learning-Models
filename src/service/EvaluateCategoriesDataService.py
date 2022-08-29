@@ -22,15 +22,9 @@ class EvaluateCategoriesDataService():
         return df
 
     def group_by_sentence_fn(self, df_data: pd.DataFrame) -> pd.DataFrame:
-        return df_data.groupby(
-            ['dimension', 'model', 'category', 'sentence'], as_index=False
-        ).agg(
-            rsv_sum=('rsv', 'sum'),
-
-            rsv_min=('rsv', 'min'),
-            rsv_max=('rsv', 'max'),
-            rsv_mean=('rsv', 'mean'),
-
+        
+        grouping_columns = ['dimension', 'model', 'category', 'sentence']
+        base_grouping = df_data.groupby(grouping_columns, as_index=False).agg(
             score_sum=('score', 'sum'),
 
             score_min=('score', 'min'),
@@ -41,6 +35,17 @@ class EvaluateCategoriesDataService():
 
             adj_cnt=('is_adjective', 'sum')
         )
+
+        rsv_grouping = df_data[df_data["is_adjective"]].groupby(grouping_columns, as_index=False).agg(
+            rsv_sum=('rsv', 'sum'),
+
+            rsv_min=('rsv', 'min'),
+            rsv_max=('rsv', 'max'),
+            rsv_mean=('rsv', 'mean'),
+        )
+
+        merged_df = base_grouping.merge(rsv_grouping, on = grouping_columns )
+        return merged_df
         # return grouped_res[grouped_res.category != 'unknown']
 
     def group_by_category_fn(self, df_by_sentence: pd.DataFrame) -> pd.DataFrame:
