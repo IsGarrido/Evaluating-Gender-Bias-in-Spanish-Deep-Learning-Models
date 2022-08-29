@@ -48,8 +48,23 @@ class EvaluateCategoriesDataService():
         return merged_df
         # return grouped_res[grouped_res.category != 'unknown']
 
-    def group_by_category_fn(self, df_by_sentence: pd.DataFrame) -> pd.DataFrame:
-        return df_by_sentence.groupby(
+    def group_by_category_fn(self, df_data: pd.DataFrame) -> pd.DataFrame:
+
+        grouping_columns = ['dimension', 'model', 'category']
+
+        base_df = df_data.groupby(grouping_columns, as_index = False).agg(
+            score_sum=('score', 'sum'),
+
+            score_min=('score', 'min'),
+            score_max=('score', 'max'),
+            score_mean=('score', 'mean'),
+
+            count=('rsv', 'count'),
+
+            adj_cnt=('is_adjective', 'sum')
+        )
+
+        rsv_df = df_data[df_data["is_adjective"]].groupby(
             ['dimension', 'model', 'category'], as_index = False
         ).agg(
             rsv_sum=('rsv', 'sum'),
@@ -57,7 +72,17 @@ class EvaluateCategoriesDataService():
             rsv_min=('rsv', 'min'),
             rsv_max=('rsv', 'max'),
             rsv_mean=('rsv', 'mean'),
+        )
 
+        merged_df = base_df.merge(rsv_df, on = grouping_columns)
+        return merged_df
+
+
+    def group_by_dimension_fn(self, df_data: pd.DataFrame) -> pd.DataFrame:
+
+        grouping_columns = ['dimension', 'model']
+
+        base_df = df_data.groupby(grouping_columns, as_index = False).agg(
             score_sum=('score', 'sum'),
 
             score_min=('score', 'min'),
@@ -69,16 +94,80 @@ class EvaluateCategoriesDataService():
             adj_cnt=('is_adjective', 'sum')
         )
 
-    def group_by_dimension_fn(self, df_by_category: pd.DataFrame) -> pd.DataFrame:
-        return df_by_category.groupby(
-            ['dimension', 'model'], as_index = False
+        rsv_df = df_data[df_data["is_adjective"]].groupby(grouping_columns, as_index = False).agg(
+            rsv_sum=('rsv', 'sum'),
+
+            rsv_min=('rsv', 'min'),
+            rsv_max=('rsv', 'max'),
+            rsv_mean=('rsv', 'mean'),
+        )
+
+        merged_df = base_df.merge(rsv_df, on = grouping_columns)
+        return merged_df
+
+
+    def group_by_model_fn(self, df_data: pd.DataFrame) -> pd.DataFrame:
+
+        grouping_columns = ['model']
+
+        base_df = df_data.groupby(grouping_columns, as_index = False).agg(
+            score_sum=('score', 'sum'),
+
+            score_min=('score', 'min'),
+            score_max=('score', 'max'),
+            score_mean=('score', 'mean'),
+
+            count=('rsv', 'count'),
+
+            adj_cnt=('is_adjective', 'sum')
+        )
+
+        rsv_df = df_data[df_data["is_adjective"]].groupby(grouping_columns, as_index = False).agg(
+            rsv_sum=('rsv', 'sum'),
+
+            rsv_min=('rsv', 'min'),
+            rsv_max=('rsv', 'max'),
+            rsv_mean=('rsv', 'mean'),
+        )
+        
+        merged_df = base_df.merge(rsv_df, on = grouping_columns)
+        return merged_df
+
+
+    def group_sentences(self, df_data):
+
+        grouping_columns = ['sentence']
+
+        base_df = df_data.groupby(grouping_columns, as_index = False
+        ).agg(
+            score_sum=('score', 'sum'),
+
+            score_min=('score', 'min'),
+            score_max=('score', 'max'),
+            score_mean=('score', 'mean'),
+
+            count=('rsv', 'count'),
+
+            adj_cnt=('is_adjective', 'sum')
+        )
+
+        rsv_df = df_data[df_data["is_adjective"]].groupby(grouping_columns, as_index = False
         ).agg(
             rsv_sum=('rsv', 'sum'),
 
             rsv_min=('rsv', 'min'),
             rsv_max=('rsv', 'max'),
             rsv_mean=('rsv', 'mean'),
+        )
 
+        merged_df = base_df.merge(rsv_df, on = grouping_columns)
+        return merged_df
+
+
+    def group_sentences_with_dimensions(self, df_data):
+
+        grouping_columns = ['sentence', 'dimension']
+        base_df = df_data.groupby(grouping_columns, as_index = False).agg(
             score_sum=('score', 'sum'),
 
             score_min=('score', 'min'),
@@ -90,65 +179,13 @@ class EvaluateCategoriesDataService():
             adj_cnt=('is_adjective', 'sum')
         )
 
-    def group_by_model_fn(self, df: pd.DataFrame) -> pd.DataFrame:
-        return df.groupby(
-            ['model'], as_index = False
-        ).agg(
+        rsv_df = df_data[df_data["is_adjective"]].groupby(grouping_columns, as_index = False).agg(
             rsv_sum=('rsv', 'sum'),
 
             rsv_min=('rsv', 'min'),
             rsv_max=('rsv', 'max'),
             rsv_mean=('rsv', 'mean'),
-
-            score_sum=('score', 'sum'),
-
-            score_min=('score', 'min'),
-            score_max=('score', 'max'),
-            score_mean=('score', 'mean'),
-
-            count=('rsv', 'count'),
-
-            adj_cnt=('is_adjective', 'sum')
         )
 
-    def group_sentences(self, df):
-        return df.groupby(
-            ['sentence'], as_index = False
-        ).agg(
-            rsv_sum=('rsv', 'sum'),
-
-            rsv_min=('rsv', 'min'),
-            rsv_max=('rsv', 'max'),
-            rsv_mean=('rsv', 'mean'),
-
-            score_sum=('score', 'sum'),
-
-            score_min=('score', 'min'),
-            score_max=('score', 'max'),
-            score_mean=('score', 'mean'),
-
-            count=('rsv', 'count'),
-
-            adj_cnt=('is_adjective', 'sum')
-        )
-
-    def group_sentences_with_dimensions(self, df):
-        return df.groupby(
-            ['sentence', 'dimension'], as_index = False
-        ).agg(
-            rsv_sum=('rsv', 'sum'),
-
-            rsv_min=('rsv', 'min'),
-            rsv_max=('rsv', 'max'),
-            rsv_mean=('rsv', 'mean'),
-
-            score_sum=('score', 'sum'),
-
-            score_min=('score', 'min'),
-            score_max=('score', 'max'),
-            score_mean=('score', 'mean'),
-
-            count=('rsv', 'count'),
-
-            adj_cnt=('is_adjective', 'sum')
-        )
+        merged_df = base_df.merge(rsv_df, on = grouping_columns )
+        return merged_df
