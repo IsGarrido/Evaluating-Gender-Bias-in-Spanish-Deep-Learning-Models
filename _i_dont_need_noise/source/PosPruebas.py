@@ -10,7 +10,7 @@ from nltk.corpus import cess_esp
 #from unigram import UnigramModel
 
 # improts
-import relhelpers.io.write_helper as _write
+import relhelperspy.io.write_helper as _write
 
 # A
 def run_a():

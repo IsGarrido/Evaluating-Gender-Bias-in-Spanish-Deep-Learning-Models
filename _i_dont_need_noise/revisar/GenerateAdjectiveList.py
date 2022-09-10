@@ -1,9 +1,9 @@
 from nltk import download
 from nltk.corpus import cess_esp
 
-from relhelpers.io.write_helper import WriteHelper as _write
-from relhelpers.primitives.list_helper import ListHelper as _list
-from relhelpers.io.project_helper import ProjectHelper as _project
+from relhelperspy.io.write_helper import WriteHelper as _write
+from relhelperspy.primitives.list_helper import ListHelper as _list
+from relhelperspy.io.project_helper import ProjectHelper as _project
 
 
 # https://github.com/zelliott/maple/blob/11cfe6889e22e89715f91270bd854762574a8cd6/models/build_models.py

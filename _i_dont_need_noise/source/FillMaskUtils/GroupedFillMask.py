@@ -1,7 +1,7 @@
 from transformers import FillMaskPipeline
 
-import relhelpers.io.write_helper as _write
-import relhelpers.primitives.string_helper as _string
+import relhelperspy.io.write_helper as _write
+import relhelperspy.primitives.string_helper as _string
 
 WORD_MIN_LEN = 4
 T = "\t"

@@ -5,12 +5,12 @@ from src.FillMask.Vm.AdjectiveSummaryStat import AdjectiveSummaryStat
 
 from collections import defaultdict
 
-import relhelpers.io.read_helper as _read
-import relhelpers.primitives.dict_helper as _dict
-import relhelpers.io.write_helper as _write
-import relhelpers.functional.functional_helper as _fn
-import relhelpers.io.json_helper as _json
-import relhelpers.pandas.pandas_helper as _pd
+import relhelperspy.io.read_helper as _read
+import relhelperspy.primitives.dict_helper as _dict
+import relhelperspy.io.write_helper as _write
+import relhelperspy.functional.functional_helper as _fn
+import relhelperspy.io.json_helper as _json
+import relhelperspy.pandas.pandas_helper as _pd
 
 class StatCore:
 

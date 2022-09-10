@@ -4,13 +4,13 @@ from source.FillMaskUtils.RunResult import RunResult
 from source.FillMaskUtils.CategorizacionConfig import CategorizacionConfig
 
 # Helpers
-import relhelpers.io.read_helper as _read
-import relhelpers.io.write_helper as _write
-import relhelpers.date.date_helper as _date
-import relhelpers.primitives.string_helper as _string
-import relhelpers.primitives.list_helper as _list
-import relhelpers.huggingface.model_helper as _hf_model
-import relhelpers.stats.statistical_analysis_helper as _stats
+import relhelperspy.io.read_helper as _read
+import relhelperspy.io.write_helper as _write
+import relhelperspy.date.date_helper as _date
+import relhelperspy.primitives.string_helper as _string
+import relhelperspy.primitives.list_helper as _list
+import relhelperspy.huggingface.model_helper as _hf_model
+import relhelperspy.stats.statistical_analysis_helper as _stats
 
 print( 1 + "")
 

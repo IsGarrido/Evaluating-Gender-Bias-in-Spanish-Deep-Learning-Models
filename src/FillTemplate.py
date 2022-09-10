@@ -7,15 +7,15 @@ from dataclass.filltemplate.fill_template_result import FillTemplateResult
 from dataclass.filltemplate.fill_template_config import FillTemplateConfig
 from dataclass.model_config import ModelConfig
 
-from relhelpers.huggingface.service.PostTagger import PosTaggerService
-from relhelpers.io.project_helper import ProjectHelper as _project
-from relhelpers.huggingface.model_helper import HuggingFaceModelHelper as _hf_model
-from relhelpers.huggingface.fillmask_helper import FillMaskHelper as _hf_fillmask
-from relhelpers.pandas.pandas_helper import PandasHelper as _pd
-from relhelpers.primitives.annotations import log_time, log_time_with_counter
-from relhelpers.primitives.string_helper import StringHelper as _string
-from relhelpers.io.write_helper import WriteHelper as _write
-from relhelpers.io.cli_helper import CliHelper as _cli
+from relhelperspy.huggingface.service.PostTagger import PosTaggerService
+from relhelperspy.io.project_helper import ProjectHelper as _project
+from relhelperspy.huggingface.model_helper import HuggingFaceModelHelper as _hf_model
+from relhelperspy.huggingface.fillmask_helper import FillMaskHelper as _hf_fillmask
+from relhelperspy.pandas.pandas_helper import PandasHelper as _pd
+from relhelperspy.primitives.annotations import log_time, log_time_with_counter
+from relhelperspy.primitives.string_helper import StringHelper as _string
+from relhelperspy.io.write_helper import WriteHelper as _write
+from relhelperspy.io.cli_helper import CliHelper as _cli
 
 import warnings
 warnings.filterwarnings("ignore")

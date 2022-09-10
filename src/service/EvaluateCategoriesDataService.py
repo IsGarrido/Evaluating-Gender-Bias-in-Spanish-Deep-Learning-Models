@@ -1,5 +1,5 @@
 import pandas as pd
-from relhelpers.primitives.dict_helper import DictHelper as _dict
+from relhelperspy.primitives.dict_helper import DictHelper as _dict
 
 class EvaluateCategoriesDataService():
 

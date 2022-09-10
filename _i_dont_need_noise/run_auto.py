@@ -2,9 +2,9 @@ import csv
 
 from source import ModelScorer
 from source.ScorerConfig import ScorerConfig
-import relhelpers.stats.statistical_analysis_helper as _stats
-import relhelpers.io.write_helper as _writer
-import relhelpers.io.filesystem_helper as _fs
+import relhelperspy.stats.statistical_analysis_helper as _stats
+import relhelperspy.io.write_helper as _writer
+import relhelperspy.io.filesystem_helper as _fs
 
 ''' TEST SEIS  '''
 '''

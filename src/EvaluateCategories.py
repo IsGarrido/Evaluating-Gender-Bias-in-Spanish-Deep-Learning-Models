@@ -5,15 +5,15 @@ from dataclass.filltemplate.fill_template_result import FillTemplateResult
 from dataclass.evaluate_categories.evaluate_categories_config import EvaluateCategoriesConfig
 
 # Helpers
-from relhelpers.io.project_helper import ProjectHelper as _project
-from relhelpers.io.json_helper import JsonHelper as _json
-from relhelpers.io.read_helper import ReadHelper as _read
-from relhelpers.primitives.string_helper import StringHelper as _string
-from relhelpers.pandas.pandas_helper import PandasHelper as _pd
-from relhelpers.io.write_helper import WriteHelper as _write
-from relhelpers.primitives.annotations import log_time
-from relhelpers.primitives.dict_helper import DictHelper as _dict
-from relhelpers.io.cli_helper import CliHelper as _cli
+from relhelperspy.io.project_helper import ProjectHelper as _project
+from relhelperspy.io.json_helper import JsonHelper as _json
+from relhelperspy.io.read_helper import ReadHelper as _read
+from relhelperspy.primitives.string_helper import StringHelper as _string
+from relhelperspy.pandas.pandas_helper import PandasHelper as _pd
+from relhelperspy.io.write_helper import WriteHelper as _write
+from relhelperspy.primitives.annotations import log_time
+from relhelperspy.primitives.dict_helper import DictHelper as _dict
+from relhelperspy.io.cli_helper import CliHelper as _cli
 
 # Service
 from service.EvaluateCategoriesDataService import EvaluateCategoriesDataService

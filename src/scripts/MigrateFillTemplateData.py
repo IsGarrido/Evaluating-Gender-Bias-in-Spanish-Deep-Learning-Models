@@ -1,9 +1,9 @@
 import pandas as pd
 from dataclass.model_config import ModelConfig
-from relhelpers.io.project_helper import ProjectHelper as _project
-from relhelpers.pandas.pandas_helper import PandasHelper as _pd
-from relhelpers.primitives.string_helper import StringHelper as _string
-from relhelpers.io.write_helper import WriteHelper as _write
+from relhelperspy.io.project_helper import ProjectHelper as _project
+from relhelperspy.pandas.pandas_helper import PandasHelper as _pd
+from relhelperspy.primitives.string_helper import StringHelper as _string
+from relhelperspy.io.write_helper import WriteHelper as _write
 
 import warnings
 warnings.filterwarnings("ignore")

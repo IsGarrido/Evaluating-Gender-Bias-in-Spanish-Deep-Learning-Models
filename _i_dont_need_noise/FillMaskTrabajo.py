@@ -3,13 +3,13 @@ from transformers import pipeline
 
 from source.FillMaskUtils.GroupedFillMask import GroupedFillMask
 from source.FillMaskUtils.RunResult import RunResult
-import relhelpers.stats.statistical_analysis_helper as _stats
+import relhelperspy.stats.statistical_analysis_helper as _stats
 
-import relhelpers.io.read_helper as _read
-import relhelpers.io.write_helper as _write
-import relhelpers.primitives.list_helper as _list
-import relhelpers.primitives.string_helper as _string
-import relhelpers.huggingface.model_helper as _hf_model
+import relhelperspy.io.read_helper as _read
+import relhelperspy.io.write_helper as _write
+import relhelperspy.primitives.list_helper as _list
+import relhelperspy.primitives.string_helper as _string
+import relhelperspy.huggingface.model_helper as _hf_model
 
 # constantes
 T = "\t"

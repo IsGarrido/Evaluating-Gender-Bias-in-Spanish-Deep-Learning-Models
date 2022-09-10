@@ -1,4 +1,4 @@
-import relhelpers.io.read_helper as _read
+import relhelperspy.io.read_helper as _read
 
 class AdjectiveService:
 
