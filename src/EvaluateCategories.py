@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 # VM
 from dataclass.filltemplate.fill_template_result import FillTemplateResult
@@ -14,6 +13,8 @@ from relhelpers.pandas.pandas_helper import PandasHelper as _pd
 from relhelpers.io.write_helper import WriteHelper as _write
 from relhelpers.primitives.annotations import log_time
 from relhelpers.primitives.dict_helper import DictHelper as _dict
+from relhelpers.io.cli_helper import CliHelper as _cli
+
 # Service
 from service.EvaluateCategoriesDataService import EvaluateCategoriesDataService
 
@@ -89,9 +90,16 @@ class EvaluateCategories:
     def compute_statistics_for_categories(self):
         pass
 
+
+args = _cli.args(
+    label = 'Spanish Genre',
+    categories = 'Yulia.json'
+)
+
 cfg = EvaluateCategoriesConfig(
-    'Spanish Genre',
-    _project.data_path("EvaluateCategories", 'Yulia.json')
+    args.label,
+    _project.data_path("EvaluateCategories", args.categories)
 )
 
 EvaluateCategories(cfg)
+

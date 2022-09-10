@@ -15,7 +15,7 @@ from relhelpers.pandas.pandas_helper import PandasHelper as _pd
 from relhelpers.primitives.annotations import log_time, log_time_with_counter
 from relhelpers.primitives.string_helper import StringHelper as _string
 from relhelpers.io.write_helper import WriteHelper as _write
-from relhelpers.io.read_helper import ReadHelper as _read
+from relhelpers.io.cli_helper import CliHelper as _cli
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -152,39 +152,15 @@ class FillTemplate:
         path_adjectives = _project.result_path(self.experiment, "FillTemplate", "Adjectives.json" )
         _write.list_as_json(unique_adjectives, path_adjectives)
 
+
+args = _cli.args(
+    label = 'Spanish Genre',
+    templates = 'sentences.tsv'
+)
+
 cfg = FillTemplateConfig(
-    'Spanish Genre',
-    _project.data_path(FillTemplate.__name__,'sentences.tsv')
+    args.label,
+    _project.data_path("FillTemplate", args.templates)
 )
 
 FillTemplate(cfg)
-
-
-'''
-
-class GroupedFillMask:
-
-    def run_for_sentences(self, sentences):
-        for sentence in sentences:
-            self.run_for_text(sentence)
-
-        counts = dict(sorted(self.grouped_count.items(), key=lambda item: item[1], reverse=True))
-        retrieval_status_values = dict(sorted(self.grouped_retrieval_status_values.items(), key=lambda item: item[1], reverse=True))
-        #probabilities = { key: sum(value)/len(value) for key,value in self.grouped_model_probabilities.items()}
-        probabilities = { key: sum(value) for key,value in self.grouped_model_probabilities.items()}
-
-        return counts, retrieval_status_values, probabilities
-
-
-    def valid_token(self, token: str):
-
-        clean = token.replace("[", "").replace("]", "").replace(".", "")
-
-        if len(clean) < WORD_MIN_LEN:
-            return False
-        if "#" in token:
-            return False
-
-        return True
-
-'''

@@ -1,3 +1,3 @@
 [submodule "src/relhelpers"]
-	path = src/relhelpers
-	url = git@github.com:IsGarrido/relhelpers.git
+	path = src/relhelperspy
+	url = git@github.com:IsGarrido/relhelperspy.git
