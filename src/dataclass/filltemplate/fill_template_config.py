@@ -9,6 +9,9 @@ class  FillTemplateConfig(object):
     templates_path: str
     """Templates path"""
 
+    models_path: str
+    """Models path"""
+
     n_predictions: int = 29
     """Number of predictions"""
 

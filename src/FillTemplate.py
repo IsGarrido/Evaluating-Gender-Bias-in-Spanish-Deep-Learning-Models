@@ -45,7 +45,7 @@ class FillTemplate:
         cased_templates_roberta_df = _pd.apply_all_cells(cased_templates_df, _hf_fillmask.to_robert_mask)
         uncased_templates_roberta_df = _pd.apply_all_cells(uncased_templates_df, _hf_fillmask.to_robert_mask)
 
-        models_df = _pd.read_tsv(_project.data_path(FillTemplate.__name__, "models.tsv"))
+        models_df = _pd.read_tsv(xxxx)
         models: 'list[ModelConfig]' = models_df.apply( lambda row: ModelConfig(row[0],row[1],row[2],row[3], row[3] == 'cased'), axis = 1)
 
         for idx, model in enumerate(models):
@@ -148,19 +148,29 @@ class FillTemplate:
         result_container.add_all(records, unique_words, templates, models)
         _write.json(result_container, file_json)
 
-        unique_adjectives = pd.unique(self.data[self.data["pos_tag"] == "AQ"]["word"]).tolist()
+        unique_adjectives = pd.unique(self.data[ (self.data["pos_tag"] == "AQ") & ( ~self.data["word"].str.contains("#", regex = False) ) ]["word"]).tolist()
         path_adjectives = _project.result_path(self.experiment, "FillTemplate", "Adjectives.json" )
         _write.list_as_json(unique_adjectives, path_adjectives)
 
 
+# args = _cli.args(
+#     label = 'Spanish Genre',
+#     templates = 'sentences.tsv',
+#     n_predictions = 29
+# )
+
 args = _cli.args(
-    label = 'Spanish Genre',
-    templates = 'sentences.tsv'
+    label = 'Spanish Genre 10',
+    templates = 'sentences.tsv',
+    models = 'models.tsv',
+    n_predictions = 10
 )
 
 cfg = FillTemplateConfig(
     args.label,
-    _project.data_path("FillTemplate", args.templates)
+    _project.data_path("FillTemplate", args.templates),
+    _project.data_path("FillTemplate", args.models),
+    args.n_predictions
 )
 
 FillTemplate(cfg)
