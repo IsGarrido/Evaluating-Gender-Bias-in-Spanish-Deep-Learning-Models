@@ -34,7 +34,7 @@ Create a conda env, install dependencies.
 4. Drag and drop ``Adjectives.json`` into the box with the same name.
 5. Use the "New category" input to add as many categories as needed.
 6. You will be categorizing the word that is pointed by an arrow. To move its category just click a column. 
-7. When you are done, just click the ``Save to file`` button.
+7. When you are done, just click the ``Save to file`` button. It will be saved in your browser's default downloads folder as ``dllas-categorizedwords.json``. Move it to the folder ``assets/data`` with some nice name. Ex ``Yulia.json``. You can check and edit this json file to tweak category name or contents.
 
 Changes will be saved as you work in localStorage. If you want to continue later, you can Drop again the ``Adjectives.json`` file and click the ``Load last session`` button to recover your changes.
 

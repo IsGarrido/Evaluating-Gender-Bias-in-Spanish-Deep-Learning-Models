@@ -93,7 +93,7 @@ class EvaluateCategories:
 
 args = _cli.args(
     label = 'Spanish Genre 10',
-    categories = 'Yulia.json'
+    categories = 'Yulia10.json'
 )
 
 cfg = EvaluateCategoriesConfig(

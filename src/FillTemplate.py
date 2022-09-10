@@ -45,7 +45,7 @@ class FillTemplate:
         cased_templates_roberta_df = _pd.apply_all_cells(cased_templates_df, _hf_fillmask.to_robert_mask)
         uncased_templates_roberta_df = _pd.apply_all_cells(uncased_templates_df, _hf_fillmask.to_robert_mask)
 
-        models_df = _pd.read_tsv(xxxx)
+        models_df = _pd.read_tsv(self.cfg.models_path)
         models: 'list[ModelConfig]' = models_df.apply( lambda row: ModelConfig(row[0],row[1],row[2],row[3], row[3] == 'cased'), axis = 1)
 
         for idx, model in enumerate(models):
