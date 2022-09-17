@@ -41,6 +41,7 @@ class EvaluateCategories:
         df_data = _service.add_category_column(df_data, categories)
 
         self.compute_sentences_statistics(_service, df_data.copy(), dimensions)
+        self.compute_model_category_statistics(_service, df_data.copy(), dimensions)
         self.compute_general_statistics(_service, df_data.copy())
 
     @log_time
@@ -61,6 +62,26 @@ class EvaluateCategories:
             by_dimension[dimension] = _pd.to_dict(sub_df)
             
         path_dim = _project.result_path(self.experiment, "EvaluateCategories", "SentenceAndDimensionStatistics.json" )
+        _write.dict_as_json(by_dimension, path_dim)
+
+    @log_time
+    def compute_model_category_statistics(self, _service: EvaluateCategoriesDataService, df: pd.DataFrame,  dimensions: 'list[str]'):
+        df_mc = _service.group_model_category(df)
+        df_mc = _service.add_adjective_proportion(df_mc)
+
+        path = _project.result_path(self.experiment, "EvaluateCategories", "ModelCategoryStatistics.json" )
+
+        _write.df_as_json(df_mc, path)
+
+        by_dimension = {}
+        for dimension in dimensions:
+            sub_df = _service.group_model_category_with_dimension(df)
+            sub_df = sub_df[sub_df.dimension == dimension]
+            sub_df = _service.add_adjective_proportion(sub_df)
+
+            by_dimension[dimension] = _pd.to_dict(sub_df)
+            
+        path_dim = _project.result_path(self.experiment, "EvaluateCategories", "ModelCategoryStatisticsAndDimensionStatistics.json" )
         _write.dict_as_json(by_dimension, path_dim)
 
     @log_time

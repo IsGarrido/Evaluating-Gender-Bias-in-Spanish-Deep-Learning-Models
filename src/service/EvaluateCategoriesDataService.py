@@ -189,3 +189,76 @@ class EvaluateCategoriesDataService():
 
         merged_df = base_df.merge(rsv_df, on = grouping_columns )
         return merged_df
+
+    def group_model_category(self, df_data):
+
+        grouping_columns = ['model', 'category']
+
+        base_df = df_data.groupby(grouping_columns, as_index = False
+        ).agg(
+            score_sum=('score', 'sum'),
+
+            score_min=('score', 'min'),
+            score_max=('score', 'max'),
+            score_mean=('score', 'mean'),
+
+            count=('rsv', 'count'),
+
+            adj_cnt=('is_adjective', 'sum')
+        )
+
+        rsv_df = df_data[df_data["is_adjective"]].groupby(grouping_columns, as_index = False
+        ).agg(
+            rsv_sum=('rsv', 'sum'),
+
+            rsv_min=('rsv', 'min'),
+            rsv_max=('rsv', 'max'),
+            rsv_mean=('rsv', 'mean'),
+        )
+
+        merged_df = base_df.merge(rsv_df, on = grouping_columns)
+
+        subgrouping_columns = ['model']
+
+        # https://stackoverflow.com/questions/23377108/pandas-percentage-of-total-with-groupby/57359372#57359372
+        merged_df['score_prop'] = 100 * merged_df['score_sum'] / merged_df.groupby(subgrouping_columns)['score_sum'].transform('sum')
+        merged_df['score_prop'] = 100 * merged_df['rsv_sum'] / merged_df.groupby(subgrouping_columns)['rsv_sum'].transform('sum')
+
+        return merged_df
+
+
+    def group_model_category_with_dimension(self, df_data):
+
+        grouping_columns = ['model', 'category', 'dimension']
+
+        base_df = df_data.groupby(grouping_columns, as_index = False
+        ).agg(
+            score_sum=('score', 'sum'),
+
+            score_min=('score', 'min'),
+            score_max=('score', 'max'),
+            score_mean=('score', 'mean'),
+
+            count=('rsv', 'count'),
+
+            adj_cnt=('is_adjective', 'sum')
+        )
+
+        rsv_df = df_data[df_data["is_adjective"]].groupby(grouping_columns, as_index = False
+        ).agg(
+            rsv_sum=('rsv', 'sum'),
+
+            rsv_min=('rsv', 'min'),
+            rsv_max=('rsv', 'max'),
+            rsv_mean=('rsv', 'mean'),
+        )
+
+        merged_df = base_df.merge(rsv_df, on = grouping_columns)
+
+        subgrouping_columns = ['model', 'dimension']
+
+        # https://stackoverflow.com/questions/23377108/pandas-percentage-of-total-with-groupby/57359372#57359372
+        merged_df['score_prop'] = 100 * merged_df['score_sum'] / merged_df.groupby(subgrouping_columns)['score_sum'].transform('sum')
+        merged_df['score_prop'] = 100 * merged_df['rsv_sum'] / merged_df.groupby(subgrouping_columns)['rsv_sum'].transform('sum')
+
+        return merged_df
