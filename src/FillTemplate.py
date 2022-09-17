@@ -20,8 +20,6 @@ from relhelperspy.io.cli_helper import CliHelper as _cli
 import warnings
 warnings.filterwarnings("ignore")
 
-# TODO: Imporporar lo de valid token
-
 class FillTemplate:
 
     def __init__(self, cfg: FillTemplateConfig) -> None:
