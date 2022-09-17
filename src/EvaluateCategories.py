@@ -81,7 +81,7 @@ class EvaluateCategories:
 
             by_dimension[dimension] = _pd.to_dict(sub_df)
             
-        path_dim = _project.result_path(self.experiment, "EvaluateCategories", "ModelCategoryStatisticsAndDimensionStatistics.json" )
+        path_dim = _project.result_path(self.experiment, "EvaluateCategories", "ModelCategoryAndDimensionStatistics.json" )
         _write.dict_as_json(by_dimension, path_dim)
 
     @log_time
