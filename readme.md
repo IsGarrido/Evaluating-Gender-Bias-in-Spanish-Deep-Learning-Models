@@ -1,3 +1,9 @@
+## General notes
+
+1. This repo uses gitsubmodules to loads some libraries, use `git clone --recursive`
+2. Viewer V1 is [here](https://github.com/IsGarrido/categoryviewer)
+3. Viewer V2 is [here](https://github.com/IsGarrido/dllas-explorer)
+
 ## Evaluate Categories
 
 ### Setup
