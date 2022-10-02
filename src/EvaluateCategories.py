@@ -117,6 +117,11 @@ args = _cli.args(
     categories = 'Yulia10.json'
 )
 
+# args = _cli.args(
+#     label = 'Spanish Genre',
+#     categories = 'Yulia.json'
+# )
+
 cfg = EvaluateCategoriesConfig(
     args.label,
     _project.data_path("EvaluateCategories", args.categories)
