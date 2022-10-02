@@ -108,10 +108,6 @@ class EvaluateCategories:
         _write.df_as_json(df_by_dimension, path_dimension)
         _write.df_as_json(df_by_model, path_model)
 
-    def compute_statistics_for_categories(self):
-        pass
-
-
 args = _cli.args(
     label = 'Spanish Genre 10',
     categories = 'Yulia10.json'
