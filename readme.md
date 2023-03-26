@@ -1,16 +1,11 @@
 ## General notes
 
-1. This repo uses gitsubmodules to loads some libraries, use `git clone --recursive`
-2. Viewer V1 is [here](https://github.com/IsGarrido/categoryviewer)
-3. Viewer V2 is [here](https://github.com/IsGarrido/dllas-explorer)
+1. Viewer V1 is [here](https://github.com/IsGarrido/categoryviewer)
+2. Viewer V2 is [here](https://github.com/IsGarrido/dllas-explorer)
 
 ## Evaluate Categories
 
 ### Setup
-Create a conda env, install dependencies.
-
-### Setup
-
 Create a conda env, install dependencies.
 
 ### Run FillTemplate.py
